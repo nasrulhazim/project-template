@@ -12,6 +12,7 @@
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.10",
+        "rappasoft/laravel-livewire-tables": "^1.24",
         "spatie/laravel-medialibrary": "^10.3",
         "spatie/laravel-permission": "^5.5"
     },
