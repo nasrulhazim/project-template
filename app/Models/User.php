@@ -14,9 +14,11 @@ use Laravel\Sanctum\HasApiTokens;
 use OwenIt\Auditing\Auditable as AuditableTrait;
 use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 use Spatie\Permission\Traits\HasRoles;
+use Yadahan\AuthenticationLog\AuthenticationLogable;
 
 class User extends Authenticatable implements MustVerifyEmail, AuditableContract
 {
+    use AuthenticationLogable;
     use AuditableTrait;
     use HasApiTokens;
     use HasFactory;
