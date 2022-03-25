@@ -29,7 +29,7 @@ class DeleteTeamTest extends TestCase
         $component = Livewire::test(DeleteTeamForm::class, ['team' => $team->fresh()])
                                 ->call('deleteTeam');
 
-        $this->assertNull($team->fresh());
+        $this->assertNull($team->deleted_at);
         $this->assertCount(0, $otherUser->fresh()->teams);
     }
 

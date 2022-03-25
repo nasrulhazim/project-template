@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Concerns\HasUuid;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -25,6 +26,7 @@ class User extends Authenticatable implements MustVerifyEmail, AuditableContract
     use HasProfilePhoto;
     use HasRoles;
     use HasTeams;
+    use HasUuid;
     use Notifiable;
     use TwoFactorAuthenticatable;
     use SoftDeletes;
@@ -35,7 +37,7 @@ class User extends Authenticatable implements MustVerifyEmail, AuditableContract
      * @var string[]
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'deleted_at'
     ];
 
     /**
@@ -57,6 +59,7 @@ class User extends Authenticatable implements MustVerifyEmail, AuditableContract
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'deleted_at' => 'datetime',
     ];
 
     /**
