@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Actions\Fortify\CreateNewUser;
 use App\Models\Role;
-use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class PrepareSeeder extends Seeder
@@ -28,7 +27,7 @@ class PrepareSeeder extends Seeder
 
     private function createSuperUser()
     {
-        (new CreateNewUser)->create(config('seeder.users.superadmin'));
+        (new CreateNewUser())->create(config('seeder.users.superadmin'));
     }
 
     private function seedRoles()
