@@ -12,7 +12,7 @@ return [
      * The maximum file size of an item in bytes.
      * Adding a larger file will result in an exception.
      */
-    'max_file_size' => 1024 * 1024 * 10, // 10MB
+    'max_file_size' => 1024 * 1024 * 25, // 25MB
 
     /*
      * This queue will be used to generate derived and responsive images.
@@ -57,7 +57,7 @@ return [
     /*
      * The class that contains the strategy for determining a media file's path.
      */
-    'path_generator' => Spatie\MediaLibrary\Support\PathGenerator\DefaultPathGenerator::class,
+    'path_generator' => App\Config\MediaPathGenerator::class,
 
     /*
      * Here you can specify which path generator should be used for the given class.
@@ -76,13 +76,13 @@ return [
      * Moves media on updating to keep path consistent. Enable it only with a custom
      * PathGenerator that uses, for example, the media UUID.
      */
-    'moves_media_on_update' => false,
+    'moves_media_on_update' => true,
 
     /*
      * Whether to activate versioning when urls to files get generated.
      * When activated, this attaches a ?v=xx query string to the URL.
      */
-    'version_urls' => false,
+    'version_urls' => true,
 
     /*
      * The media library will try to optimize all converted images by removing
@@ -134,7 +134,7 @@ return [
      * The path where to store temporary files while performing image conversions.
      * If set to null, storage_path('media-library/temp') will be used.
      */
-    'temporary_directory_path' => null,
+    'temporary_directory_path' => env('TEMPORARY_DIRECTORY_PATH'),
 
     /*
      * The engine that should perform the image conversions.
