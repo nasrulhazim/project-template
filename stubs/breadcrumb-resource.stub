@@ -1,0 +1,24 @@
+<?php
+
+use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
+
+Breadcrumbs::for('{{ route_prefix }}.index', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('{{ label }}', route('{{ route_prefix }}.index'));
+});
+
+Breadcrumbs::for('{{ route_prefix }}.create', function ($trail) {
+    $trail->parent('{{ route_prefix }}.index');
+    $trail->push('{{ label }}', route('{{ route_prefix }}.create'));
+});
+
+Breadcrumbs::for('{{ route_prefix }}.show', function ($trail, $model) {
+    $trail->parent('{{ route_prefix }}.index');
+    $trail->push('{{ label }}', route('{{ route_prefix }}.show', $model));
+});
+
+Breadcrumbs::for('{{ route_prefix }}.edit', function ($trail, $model) {
+    $trail->parent('{{ route_prefix }}.edit');
+    $trail->push('{{ label }}', route('{{ route_prefix }}.edit', $model));
+});

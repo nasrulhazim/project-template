@@ -1,0 +1,10 @@
+<?php
+
+// Always check for function existence
+if (! function_exists('your_function')) {
+    // the function name should be in snake_case
+    function your_function()
+    {
+        return true;
+    }
+}

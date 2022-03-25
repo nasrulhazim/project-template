@@ -1,0 +1,14 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Contracts\Actions\DeleteAction as Contract;
+use Illuminate\Database\Eloquent\Model;
+
+class {{ class }} implements Contract
+{
+    public function delete(Model $model): void
+    {
+        
+    }
+}

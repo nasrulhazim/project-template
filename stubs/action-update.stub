@@ -1,0 +1,21 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Contracts\Actions\UpdateAction as Contract;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Validator;
+
+class {{ class }} implements Contract
+{
+    public function update(Model $model, array $input): void
+    {
+        Validator::make($input, [
+            // define your rules here
+        ])->validate();
+
+        $model->forceFill([
+            // define fields to be use
+        ])->save();
+    }
+}
