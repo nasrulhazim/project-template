@@ -2,14 +2,13 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
-use App\Models\User;
 
 class UserDatatable extends DataTableComponent
 {
-
     public function columns(): array
     {
         return [
