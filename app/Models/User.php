@@ -37,7 +37,7 @@ class User extends Authenticatable implements MustVerifyEmail, AuditableContract
      * @var string[]
      */
     protected $fillable = [
-        'name', 'email', 'password', 'deleted_at'
+        'name', 'email', 'password', 'deleted_at',
     ];
 
     /**
