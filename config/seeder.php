@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 
 return [
     'users' => [
@@ -8,5 +9,5 @@ return [
             'password' => env('SUPERADMIN_PASSWORD'),
             'password_confirmation' => env('SUPERADMIN_PASSWORD'),
         ],
-    ]
+    ],
 ];
