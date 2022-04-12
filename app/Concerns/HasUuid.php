@@ -12,7 +12,7 @@ trait HasUuid
     {
         static::creating(function ($model) {
             if (Schema::hasColumn($model->getTable(), 'uuid') && is_null($model->uuid)) {
-                $model->uuid = Str::orderedUuid();
+                $model->uuid = Str::uuid()->toString();
             }
         });
     }
