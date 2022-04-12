@@ -15,6 +15,7 @@ class DevSeeder extends Seeder
     public function run()
     {
         User::factory()
+            ->withPersonalTeam()
             ->count(1000)
             ->create()
             ->each(function ($user) {
