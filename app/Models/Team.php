@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Concerns\HasUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Jetstream\Events\TeamCreated;
@@ -13,6 +14,7 @@ class Team extends JetstreamTeam
 {
     use HasFactory;
     use SoftDeletes;
+    use HasUuid;
 
     /**
      * The attributes that should be cast.
