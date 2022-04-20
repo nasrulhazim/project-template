@@ -68,6 +68,7 @@ class ActionCommand extends GeneratorCommand
      * Get the default namespace for the class.
      *
      * @param  string  $rootNamespace
+     *
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)
@@ -76,10 +77,10 @@ class ActionCommand extends GeneratorCommand
     }
 
     /**
-    * Get the console command options.
-    *
-    * @return array
-    */
+     * Get the console command options.
+     *
+     * @return array
+     */
     protected function getOptions()
     {
         return [

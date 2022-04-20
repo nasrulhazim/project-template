@@ -27,7 +27,7 @@ class ClearHorizonQueuesCommand extends Command
      */
     public function handle()
     {
-        foreach (config('horizon.defaults') as $key => $value) {
+        foreach (config('horizon.defaults') as $value) {
             $queues = $value['queue'];
             foreach ($queues as $queue) {
                 $this->call('queue:clear', [

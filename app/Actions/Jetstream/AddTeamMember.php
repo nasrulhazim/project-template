@@ -19,9 +19,10 @@ class AddTeamMember implements AddsTeamMembers
      * @param  mixed  $team
      * @param  string  $email
      * @param  string|null  $role
+     *
      * @return void
      */
-    public function add($user, $team, string $email, string $role = null)
+    public function add($user, $team, string $email, ?string $role = null)
     {
         Gate::forUser($user)->authorize('addTeamMember', $team);
 
@@ -45,6 +46,7 @@ class AddTeamMember implements AddsTeamMembers
      * @param  mixed  $team
      * @param  string  $email
      * @param  string|null  $role
+     *
      * @return void
      */
     protected function validate($team, string $email, ?string $role)
@@ -79,6 +81,7 @@ class AddTeamMember implements AddsTeamMembers
      *
      * @param  mixed  $team
      * @param  string  $email
+     *
      * @return \Closure
      */
     protected function ensureUserIsNotAlreadyOnTeam($team, string $email)

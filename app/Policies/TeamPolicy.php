@@ -14,11 +14,12 @@ class TeamPolicy
      * Determine whether the user can view any models.
      *
      * @param  \App\Models\User  $user
+     *
      * @return mixed
      */
     public function viewAny(User $user)
     {
-        return true;
+        return $user->belongsToTeam(auth()->user()->currentTeam());
     }
 
     /**
@@ -26,6 +27,7 @@ class TeamPolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Team  $team
+     *
      * @return mixed
      */
     public function view(User $user, Team $team)
@@ -37,11 +39,12 @@ class TeamPolicy
      * Determine whether the user can create models.
      *
      * @param  \App\Models\User  $user
+     *
      * @return mixed
      */
     public function create(User $user)
     {
-        return true;
+        return $user->teamRole('admin');
     }
 
     /**
@@ -49,6 +52,7 @@ class TeamPolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Team  $team
+     *
      * @return mixed
      */
     public function update(User $user, Team $team)
@@ -61,6 +65,7 @@ class TeamPolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Team  $team
+     *
      * @return mixed
      */
     public function addTeamMember(User $user, Team $team)
@@ -73,6 +78,7 @@ class TeamPolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Team  $team
+     *
      * @return mixed
      */
     public function updateTeamMember(User $user, Team $team)
@@ -85,6 +91,7 @@ class TeamPolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Team  $team
+     *
      * @return mixed
      */
     public function removeTeamMember(User $user, Team $team)
@@ -97,6 +104,7 @@ class TeamPolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Team  $team
+     *
      * @return mixed
      */
     public function delete(User $user, Team $team)

@@ -21,14 +21,6 @@ class DemoCommand extends Command
     protected $description = 'Seed Demo Data';
 
     /**
-     * Create a new command instance.
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Execute the console command.
      *
      * @return mixed

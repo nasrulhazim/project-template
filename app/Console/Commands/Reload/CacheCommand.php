@@ -21,14 +21,6 @@ class CacheCommand extends Command
     protected $description = 'Reload all caches';
 
     /**
-     * Create a new command instance.
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Execute the console command.
      *
      * @return mixed

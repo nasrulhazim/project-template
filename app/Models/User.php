@@ -34,7 +34,7 @@ class User extends Authenticatable implements MustVerifyEmail, AuditableContract
     /**
      * The attributes that are mass assignable.
      *
-     * @var string[]
+     * @var array<string>
      */
     protected $fillable = [
         'name', 'email', 'password', 'deleted_at',

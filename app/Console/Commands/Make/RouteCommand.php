@@ -32,6 +32,17 @@ class RouteCommand extends GeneratorCommand
      */
     protected $type = 'Route';
 
+    public function handle()
+    {
+        parent::handle();
+
+        $name = $this->qualifyClass($this->getNameInput());
+
+        $path = str_replace(base_path('/routes/'), '', $this->getPath($name));
+
+        $this->files->append(base_path('/routes/web.php'), PHP_EOL . "require '${path}';");
+    }
+
     /**
      * Get the stub file for the generator.
      *
@@ -49,7 +60,7 @@ class RouteCommand extends GeneratorCommand
     /**
      * Get the destination class path.
      *
-    * @param string $name
+     * @param string $name
      *
      * @return string
      */
@@ -81,6 +92,7 @@ class RouteCommand extends GeneratorCommand
      *
      * @param  string  $stub
      * @param  string  $name
+     *
      * @return string
      */
     protected function replaceClass($stub, $name)
@@ -103,25 +115,14 @@ class RouteCommand extends GeneratorCommand
     }
 
     /**
-    * Get the console command options.
-    *
-    * @return array
-    */
+     * Get the console command options.
+     *
+     * @return array
+     */
     protected function getOptions()
     {
         return [
             ['resource', 'r', InputOption::VALUE_REQUIRED, 'Create a resourceful route'],
         ];
-    }
-
-    public function handle()
-    {
-        parent::handle();
-
-        $name = $this->qualifyClass($this->getNameInput());
-
-        $path = str_replace(base_path('/routes/'), '', $this->getPath($name));
-
-        $this->files->append(base_path('/routes/web.php'), PHP_EOL . "require '$path';");
     }
 }

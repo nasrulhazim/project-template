@@ -23,21 +23,13 @@ class DatabaseCommand extends Command
     protected $description = 'Reload Database';
 
     /**
-     * Create a new command instance.
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Execute the console command.
      *
      * @return mixed
      */
     public function handle()
     {
-        if (app()->environment() == 'production') {
+        if (app()->environment() === 'production') {
             $this->comment('Nothing need to be done here. Bye.');
 
             return 0;

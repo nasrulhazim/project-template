@@ -32,6 +32,17 @@ class BreadcrumbCommand extends GeneratorCommand
      */
     protected $type = 'Breadcrumb';
 
+    public function handle()
+    {
+        parent::handle();
+
+        $name = $this->qualifyClass($this->getNameInput());
+
+        $path = str_replace(base_path('/routes/'), '', $this->getPath($name));
+
+        $this->files->append(base_path('/routes/breadcrumbs.php'), PHP_EOL . "require '${path}';");
+    }
+
     /**
      * Get the stub file for the generator.
      *
@@ -81,13 +92,14 @@ class BreadcrumbCommand extends GeneratorCommand
      *
      * @param  string  $stub
      * @param  string  $name
+     *
      * @return string
      */
     protected function replaceClass($stub, $name)
     {
         $name = Str::of($name)
-                ->replace($this->getNamespace($name).'\\', '', $name)
-                ->plural();
+            ->replace($this->getNamespace($name).'\\', '', $name)
+            ->plural();
         $route_prefix = $name->kebab();
         $label = $name->title();
 
@@ -102,25 +114,14 @@ class BreadcrumbCommand extends GeneratorCommand
     }
 
     /**
-    * Get the console command options.
-    *
-    * @return array
-    */
+     * Get the console command options.
+     *
+     * @return array
+     */
     protected function getOptions()
     {
         return [
             ['resource', 'r', InputOption::VALUE_NONE, 'Create a resourceful breadcrumb'],
         ];
-    }
-
-    public function handle()
-    {
-        parent::handle();
-
-        $name = $this->qualifyClass($this->getNameInput());
-
-        $path = str_replace(base_path('/routes/'), '', $this->getPath($name));
-
-        $this->files->append(base_path('/routes/breadcrumbs.php'), PHP_EOL . "require '$path';");
     }
 }

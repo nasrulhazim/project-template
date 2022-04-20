@@ -21,14 +21,6 @@ class PrepareCommand extends Command
     protected $description = 'Preparing Application to Run';
 
     /**
-     * Create a new command instance.
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Execute the console command.
      *
      * @return mixed

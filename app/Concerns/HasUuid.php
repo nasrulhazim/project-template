@@ -32,7 +32,7 @@ trait HasUuid
      */
     public function getUuidColumnName(): string
     {
-        return isset($this->uuid_column) ? $this->uuid_column : 'uuid';
+        return $this->uuid_column ?? 'uuid';
     }
 
     /**
