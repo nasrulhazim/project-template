@@ -44,7 +44,7 @@ class TeamPolicy
      */
     public function create(User $user)
     {
-        return $user->teamRole('admin');
+        return true;
     }
 
     /**
