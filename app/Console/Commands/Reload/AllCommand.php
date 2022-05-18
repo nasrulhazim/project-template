@@ -47,7 +47,7 @@ class AllCommand extends Command
         if ($this->option('demo')) {
             $this->call('seed:demo');
         }
-        
+
         $this->call('storage:link', [
             '--force' => true,
         ]);

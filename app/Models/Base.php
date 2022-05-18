@@ -23,7 +23,7 @@ class Base extends Model implements AuditableContract, HasMedia
     protected $guarded = [
         'id',
     ];
-    
+
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')

@@ -13,7 +13,6 @@ class Navbar extends Component
      */
     public function __construct()
     {
-        
     }
 
     /**
@@ -41,7 +40,7 @@ class Navbar extends Component
                         'icon' => 'person',
                         'url' => route('users.index'),
                     ],
-                ]
+                ],
             ],
             [
                 'label' => __('Users'),
@@ -49,7 +48,7 @@ class Navbar extends Component
                 'icon' => 'person',
                 'url' => route('users.index'),
             ],
-        ])->reject(function($menu) {
+        ])->reject(function ($menu) {
             return $menu['display'] == false;
         })->toArray();
     }
