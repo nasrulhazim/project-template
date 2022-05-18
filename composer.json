@@ -25,6 +25,7 @@
         "yadahan/laravel-authentication-log": "^1.5"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.6",
         "fakerphp/faker": "^1.9.1",
         "friendsofphp/php-cs-fixer": "^3.8",
         "laravel/sail": "^1.0.1",
