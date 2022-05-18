@@ -10,6 +10,7 @@
         "codeat3/blade-akar-icons": "^1.13",
         "diglactic/laravel-breadcrumbs": "^7.1",
         "guzzlehttp/guzzle": "^7.2",
+        "lab404/laravel-impersonate": "^1.7",
         "laravel/framework": "^9.2",
         "laravel/horizon": "^5.9",
         "laravel/jetstream": "^2.6",

@@ -21,29 +21,20 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
-        <x-jet-banner />
-
-        <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
-
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                    {{-- <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ Breadcrumbs::render() }}
-                    </div> --}}
-                </header>
-            @endif
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+        <div class="fixed top-0 inset-x-0 z-20">
+            <x-impersonating></x-impersonating>
+            <x-navbar></x-navbar>
         </div>
 
+        <div class="flex @impersonating pt-28 md:pt-24 @else pt-14 @endImpersonating">
+            <div class="w-full md:min-h-screen md:max-w-xxl mx-auto p-4 md:px-6 lg:px-8 md:py-6 relative">
+                <div class="mt-6">
+                    {{ Breadcrumbs::render() }}
+                </div>
+                {{ $slot }}
+            </div>
+        </div>
+        
         @stack('modals')
 
         @livewireScripts

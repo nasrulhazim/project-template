@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Lab404\Impersonate\Models\Impersonate;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
@@ -27,6 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail, AuditableContract
     use HasRoles;
     use HasTeams;
     use HasUuid;
+    use Impersonate;
     use Notifiable;
     use TwoFactorAuthenticatable;
     use SoftDeletes;
@@ -70,4 +72,17 @@ class User extends Authenticatable implements MustVerifyEmail, AuditableContract
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * @return bool
+     */
+    public function canImpersonate()
+    {
+        return config('impersonate.enabled');
+    }
+
+    public function canBeImpersonated()
+    {
+        return ! $this->hasRole('superadmin');
+    }
 }
