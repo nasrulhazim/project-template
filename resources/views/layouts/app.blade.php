@@ -27,8 +27,8 @@
         </div>
 
         <div class="flex @impersonating pt-28 md:pt-24 @else pt-14 @endImpersonating">
-            <div class="w-full md:min-h-screen md:max-w-xxl mx-auto p-4 md:px-6 lg:px-8 md:py-6 relative">
-                <div class="mt-6">
+            <div class="w-full md:max-w-7xl mx-auto md:py-6 relative">
+                <div>
                     {{ Breadcrumbs::render() }}
                 </div>
                 {{ $slot }}

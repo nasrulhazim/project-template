@@ -24,3 +24,8 @@ Breadcrumbs::for('users.index', function (BreadcrumbTrail $trail) {
 Breadcrumbs::for('profile.show', function (BreadcrumbTrail $trail) {
     $trail->push('Profile', route('profile.show'));
 });
+
+// Notifications
+Breadcrumbs::for('notifications', function (BreadcrumbTrail $trail) {
+    $trail->push('Notifications', route('notifications'));
+});

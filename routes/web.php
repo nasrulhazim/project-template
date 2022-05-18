@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NotificationController;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -29,6 +30,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     })->name('users.index');
 
     Route::impersonate();
+
+    Route::get('/notifications', NotificationController::class)->name('notifications');
 });
 
 Route::get('/email/verify', function () {

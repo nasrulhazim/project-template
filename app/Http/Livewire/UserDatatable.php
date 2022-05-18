@@ -9,11 +9,24 @@ use Rappasoft\LaravelLivewireTables\Views\Column;
 
 class UserDatatable extends DataTableComponent
 {
+    protected $model = User::class;
+
+    /**
+     * Set any configuration options
+     */
+    public function configure(): void
+    {
+        $this->setPrimaryKey('uuid');
+    }
+
+    /**
+     * The array defining the columns of the table.
+     *
+     * @return array
+     */
     public function columns(): array
     {
         return [
-            Column::make('Id', 'id')
-                ->sortable(),
             Column::make('Name', 'name')
                 ->sortable(),
             Column::make('Email', 'email')

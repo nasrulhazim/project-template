@@ -30,7 +30,7 @@ return [
              |
              */
 
-            'path' => 'resources/svg',
+            'path' => 'public/vendor/blade-heroicons',
 
              /*
              |-----------------------------------------------------------------

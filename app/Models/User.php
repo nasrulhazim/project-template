@@ -85,4 +85,9 @@ class User extends Authenticatable implements MustVerifyEmail, AuditableContract
     {
         return ! $this->hasRole('superadmin');
     }
+
+    public function hasNotifications()
+    {
+        return $this->notifications()->unread()->exists();
+    }
 }

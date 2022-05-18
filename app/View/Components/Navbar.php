@@ -31,13 +31,13 @@ class Navbar extends Component
             [
                 'label' => __('Settings'),
                 'display' => true,
-                'icon' => 'person',
+                'icon' => 'o-user',
                 'url' => '#',
                 'child' => [
                     [
                         'label' => __('Users'),
                         'display' => auth()->user()->can('manage-users'),
-                        'icon' => 'person',
+                        'icon' => 'o-user',
                         'url' => route('users.index'),
                     ],
                 ],
@@ -45,7 +45,7 @@ class Navbar extends Component
             [
                 'label' => __('Users'),
                 'display' => auth()->user()->can('manage-users'),
-                'icon' => 'person',
+                'icon' => 'o-user',
                 'url' => route('users.index'),
             ],
         ])->reject(function ($menu) {
