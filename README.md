@@ -18,8 +18,8 @@ $ ssh-keygen -t ed25519 -C "your@email.com"
 > Enter passphrase (empty for no passphrase): [Type a passphrase]
 > Enter same passphrase again: [Type passphrase again]
 $ eval "$(ssh-agent -s)"
-$ ssh-add -k //Users/you/.ssh/id_algorithm
-$ cat //Users/you/.ssh/id_algorithm.pub
+$ ssh-add -k /Users/you/.ssh/id_algorithm
+$ cat /Users/you/.ssh/id_algorithm.pub
 ```
 
 Copy the output then add key in [Deploy Keys](https://github.com/nasrulhazim/um-ehr-services/settings/keys)
