@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Concerns\HasUuid;
+use App\Concerns\InteractsWithUuid;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -27,7 +27,7 @@ class User extends Authenticatable implements MustVerifyEmail, AuditableContract
     use HasProfilePhoto;
     use HasRoles;
     use HasTeams;
-    use HasUuid;
+    use InteractsWithUuid;
     use Impersonate;
     use Notifiable;
     use TwoFactorAuthenticatable;

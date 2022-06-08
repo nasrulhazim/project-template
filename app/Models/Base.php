@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Concerns\HasUser;
-use App\Concerns\HasUuid;
+use App\Concerns\InteractsWithUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Auditable as AuditableTrait;
@@ -15,7 +15,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 class Base extends Model implements AuditableContract, HasMedia
 {
     use HasFactory;
-    use HasUuid;
+    use InteractsWithUuid;
     use HasUser;
     use InteractsWithMedia;
     use AuditableTrait;
