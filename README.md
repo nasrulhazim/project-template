@@ -1,6 +1,4 @@
-<center>
 [![Unit Test](https://github.com/nasrulhazim/project-template/actions/workflows/unit-test.yml/badge.svg)](https://github.com/nasrulhazim/project-template/actions/workflows/unit-test.yml)
-</center>
 
 # Project Template
 
