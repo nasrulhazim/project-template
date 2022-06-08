@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+echo "Navigate to project directory..."
+cd /var/www/project
+echo "Pulling codes..."
+
+git fetch --tags
+tag=$(git describe --tags `git rev-list --tags --max-count=1`)
+echo "Checkout latest tag"
+git checkout $tag
+
+echo "Install dependencies..."
+y | composer install
+
+echo "Clear config caches..."
+php artisan config:clear
+echo "Clear view caches..."
+php artisan view:clear
+
+echo "Change project ownerhship to web server..."
+chown nginx:ihrisdev /var/www/project -R
+
+clear
