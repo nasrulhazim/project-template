@@ -3,16 +3,17 @@
 namespace App\Concerns;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 
-trait HasUuid
+trait InteractsWithUuid
 {
-    public static function bootHasUuid()
+    public static function bootInteractsWithUuid()
     {
-        static::creating(function ($model) {
-            if (Schema::hasColumn($model->getTable(), 'uuid') && is_null($model->uuid)) {
-                $model->uuid = Str::uuid()->toString();
+        static::creating(function (Model $model) {
+            if (Schema::hasColumn($model->getTable(), $model->getUuidColumnName()) && is_null($model->{$model->getUuidColumnName()})) {
+                $model->{$model->getUuidColumnName()} = Str::uuid();
             }
         });
     }
@@ -32,7 +33,7 @@ trait HasUuid
      */
     public function getUuidColumnName(): string
     {
-        return $this->uuid_column ?? 'uuid';
+        return isset($this->uuid_column) ? $this->uuid_column : 'uuid';
     }
 
     /**
