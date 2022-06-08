@@ -1,0 +1,28 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Concerns\Enums\Options;
+use Spatie\Enum\Laravel\Enum;
+
+/**
+ * @method static self draft()
+ */
+class {{ class }} extends Enum
+{
+    use Options;
+
+    public static function values(): array
+    {
+        return [
+            'draft' => 'draft',
+        ];
+    }
+
+    protected static function labels(): array
+    {
+        return [
+            'draft' => __('Draft'),
+        ];
+    }
+}
