@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Concerns\HasUser;
+use App\Concerns\InteractsWithUser;
 use App\Concerns\InteractsWithUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -16,7 +16,7 @@ class Base extends Model implements AuditableContract, HasMedia
 {
     use HasFactory;
     use InteractsWithUuid;
-    use HasUser;
+    use InteractsWithUser;
     use InteractsWithMedia;
     use AuditableTrait;
 

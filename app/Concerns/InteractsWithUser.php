@@ -4,9 +4,9 @@ namespace App\Concerns;
 
 use Illuminate\Support\Facades\Schema;
 
-trait HasUser
+trait InteractsWithUser
 {
-    public static function bootHasUser()
+    public static function bootInteractsWithUser()
     {
         static::creating(function ($model) {
             if (Schema::hasColumn($model->getTable(), 'user_id') && is_null($model->user_id)) {
