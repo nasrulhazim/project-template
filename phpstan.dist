@@ -1,0 +1,22 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+    paths:
+        - app/
+        - tinker/
+        - config/
+        - database/
+        - resources/
+        - routes/
+        - support/
+        - tests/
+    level: 4
+    excludePaths:
+        - .bin/
+        - .config/
+        - .github/
+        - node_modules/
+        - stubs/
+        - vendor/
+    checkMissingIterableValueType: false

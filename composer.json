@@ -32,6 +32,7 @@
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
+        "nunomaduro/larastan": "^2.1",
         "nunomaduro/phpinsights": "^2.2",
         "pestphp/pest": "^1.21",
         "pestphp/pest-plugin-laravel": "^1.2",
@@ -75,6 +76,9 @@
         ],
         "test": [
             "@php vendor/bin/pest --stop-on-error --stop-on-fail "
+        ],
+        "analyse": [
+            "@php vendor/bin/phpstan analyse -c phpstan.dist --error-format=table > storage/logs/phpstan.log"
         ]
     },
     "extra": {
