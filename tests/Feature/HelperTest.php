@@ -2,9 +2,9 @@
 
 use App\Models\User;
 use App\Notifications\DefaultNotification;
-use Illuminate\Support\Facades\Notification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
- 
+use Illuminate\Support\Facades\Notification;
+
 uses(RefreshDatabase::class);
 
 it('has support directory', function () {
