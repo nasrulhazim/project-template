@@ -25,7 +25,7 @@ class LogoutFromOtherDevices
      */
     public function handle(Authenticated $event)
     {
-        if (config('auth.single-device') && request()->has('password')) {
+        if (config('auth.single-device') && request()->has('password') && in_array('logoutOtaherDevices', get_class_methods(Auth::class))) {
             Auth::logoutOtaherDevices(request('password'));
         }
     }
