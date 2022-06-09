@@ -72,6 +72,9 @@
             "PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix -n",
             "git add .",
             "git commit -m '🎨 Apply PHP CS Fixer'"
+        ],
+        "test": [
+            "@php vendor/bin/pest --stop-on-error --stop-on-fail "
         ]
     },
     "extra": {
