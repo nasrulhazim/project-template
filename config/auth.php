@@ -108,4 +108,15 @@ return [
 
     'password_timeout' => 10800,
 
+    /*
+    |--------------------------------------------------------------------------
+    | Single Device 
+    |--------------------------------------------------------------------------
+    |
+    | Set either to have single device login or multiple device which 
+    | the default behaviour of existing Laravel project. For the project
+    | template, single device login is enabled by default.
+    |
+    */
+    'single-device' => env('AUTH_SINGLE_DEVICE', true),
 ];
