@@ -17,11 +17,11 @@ it('has notification helpers', function () {
 
 it('can enable and disable notifications', function () {
     $this->assertTrue(config('notification.enabled'));
-    
+
     config([
         'notification' => [
             'enabled' => false,
-        ]
+        ],
     ]);
 
     $this->assertFalse(config('notification.enabled'));
@@ -29,7 +29,7 @@ it('can enable and disable notifications', function () {
     config([
         'notification' => [
             'enabled' => true,
-        ]
+        ],
     ]);
 
     $this->assertTrue(config('notification.enabled'));
@@ -47,6 +47,7 @@ it('can notify to user using default notification class', function () {
     notify($user, 'demo', 'message');
 
     Notification::assertSentTo(
-            [$user], DefaultNotification::class
+        [$user],
+        DefaultNotification::class
     );
 });

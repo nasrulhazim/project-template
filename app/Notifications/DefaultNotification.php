@@ -12,21 +12,21 @@ class DefaultNotification extends Notification
 
     /**
      * Subject of the notification.
-     * 
+     *
      * @var string
      */
     private $subject;
 
     /**
      * Message of the notification.
-     * 
+     *
      * @var string
      */
     private $message;
 
     /**
      * URL of the notification.
-     * 
+     *
      * @var string|null
      */
     private $url;
