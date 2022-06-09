@@ -110,10 +110,10 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Single Device 
+    | Single Device
     |--------------------------------------------------------------------------
     |
-    | Set either to have single device login or multiple device which 
+    | Set either to have single device login or multiple device which
     | the default behaviour of existing Laravel project. For the project
     | template, single device login is enabled by default.
     |
