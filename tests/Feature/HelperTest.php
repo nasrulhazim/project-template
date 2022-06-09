@@ -3,6 +3,9 @@
 use App\Models\User;
 use App\Notifications\DefaultNotification;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+ 
+uses(RefreshDatabase::class);
 
 it('has support directory', function () {
     $this->assertTrue(file_exists(base_path('/support')));
