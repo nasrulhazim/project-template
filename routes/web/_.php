@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 
 
 use App\Http\Controllers\NotificationController;
