@@ -1,0 +1,26 @@
+<?php
+
+namespace [namespace];
+
+use Rappasoft\LaravelLivewireTables\DataTableComponent;
+use Rappasoft\LaravelLivewireTables\Views\Column;
+use [model_import];
+
+class [class] extends DataTableComponent
+{
+    protected $model = [model]::class;
+
+    public bool $displayingCreateForm = false;
+
+    public bool $displayingDetails = false;
+
+    public function configure(): void
+    {
+        $this->setPrimaryKey('uuid');
+    }
+
+    public function columns(): array
+    {
+        return [columns];
+    }
+}
