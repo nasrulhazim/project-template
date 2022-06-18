@@ -1,4 +1,4 @@
-<div class="max-w-full mx-auto bg-white overflow-hidden">
+<div {{ $attributes->merge(['class' => 'max-w-full mx-auto overflow-hidden']) }}>
     @isset($header)
         <div class="border-b-2 border-b-slate-100 p-4">
             {{ $header }}

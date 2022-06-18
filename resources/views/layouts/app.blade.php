@@ -20,10 +20,10 @@
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased bg-slate-100">
         <div class="fixed top-0 inset-x-0 z-20">
             <x-impersonating></x-impersonating>
-            <x-navbar></x-navbar>
+            @livewire('navigation-menu')
         </div>
 
         <div class="flex @impersonating pt-28 md:pt-24 @else pt-14 @endImpersonating">

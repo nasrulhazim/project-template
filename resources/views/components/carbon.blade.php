@@ -1,7 +1,5 @@
 @props(['date', 'format' => false])
 
-<!-- format: default, human -->
-
 @php
     $formattedDate = ($format == 'human') 
         ? \Carbon\Carbon::parse($date)->diffForHumans()
