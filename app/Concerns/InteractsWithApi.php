@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Concerns;
 
@@ -23,7 +23,7 @@ trait InteractsWithApi
         return '';
     }
 
-    public function getCode(): int 
+    public function getCode(): int
     {
         return 200;
     }
