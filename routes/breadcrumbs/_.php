@@ -19,6 +19,11 @@ Breadcrumbs::for('profile.show', function (BreadcrumbTrail $trail) {
     $trail->push('Profile', route('profile.show'));
 });
 
+// API Token
+Breadcrumbs::for('api-tokens.index', function (BreadcrumbTrail $trail) {
+    $trail->push('API Tokens', route('api-tokens.index'));
+});
+
 // Notifications
 Breadcrumbs::for('notifications', function (BreadcrumbTrail $trail) {
     $trail->push('Notifications', route('notifications'));
