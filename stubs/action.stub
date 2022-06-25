@@ -2,7 +2,17 @@
 
 namespace {{ namespace }};
 
-class {{ class }} 
+use App\Actions\AbstractAction as Action;
+
+class {{ class }} extends Action
 {
+    public function rules(): array
+    {
+        return [];
+    }
     
+    public function execute()
+    {
+        parent::execute();
+    }
 }
