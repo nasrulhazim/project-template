@@ -2,20 +2,22 @@
 
 namespace App\Concerns;
 
+use Illuminate\Http\Request;
+
 trait InteractsWithApi
 {
-    public function getApiResponse()
+    public function getApiResponse(Request $request): array
     {
         return [
-            'data' => $this->getData(),
+            'data' => $this->getData($request),
             'message' => $this->getMessage(),
             'code' => $this->getCode(),
         ];
     }
 
-    public function getData(): array
+    public function getData(Request $request): array
     {
-        return self::toArray();
+        return self::toArray($request);
     }
 
     public function getMessage(): string
