@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Concerns\InteractsWithToken;
 use App\Concerns\InteractsWithUser;
 use App\Concerns\InteractsWithUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,6 +16,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 class Base extends Model implements AuditableContract, HasMedia
 {
     use HasFactory;
+    use InteractsWithToken;
     use InteractsWithUuid;
     use InteractsWithUser;
     use InteractsWithMedia;
