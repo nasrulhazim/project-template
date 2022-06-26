@@ -1,0 +1,92 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ namespacedModel }};
+use {{ rootNamespace }}Http\Controllers\Controller;
+use {{ rootNamespace }}Http\Resources\{{ model }}Resource;
+use {{ rootNamespace }}Http\Resources\{{ model }}Collection;
+use {{ namespacedRequests }}
+
+class {{ class }} extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        try {
+            ${{ modelVariable }} = \{{ namespacedModel }}::paginate();
+
+            return new {{ model }}Collection(${{ modelVariable }});
+        } catch (\Throwable $th) {
+            return api_exception($th);
+        }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \{{ namespacedStoreRequest }}  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store({{ storeRequest }} $request)
+    {
+        try {
+            return api_response(new {{ model }}Resource(${{ modelVariable }}));
+        } catch (\Throwable $th) {
+            return api_exception($th);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
+     * @return \Illuminate\Http\Response
+     */
+    public function show({{ model }} ${{ modelVariable }})
+    {
+        try {
+            return api_response(new {{ model }}Resource(${{ modelVariable }}));
+        } catch (\Throwable $th) {
+            return api_exception($th);
+        }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \{{ namespacedUpdateRequest }}  $request
+     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
+     * @return \Illuminate\Http\Response
+     */
+    public function update({{ updateRequest }} $request, {{ model }} ${{ modelVariable }})
+    {
+        try {
+            return api_response(new {{ model }}Resource(${{ modelVariable }}));
+        } catch (\Throwable $th) {
+            return api_exception($th);
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy({{ model }} ${{ modelVariable }})
+    {
+        try {
+            ${{ modelVariable }}->delete();
+            return response()->json([
+                'message' => __('Record removed'),
+            ]);
+        } catch (\Throwable $th) {
+            return api_exception($th);
+        }
+    }
+}
