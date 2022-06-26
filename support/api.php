@@ -2,8 +2,8 @@
 
 use App\Contracts\Api;
 
-if (! function_exists('apiException')) {
-    function apiException(\Throwable $th)
+if (! function_exists('api_exception')) {
+    function api_exception(\Throwable $th)
     {
         $code = $th->getCode() == 0 ? 500 : $th->getCode();
 
@@ -19,8 +19,8 @@ if (! function_exists('apiException')) {
     }
 }
 
-if (! function_exists('apiResponse')) {
-    function apiResponse(Api $api)
+if (! function_exists('api_response')) {
+    function api_response(Api $api)
     {
         return response()->json(
             $api->getApiResponse(request()),
