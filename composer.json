@@ -34,6 +34,7 @@
         "nunomaduro/collision": "^6.1",
         "nunomaduro/larastan": "^2.1",
         "nunomaduro/phpinsights": "^2.2",
+        "overtrue/phplint": "^5.3",
         "pestphp/pest": "^1.21",
         "pestphp/pest-plugin-laravel": "^1.2",
         "phpunit/phpunit": "^9.5.10",
@@ -79,6 +80,9 @@
         ],
         "analyse": [
             "@php vendor/bin/phpstan analyse -c phpstan.dist --error-format=table > storage/logs/phpstan.log"
+        ],
+        "lint": [
+            "@php vendor/bin/phplint "
         ]
     },
     "extra": {

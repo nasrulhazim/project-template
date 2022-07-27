@@ -18,3 +18,4 @@ todo.md
 .phpstorm.meta.php
 _ide_helper_models.php
 *.sql
+.phplint.cache
