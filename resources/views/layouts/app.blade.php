@@ -11,14 +11,14 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        @vite('resources/css/app.css')
 
         @livewireStyles
 
         @stack('styles')
 
         <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
+        @vite('resources/js/app.js')
     </head>
     <body class="font-sans antialiased bg-slate-100">
         <div class="fixed top-0 inset-x-0 z-20">
