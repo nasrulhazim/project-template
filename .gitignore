@@ -4,8 +4,8 @@
 /public/storage
 /storage/*.key
 /vendor
-.env
-.env.backup
+.env*
+!.env.example
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
@@ -20,3 +20,4 @@ todo.md
 _ide_helper_models.php
 *.sql
 .phplint.cache
+package-lock.json
