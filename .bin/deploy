@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "Navigate to project directory..."
-cd /var/www/project
+cd /var/www/project-template
 echo "Pulling codes..."
 
 git fetch --tags
@@ -18,6 +18,6 @@ echo "Clear view caches..."
 php artisan view:clear
 
 echo "Change project ownerhship to web server..."
-chown nginx:ihrisdev /var/www/project -R
+chown nginx:nginx /var/www/project-template -R
 
 clear
