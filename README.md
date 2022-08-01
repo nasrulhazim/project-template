@@ -1,4 +1,4 @@
-[![Unit Test](https://github.com/nasrulhazim/project-template/actions/workflows/unit-test.yml/badge.svg)](https://github.com/nasrulhazim/project-template/actions/workflows/unit-test.yml)
+[![Lint](https://github.com/nasrulhazim/project-template/actions/workflows/lint.yml/badge.svg)](https://github.com/nasrulhazim/project-template/actions/workflows/lint.yml) [![Test](https://github.com/nasrulhazim/project-template/actions/workflows/test.yml/badge.svg)](https://github.com/nasrulhazim/project-template/actions/workflows/test.yml)
 
 # Project Template
 
