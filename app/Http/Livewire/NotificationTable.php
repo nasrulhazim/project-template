@@ -43,26 +43,21 @@ class NotificationTable extends DataTableComponent
         return Notification::forUser(auth()->user());
     }
 
-    public function rowView(): string
-    {
-        return 'livewire-tables.rows.notification-table';
-    }
-
     public function markAsRead()
     {
-        if (count($this->selectedKeys)) {
+        if ($this->getSelectedCount()) {
             Notification::forUser(auth()->user())->whereIn('id', $this->selectedKeys)->update(['read_at' => now()]);
         }
 
-        $this->resetAll();
+        $this->clearSelected();
     }
 
     public function markAsUnread()
     {
-        if (count($this->selectedKeys)) {
+        if ($this->getSelectedCount()) {
             Notification::forUser(auth()->user())->whereIn('id', $this->selectedKeys)->update(['read_at' => null]);
         }
 
-        $this->resetAll();
+        $this->clearSelected();
     }
 }
