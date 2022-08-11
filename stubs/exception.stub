@@ -1,0 +1,11 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Concerns\InteractsWithExceptions;
+use Exception;
+
+class {{ class }} extends Exception
+{
+    use InteractsWithExceptions;
+}
