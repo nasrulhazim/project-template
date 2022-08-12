@@ -32,17 +32,6 @@ class RouteCommand extends GeneratorCommand
      */
     protected $type = 'Route';
 
-    public function handle()
-    {
-        parent::handle();
-
-        $name = $this->qualifyClass($this->getNameInput());
-
-        $path = str_replace(base_path('/routes/'), '', $this->getPath($name));
-
-        $this->files->append(base_path('/routes/web.php'), PHP_EOL . "require '${path}';");
-    }
-
     /**
      * Get the stub file for the generator.
      *
