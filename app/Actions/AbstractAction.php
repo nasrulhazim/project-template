@@ -24,16 +24,15 @@ abstract class AbstractAction implements Execute
         return $this;
     }
 
-    public function getConstrainedBy(): array 
+    public function getConstrainedBy(): array
     {
         return $this->constrainedBy;
     }
 
-    public function hasConstrained(): bool 
+    public function hasConstrained(): bool
     {
         return count($this->getConstrainedBy()) > 0;
     }
-    
 
     public function inputs(): array
     {
@@ -53,7 +52,8 @@ abstract class AbstractAction implements Execute
     {
         Validator::make(
             array_merge(
-                $this->getConstrainedBy(), $this->inputs()
+                $this->getConstrainedBy(),
+                $this->inputs()
             ),
             $this->rules()
         )->validate();
