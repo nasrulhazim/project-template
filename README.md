@@ -27,6 +27,22 @@ Using Confirm component:
 
 Both of the Alert & Confirm modal are using the Laravel Jetstream modal.
 
+Using Datatable Actions:
+
+```php
+public function columns(): array
+{
+    return [
+        Column::make('Name', 'name')
+            ->sortable(),
+        Column::make('Actions', 'uuid')
+            ->format(
+                fn ($value, $row, Column $column) => view('livewire.datatable-actions', compact('value', 'row', 'column'))
+            ),
+    ];
+}
+```
+
 ## Deployment
 
 Deploy the `./bin/deploy` to your server, then you need to add the deployment key, as following.
