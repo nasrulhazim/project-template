@@ -39,6 +39,8 @@
 
         @livewireScripts
 
+        @livewire('confirm')
+        @livewire('alert')
         @stack('scripts')
     </body>
 </html>
