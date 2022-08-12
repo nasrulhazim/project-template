@@ -2,14 +2,39 @@
 
 # Project Template
 
-This is my personal project template / boilerplate for creating Laravel based projects. 
+This is my personal project template / boilerplate for creating Laravel based projects.
+
+## Development
+
+Some of the features has been added to this project. See the following sections for more details.
+
+### Livewire
+
+Using Alert component:
+
+```php
+$this->emitTo('alert', 'displayAlert',  __('Connection'), __('Connection succesfully deleted'));
+```
+
+Using Confirm component:
+
+```php
+<div class="cursor-pointer" class="bg-red-500" 
+    wire:click="$emitTo('confirm', 'displayConfirmation', 'Delete Connection', 'Are you sure?', 'connection-form', 'destroyConnection', '{{ $uuid }}')">
+    {{ __('Remove') }}
+</div>
+```
+
+Both of the Alert & Confirm modal are using the Laravel Jetstream modal.
+
 ## Deployment
 
-Deploy the `./bin/deploy` to your server, then you need to add the deployment key, as following. 
+Deploy the `./bin/deploy` to your server, then you need to add the deployment key, as following.
 
 You may want to trigger the script manually or by webhook (require additional setup which not cover in this repo).
 
 This script will deploy based on **latest tagged**. It won't deploy to any non-tagged. Run the follow command as root user.
+
 ### Creating Deployment Key
 
 TLDR, create deployment keys:
@@ -28,15 +53,14 @@ Copy the output then add key in [Deploy Keys](https://github.com/nasrulhazim/um-
 
 References:
 
-1. https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
-2. https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
+1. <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent>
+2. <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account>
 
 ### Running the Script
 
 Deploy it anywhere in your server, then run:
 
-
 ```bash
-$ sudo su
-$ . ./deploy
+sudo su
+. ./deploy
 ```
