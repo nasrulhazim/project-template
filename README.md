@@ -37,7 +37,7 @@ public function columns(): array
             ->sortable(),
         Column::make('Actions', 'uuid')
             ->format(
-                fn ($value, $row, Column $column) => view('livewire.datatable-actions', compact('value', 'row', 'column'))
+                fn ($value, $row, Column $column) => view('livewire.datatable-actions', ['form' => 'resource-form', 'value' => $value, 'row' => $row, 'column' => $column])
             ),
     ];
 }
