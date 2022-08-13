@@ -10,7 +10,7 @@ trait InteractsWithMeta
     {
         static::creating(function ($model) {
             if (Schema::hasColumn($model->getTable(), 'meta') && is_null($model->meta)) {
-                if(! $model->hasCast('meta', 'array')) {
+                if (! $model->hasCast('meta', 'array')) {
                     $model->castAttribute('meta', 'array');
                 }
 
@@ -21,7 +21,7 @@ trait InteractsWithMeta
 
     public function defaultMeta()
     {
-        return property_exists($this, 'default_meta') 
+        return property_exists($this, 'default_meta')
             ? $this->default_meta
             : [];
     }
