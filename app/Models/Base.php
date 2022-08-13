@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Concerns\InteractsWithMeta;
 use App\Concerns\InteractsWithToken;
 use App\Concerns\InteractsWithUser;
 use App\Concerns\InteractsWithUuid;
@@ -16,6 +17,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 class Base extends Model implements AuditableContract, HasMedia
 {
     use HasFactory;
+    use InteractsWithMeta;
     use InteractsWithToken;
     use InteractsWithUuid;
     use InteractsWithUser;
