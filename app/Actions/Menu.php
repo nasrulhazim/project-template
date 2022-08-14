@@ -2,40 +2,35 @@
 
 namespace App\Actions;
 
-use App\Models\User;
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Route;
+use App\Actions\Builder\Menu\Navbar;
+use App\Actions\Builder\Menu\Sidebar;
+use App\Contracts\Builder;
+use App\Contracts\Menu as ContractsMenu;
+use App\Exceptions\ContractException;
 
 class Menu
 {
-    public static function build()
+    public static function make()
     {
-        return collect([
-            [
-                'show' => auth()->user() ? false : true,
-                'route' => 'welcome',
-                'label' => 'Welcome',
-            ],
-            [
-                'show' => auth()->user() ? false : Route::has('register'),
-                'route' => 'register',
-                'label' => 'Register',
-            ],
-            [
-                'show' => auth()->user() ? false : true,
-                'route' => 'login',
-                'label' => 'Login',
-            ],
-            [
-                'show' => auth()->user() ? true : false,
-                'route' => 'dashboard',
-                'label' => 'Dashboard',
-            ],
-            [
-                'show' => Gate::allows('viewAny', User::class),
-                'route' => 'users.index',
-                'label' => 'Users',
-            ],
-        ])->reject(fn ($menu) => $menu['show'] == false);
+        return new self();
+    }
+
+    public function build(string $builder): Builder|ContractsMenu
+    {
+        $class = match ($builder) {
+            'navbar' => Navbar::class,
+            'sidebar' => Sidebar::class,
+            default => Navbar::class,
+        };
+
+        /**
+         * @var \App\Contracts\Builder|\App\Contracts\Menu
+         */
+        $builder = new $class();
+
+        ContractException::throwUnless(! $builder instanceof Builder, 'missingContract', $class, Builder::class);
+        ContractException::throwUnless(! $builder instanceof ContractsMenu, 'missingContract', $class, Builder::class);
+
+        return $builder->build();
     }
 }

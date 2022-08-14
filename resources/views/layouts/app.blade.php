@@ -16,26 +16,38 @@
         @livewireStyles
 
         @stack('styles')
-
-        <!-- Scripts -->
-        @vite('resources/js/app.js')
     </head>
     <body class="font-sans antialiased bg-slate-100">
         <div class="fixed top-0 inset-x-0 z-20">
             <x-impersonating></x-impersonating>
-            @livewire('navigation-menu')
         </div>
 
-        <div class="flex @impersonating pt-28 md:pt-24 @else pt-14 @endImpersonating">
-            <div class="w-full md:max-w-7xl mx-auto md:py-6 relative">
+        <div>
+            @livewire('menu', ['menu' => 'sidebar'])
+            <div class="md:pl-64">
+                @livewire('menu', ['menu' => 'navbar'])
                 <div>
-                    {{ Breadcrumbs::render() }}
+                    @if(breadcrumb_enabled())
+                        <div>
+                            {{ Breadcrumbs::render() }}
+                        </div>
+                    @endif
+                    @isset($header)
+                        <div class="px-4 py-10">
+                            {{ $header }}
+                        </div>
+                    @endisset
                 </div>
-                {{ $slot }}
+                <div>
+                    {{ $slot }}
+                </div>
             </div>
         </div>
         
         @stack('modals')
+
+        <!-- Scripts -->
+        @vite('resources/js/app.js')
 
         @livewireScripts
 

@@ -3,8 +3,8 @@
 use App\Actions\Menu;
 
 if (! function_exists('menu')) {
-    function menu()
+    function menu(string $builder)
     {
-        return Menu::build();
+        return Menu::make()->build($builder)->menus();
     }
 }
