@@ -4,6 +4,8 @@
 
 This is my personal project template / boilerplate for creating Laravel based projects.
 
+![screenshot](screenshot.png)
+
 ## Development
 
 Some of the features has been added to this project. See the following sections for more details.
