@@ -14,7 +14,7 @@ final class Status extends Enum
 {
     use Headline;
     use Options;
-    
+
     protected static function values(): array
     {
         return [

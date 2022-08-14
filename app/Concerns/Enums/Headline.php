@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 namespace App\Concerns\Enums;
 
-trait Headline 
+trait Headline
 {
     /**
      * @return string[]|int[]
@@ -15,6 +15,7 @@ trait Headline
                 str($value)->headline()->toString()
             );
         }
+
         return $values;
     }
 }
