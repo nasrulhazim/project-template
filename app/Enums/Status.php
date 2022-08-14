@@ -2,6 +2,8 @@
 
 namespace App\Enums;
 
+use App\Concerns\Enums\Headline;
+use App\Concerns\Enums\Options;
 use Spatie\Enum\Laravel\Enum;
 
 /**
@@ -10,6 +12,9 @@ use Spatie\Enum\Laravel\Enum;
  */
 final class Status extends Enum
 {
+    use Headline;
+    use Options;
+    
     protected static function values(): array
     {
         return [
