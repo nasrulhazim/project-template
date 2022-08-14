@@ -2,6 +2,8 @@
 
 return [
 
+    'enabled' => env('BREADCRRUMB_ENABLED', false),
+
     /*
     |--------------------------------------------------------------------------
     | View Name
