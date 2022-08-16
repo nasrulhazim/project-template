@@ -2,6 +2,8 @@
 
 namespace App\Concerns\Enums;
 
+use Spatie\Enum\Exceptions\UnknownEnumProperty;
+
 trait Headline
 {
     /**
@@ -17,5 +19,25 @@ trait Headline
         }
 
         return $values;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return int|string
+     *
+     * @throws UnknownEnumProperty
+     */
+    public function __get(string $name)
+    {
+        if ($name === 'label') {
+            return str($this->label)->headline()->toString();
+        }
+
+        if ($name === 'value') {
+            return $this->value;
+        }
+
+        throw UnknownEnumProperty::new(static::class, $name);
     }
 }
