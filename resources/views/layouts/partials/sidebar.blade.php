@@ -27,8 +27,8 @@
                                 $label = __($menu['label']);
                                 $url = route($menu['route']);
                                 $icon = $menu['icon'];
-                                $icon_class = request()->routeIs($menu['route']) ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500';
-                                $class = request()->routeIs($menu['route']) ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900';
+                                $icon_class = request()->routeIs($menu['route']) ? 'text-indigo-700' : 'text-gray-700 group-hover:text-indigo-700';
+                                $class = request()->routeIs($menu['route']) ? 'bg-indigo-100 text-indigo-700' : 'text-gray-700 hover:bg-indigo-100 hover:text-indigo-700';
                             @endphp
                             <a href="{{ $url }}"
                                 class="{{ $class }} group flex items-center px-2 py-2 text-base font-medium rounded-md">
@@ -58,17 +58,19 @@
                 </div>
                 <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
                     <form method="POST" action="{{ route('logout') }}" x-data>
-                        <div class="w-full cursor-pointer" onclick="event.preventDefault(); if(confirm('Are you sure want to logout?')) { this.closest('form').submit(); }"
+                        <div class="w-full cursor-pointer"
+                            onclick="event.preventDefault(); if(confirm('Are you sure want to logout?')) { this.closest('form').submit(); }"
                             class="flex-shrink-0 w-full group block">
                             @csrf
                             <div class="flex items-center">
                                 <div>
                                     <x-icon name="o-logout"
-                                        class="text-gray-400 group-hover:text-gray-500 mr-4 flex-shrink-0 h-6 w-6"></x-icon>
+                                        class="text-gray-400 group-hover:text-gray-500 mr-4 flex-shrink-0 h-6 w-6">
+                                    </x-icon>
                                 </div>
                                 <div class="ml-3">
                                     <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                                    {{ __('Log Out') }}
+                                        {{ __('Log Out') }}
                                     </p>
                                 </div>
                             </div>
@@ -95,8 +97,8 @@
                             $label = __($menu['label']);
                             $url = route($menu['route']);
                             $icon = $menu['icon'];
-                            $icon_class = request()->routeIs($menu['route']) ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500';
-                            $class = request()->routeIs($menu['route']) ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900';
+                            $icon_class = request()->routeIs($menu['route']) ? 'text-indigo-700' : 'text-gray-700 group-hover:text-indigo-700';
+                            $class = request()->routeIs($menu['route']) ? 'bg-indigo-100 text-indigo-700' : 'text-gray-700 hover:bg-indigo-100 hover:text-indigo-700';
                         @endphp
 
                         <a href="{{ $url }}"
@@ -107,43 +109,6 @@
                         </a>
                     @endforeach
                 </nav>
-            </div>
-            <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
-                <a href="{{ route('profile.show') }}" class="flex-shrink-0 w-full group block">
-                    <div class="flex items-center">
-                        <div>
-                            <img class="inline-block h-9 w-9 rounded-full" src="{{ Auth::user()->profile_photo_url }}"
-                                alt="{{ Auth::user()->name }}">
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                                {{ Auth::user()->name }}</p>
-                            <p class="text-xs font-medium text-gray-500 group-hover:text-gray-700">
-                                {{ __('View profile') }}
-                            </p>
-                        </div>
-                    </div>
-
-                </a>
-            </div>
-            <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
-                <form method="POST" action="{{ route('logout') }}" x-data>
-                    <div class="w-full cursor-pointer" onclick="event.preventDefault(); if(confirm('Are you sure want to logout?')) { this.closest('form').submit(); }"
-                        class="flex-shrink-0 w-full group block">
-                        @csrf
-                        <div class="flex items-center">
-                            <div>
-                                <x-icon name="o-logout"
-                                    class="text-gray-400 group-hover:text-gray-500 mr-4 flex-shrink-0 h-6 w-6"></x-icon>
-                            </div>
-                            <div class="ml-3">
-                                <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                                {{ __('Log Out') }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
     </div>

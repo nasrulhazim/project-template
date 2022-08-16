@@ -17,6 +17,28 @@
                     </a>
                 </div>
 
+                <div class="ml-3 relative">
+                    <a href="{{ route('profile.show') }}" class="flex-shrink-0 w-full group block">
+                        <p class="text-sm font-medium text-gray-700 hover:text-indigo-700">
+                            Hi, {{ Auth::user()->name }}</p>
+                    </a>
+                </div>
+
+                <div class="ml-3 relative">
+                    <form method="POST" action="{{ route('logout') }}" x-data>
+                        <div class="w-full cursor-pointer" onclick="event.preventDefault(); if(confirm('Are you sure want to logout?')) { this.closest('form').submit(); }"
+                            class="flex-shrink-0 w-full group block">
+                            @csrf
+                            <div class="flex items-center">
+                                <div>
+                                    <x-icon name="o-logout"
+                                        class="text-gray-700 flex-shrink-0 h-6 w-6 hover:text-red-500"></x-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
             </div>
         </div>
     </div>
