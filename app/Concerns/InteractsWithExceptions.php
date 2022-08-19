@@ -4,19 +4,24 @@ namespace App\Concerns;
 
 trait InteractsWithExceptions
 {
-    public static function throwIf(bool $condition, string $method, ...$args)
+    public static function unless(bool $condition, string $method = null, string $message = null, ...$args)
+    {
+        return self::throwIf($condition, $method, $message, ...$args);
+    }
+
+    public static function throwIf(bool $condition, string $method = null, string $message = null, ...$args)
     {
         if (! $condition) {
-            if (method_exists(__CLASS__, $method)) {
+            if ($method && method_exists(__CLASS__, $method)) {
                 throw self::$method(...$args);
             }
 
-            throw new self("Invalid exception method $method");
+            throw new self($message);
         }
     }
 
-    public static function throwUnless(bool $condition, string $method, ...$args)
+    public static function throwUnless(bool $condition, string $method = null, string $message = null, ...$args)
     {
-        self::throwIf(! $condition, $method, ...$args);
+        self::throwIf(! $condition, $method, $message, ...$args);
     }
 }
