@@ -17,6 +17,16 @@ trait InteractsWithLivewireForm
         return $this->action;
     }
 
+    public function hasUuid2idMapping()
+    {
+        return property_exists($this, 'uuid2id');
+    }
+
+    public function getUuid2IdMapping(): array
+    {
+        return $this->uuid2id;
+    }
+
     public function save()
     {
         $this->resetErrorBag();
@@ -27,6 +37,10 @@ trait InteractsWithLivewireForm
 
         if ($this->uuid) {
             $action->setConstrainedBy(['uuid' => $this->uuid]);
+        }
+
+        if ($this->hasUuid2idMapping()) {
+            $action->setUuid2IdMapping($this->getUuid2IdMapping());
         }
 
         $action->execute();
