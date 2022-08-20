@@ -37,7 +37,7 @@ class UserDatatable extends DataTableComponent
             Column::make('Updated at', 'updated_at')
                 ->sortable(),
             ActionColumn::make('Actions', 'uuid')
-                ->form('user-form')
+                ->form('user-form'),
         ];
     }
 

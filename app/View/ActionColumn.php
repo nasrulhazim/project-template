@@ -16,7 +16,7 @@ class ActionColumn extends Column
         return $this;
     }
 
-    public function getView(): string 
+    public function getView(): string
     {
         return property_exists($this, 'view') ? $this->view : 'livewire.datatable-actions';
     }

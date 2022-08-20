@@ -65,7 +65,7 @@ class UserPolicy
     public function delete(User $user, User $model)
     {
         // only user who can manage users, and not the person self
-        return $user->can('manage-users') 
+        return $user->can('manage-users')
             && $user->id != auth()->user()->id ;
     }
 
