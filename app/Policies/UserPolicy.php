@@ -17,7 +17,7 @@ class UserPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->hasRole('superadmin');
+        return $user->can('manage-users');
     }
 
     /**
@@ -29,7 +29,7 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
-        return $user->hasRole('superadmin') || $model->id == auth()->user()->id;
+        return $user->can('manage-users') || $model->id == $user->id;
     }
 
     /**
@@ -40,7 +40,7 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        return $user->hasRole('superadmin');
+        return $user->can('manage-users');
     }
 
     /**
@@ -52,7 +52,7 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        return $user->hasRole('superadmin') || $model->id == auth()->user()->id;
+        return $user->can('manage-users') || $model->id == $user->id;
     }
 
     /**
@@ -64,7 +64,9 @@ class UserPolicy
      */
     public function delete(User $user, User $model)
     {
-        return false;
+        // only user who can manage users, and not the person self
+        return $user->can('manage-users') 
+            && $user->id != auth()->user()->id ;
     }
 
     /**
@@ -88,6 +90,6 @@ class UserPolicy
      */
     public function forceDelete(User $user, User $model)
     {
-        //
+        return false;
     }
 }
