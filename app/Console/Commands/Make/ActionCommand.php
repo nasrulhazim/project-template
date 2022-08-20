@@ -3,6 +3,8 @@
 namespace App\Console\Commands\Make;
 
 use Illuminate\Console\GeneratorCommand;
+use RuntimeException;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 class ActionCommand extends GeneratorCommand
@@ -35,18 +37,10 @@ class ActionCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        if ($this->option('create')) {
-            return $this->resolveStubPath('/stubs/action-create.stub');
+        if($this->option('menu')) {
+            return $this->resolveStubPath('/stubs/action-menu.stub');
         }
-
-        if ($this->option('update')) {
-            return $this->resolveStubPath('/stubs/action-update.stub');
-        }
-
-        if ($this->option('delete')) {
-            return $this->resolveStubPath('/stubs/action-delete.stub');
-        }
-
+        
         return $this->resolveStubPath('/stubs/action.stub');
     }
 
@@ -73,7 +67,72 @@ class ActionCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
+        if($this->option('menu')) {
+            return $rootNamespace.'\Actions\Builder\Menu';
+        }
+
         return $rootNamespace.'\Actions';
+    }
+
+    /**
+     * Build the class with the given name.
+     *
+     * @param  string  $name
+     * @return string
+     *
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    protected function buildClass($name)
+    {
+        $stub = $this->files->get($this->getStub());
+
+        return $this->replaceNamespace($stub, $name)
+            ->replaceModel($stub)
+            ->replaceClass($stub, $name);
+    }
+
+    protected function replaceModel(&$stub)
+    {
+        if(empty($this->option('model')) && ! $this->option('menu')) {
+            throw new RuntimeException('Missing model option.');
+        }
+
+        if(! $this->option('model')) {
+            return $this;
+        }
+
+        $stub = str_replace(
+            ['{{ model_namespace }}', '{{ model }}'],
+            [$this->getModelNamespace(), $this->getModel()],
+            $stub
+        );
+
+        return $this;
+    }
+
+    protected function getModelNamespace()
+    {
+        return 'App\\Models\\' . $this->getModel();
+    }
+
+    public function getModel()
+    {
+        if(empty($this->option('model')) && ! $this->option('menu')) {
+            throw new RuntimeException('Missing model option.');
+        }
+        return $this->option('model');
+    }
+
+    /**
+     * Get the console command arguments.
+     *
+     * @return array
+     */
+    protected function getArguments()
+    {
+        return [
+            ['name', InputArgument::REQUIRED, 'The name of the class'],
+        ];
     }
 
     /**
@@ -84,9 +143,8 @@ class ActionCommand extends GeneratorCommand
     protected function getOptions()
     {
         return [
-            ['create', 'c', InputOption::VALUE_NONE, 'Create a new create action'],
-            ['delete', 'd', InputOption::VALUE_NONE, 'Create a new delete action'],
-            ['update', 'u', InputOption::VALUE_NONE, 'Create a new update action'],
+            ['model', '', InputOption::VALUE_REQUIRED, 'The name of the model'],
+            ['menu', '', InputOption::VALUE_NONE, 'Create a menu action'],
         ];
     }
 }

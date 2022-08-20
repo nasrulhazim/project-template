@@ -3,16 +3,14 @@
 namespace {{ namespace }};
 
 use App\Actions\AbstractAction as Action;
+use {{ model_namespace }};
 
 class {{ class }} extends Action
 {
+    public $model = {{ model }}::class;
+
     public function rules(): array
     {
         return [];
-    }
-    
-    public function execute()
-    {
-        parent::execute();
     }
 }
