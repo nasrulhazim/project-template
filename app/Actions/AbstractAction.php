@@ -15,6 +15,7 @@ abstract class AbstractAction implements Execute
     protected array $constrainedBy = [];
     protected array $uuid2id = [];
     protected array $hashFields = [];
+    protected array $encryptFields = [];
 
     public function __construct(public array $inputs)
     {
@@ -25,6 +26,23 @@ abstract class AbstractAction implements Execute
         $this->inputs = $inputs;
 
         return $this;
+    }
+
+    public function setEncryptFields(array $encryptFields): self
+    {
+        $this->encryptFields = $encryptFields;
+
+        return $this;
+    }
+
+    public function getEncryptFields(): array
+    {
+        return $this->encryptFields;
+    }
+
+    public function hasEncryptFields(): bool
+    {
+        return count($this->getEncryptFields()) > 0;
     }
 
     public function setHashFields(array $hashFields): self
@@ -121,10 +139,32 @@ abstract class AbstractAction implements Execute
             // get from inputs
             $inputs = $this->inputs();
             foreach ($this->getHashFields() as $key => $value) {
-                $uuid = $inputs[$value];
-
                 if (isset($inputs[$value])) {
                     $inputs[$value] = Hash::make($inputs[$value]);
+                }
+            }
+            $this->setInputs($inputs);
+        }
+    }
+
+    public function encryptFields()
+    {
+        if ($this->hasEncryptFields()) {
+            // get from constrainedBy
+            if ($this->hasConstrained()) {
+                $constrainedBy = $this->getConstrainedBy();
+                foreach ($this->getEncryptFields() as $key => $value) {
+                    if (isset($constrainedBy[$value])) {
+                        $constrainedBy[$value] = encrypt($constrainedBy[$value]);
+                    }
+                }
+                $this->setConstrainedBy($constrainedBy);
+            }
+            // get from inputs
+            $inputs = $this->inputs();
+            foreach ($this->getEncryptFields() as $key => $value) {
+                if (isset($inputs[$value])) {
+                    $inputs[$value] = encrypt($inputs[$value]);
                 }
             }
             $this->setInputs($inputs);
@@ -158,6 +198,7 @@ abstract class AbstractAction implements Execute
         )->validate();
 
         $this->hashFields();
+        $this->encryptFields();
 
         return DB::transaction(function () {
             return $this->hasConstrained()
