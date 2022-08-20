@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Http\Livewire;
+
+use [action_import];
+use App\Concerns\InteractsWithLivewireForm;
+use [model_import];
+use Livewire\Component;
+
+class [class] extends Component
+{
+    use InteractsWithLivewireForm;
+
+    public string $model = [model]::class;
+    public string $action = [action]::class;
+    public string $formTitle = '[title]';
+    public string $view = '[view]';
+    protected $listeners = [
+        'showRecord' => 'show',
+        'destroyRecord' => 'destroy',
+    ];
+    protected array $uuid2id = [];
+    public $state = [];
+
+    public function mount()
+    {
+    }
+}
