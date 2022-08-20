@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\User;
+use App\View\ActionColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
@@ -35,6 +36,8 @@ class UserDatatable extends DataTableComponent
                 ->sortable(),
             Column::make('Updated at', 'updated_at')
                 ->sortable(),
+            ActionColumn::make('Actions', 'uuid')
+                ->form('user-form')
         ];
     }
 
