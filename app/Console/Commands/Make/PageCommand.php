@@ -36,11 +36,13 @@ class PageCommand extends Command
             '--pest' => true,
             '--seed' => true,
         ]);
-
-        $this->call('make:livewire', [
-            'name' => $this->argument('name') . 'Form',
+        $this->call('make:action', [
+            'name' => $this->argument('name') . 'Action',
+            '--model' => $this->argument('name'),
         ]);
-
+        $this->call('make:livewire-form', [
+            'name' => $this->argument('name'),
+        ]);
         $this->call('make:datatable', [
             'name' => $this->argument('name') . 'Datatable',
             'model' => $this->argument('name'),
