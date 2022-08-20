@@ -30,9 +30,10 @@ class FormCommand extends Command
         $this->call('make:livewire', [
             'name' => 'Forms\\' . $this->argument('name'),
         ]);
-        
+
         $this->comment('See ' . base_path('stubs/livewire.form.stub') . ' for additional setup for the class');
         $this->comment('See ' . base_path('stubs/livewire.form.view.stub') . ' for additional setup for the view');
+
         return 0;
     }
 }

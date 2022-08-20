@@ -37,10 +37,10 @@ class ActionCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        if($this->option('menu')) {
+        if ($this->option('menu')) {
             return $this->resolveStubPath('/stubs/action-menu.stub');
         }
-        
+
         return $this->resolveStubPath('/stubs/action.stub');
     }
 
@@ -67,7 +67,7 @@ class ActionCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        if($this->option('menu')) {
+        if ($this->option('menu')) {
             return $rootNamespace.'\Actions\Builder\Menu';
         }
 
@@ -93,11 +93,11 @@ class ActionCommand extends GeneratorCommand
 
     protected function replaceModel(&$stub)
     {
-        if(empty($this->option('model')) && ! $this->option('menu')) {
+        if (empty($this->option('model')) && ! $this->option('menu')) {
             throw new RuntimeException('Missing model option.');
         }
 
-        if(! $this->option('model')) {
+        if (! $this->option('model')) {
             return $this;
         }
 
@@ -117,9 +117,10 @@ class ActionCommand extends GeneratorCommand
 
     public function getModel()
     {
-        if(empty($this->option('model')) && ! $this->option('menu')) {
+        if (empty($this->option('model')) && ! $this->option('menu')) {
             throw new RuntimeException('Missing model option.');
         }
+
         return $this->option('model');
     }
 
