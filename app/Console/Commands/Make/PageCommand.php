@@ -40,7 +40,7 @@ class PageCommand extends Command
             'name' => $this->argument('name') . 'Action',
             '--model' => $this->argument('name'),
         ]);
-        $this->call('make:livewire-form', [
+        $this->call('make:form', [
             'name' => $this->argument('name'),
         ]);
         $this->call('make:datatable', [
