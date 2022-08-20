@@ -8,6 +8,6 @@
     </x-slot>
 
     <x-panel>
-        <livewire:notification-table />
+        <livewire:notification-datatable />
     </x-panel>
 </x-app-layout>
