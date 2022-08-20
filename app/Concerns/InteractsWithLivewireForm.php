@@ -27,6 +27,16 @@ trait InteractsWithLivewireForm
         return $this->uuid2id;
     }
 
+    public function hasHashFieldsMapping()
+    {
+        return property_exists($this, 'hashFields');
+    }
+
+    public function getHashFieldsMapping(): array
+    {
+        return $this->hashFields;
+    }
+
     public function save()
     {
         $this->resetErrorBag();
@@ -41,6 +51,10 @@ trait InteractsWithLivewireForm
 
         if ($this->hasUuid2idMapping()) {
             $action->setUuid2IdMapping($this->getUuid2IdMapping());
+        }
+
+        if ($this->hasHashFieldsMapping()) {
+            $action->setHashFields($this->getHashFieldsMapping());
         }
 
         $action->execute();

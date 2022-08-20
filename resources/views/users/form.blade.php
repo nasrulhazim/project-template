@@ -1,0 +1,1 @@
+@livewire('forms.user')

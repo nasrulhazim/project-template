@@ -5,6 +5,7 @@ namespace App\Actions;
 use App\Contracts\Execute;
 use App\Exceptions\ActionException;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 abstract class AbstractAction implements Execute
@@ -13,6 +14,7 @@ abstract class AbstractAction implements Execute
 
     protected array $constrainedBy = [];
     protected array $uuid2id = [];
+    protected array $hashFields = [];
 
     public function __construct(public array $inputs)
     {
@@ -23,6 +25,23 @@ abstract class AbstractAction implements Execute
         $this->inputs = $inputs;
 
         return $this;
+    }
+
+    public function setHashFields(array $hashFields): self
+    {
+        $this->hashFields = $hashFields;
+
+        return $this;
+    }
+
+    public function getHashFields(): array
+    {
+        return $this->hashFields;
+    }
+
+    public function hasHashFields(): bool
+    {
+        return count($this->getHashFields()) > 0;
     }
 
     public function setConstrainedBy(array $constrainedBy): self
@@ -86,6 +105,32 @@ abstract class AbstractAction implements Execute
         }
     }
 
+    public function hashFields()
+    {
+        if ($this->hasHashFields()) {
+            // get from constrainedBy
+            if ($this->hasConstrained()) {
+                $constrainedBy = $this->getConstrainedBy();
+                foreach ($this->getHashFields() as $key => $value) {
+                    if (isset($constrainedBy[$value])) {
+                        $constrainedBy[$value] = Hash::make($constrainedBy[$value]);
+                    }
+                }
+                $this->setConstrainedBy($constrainedBy);
+            }
+            // get from inputs
+            $inputs = $this->inputs();
+            foreach ($this->getHashFields() as $key => $value) {
+                $uuid = $inputs[$value];
+
+                if (isset($inputs[$value])) {
+                    $inputs[$value] = Hash::make($inputs[$value]);
+                }
+            }
+            $this->setInputs($inputs);
+        }
+    }
+
     public function inputs(): array
     {
         return $this->inputs;
@@ -111,6 +156,8 @@ abstract class AbstractAction implements Execute
             ),
             $this->rules()
         )->validate();
+
+        $this->hashFields();
 
         return DB::transaction(function () {
             return $this->hasConstrained()

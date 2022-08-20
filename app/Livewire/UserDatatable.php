@@ -17,7 +17,10 @@ class UserDatatable extends DataTableComponent
      */
     public function configure(): void
     {
-        $this->setPrimaryKey('uuid');
+        $this->setPrimaryKey('uuid')
+            ->setConfigurableAreas([
+                'before-toolbar' => 'users.form',
+            ]);
     }
 
     /**
@@ -37,7 +40,7 @@ class UserDatatable extends DataTableComponent
             Column::make('Updated at', 'updated_at')
                 ->sortable(),
             ActionColumn::make('Actions', 'uuid')
-                ->form('user-form'),
+                ->form('forms.user'),
         ];
     }
 
