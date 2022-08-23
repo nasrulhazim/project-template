@@ -17,6 +17,17 @@ return [
 
     'default' => env('DB_CONNECTION', 'mysql'),
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Database Schema Document
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify where to store the generated database schema.
+    |
+    */
+    'doc_schema_path' => env('DB_DOC_SCHEMA_PATH', storage_path('doc/db')),
+
     /*
     |--------------------------------------------------------------------------
     | Database Connections

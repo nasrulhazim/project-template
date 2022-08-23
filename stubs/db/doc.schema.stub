@@ -1,0 +1,14 @@
+# APP_NAME Database Schema
+
+*Database Details*
+
+| Type | Value |
+|------|-------|
+| Connection | DB_CONNECTION |
+| Host | DB_HOST |
+| Port | DB_PORT |
+| Database | DB_DATABASE |
+
+## DB_DATABASE Schema
+
+SCHEMA_CONTENT
