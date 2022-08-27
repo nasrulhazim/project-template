@@ -4,6 +4,7 @@ namespace App\Actions;
 
 use App\Contracts\Execute;
 use App\Exceptions\ActionException;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -16,6 +17,8 @@ abstract class AbstractAction implements Execute
     protected array $uuid2id = [];
     protected array $hashFields = [];
     protected array $encryptFields = [];
+    protected array $files = [];
+    protected Model $record;
 
     public function __construct(public array $inputs)
     {
@@ -200,10 +203,15 @@ abstract class AbstractAction implements Execute
         $this->hashFields();
         $this->encryptFields();
 
-        return DB::transaction(function () {
+        return $this->record = DB::transaction(function () {
             return $this->hasConstrained()
                 ? $this->model::updateOrCreate($this->getConstrainedBy(), $this->inputs())
                 : $this->model::create($this->inputs());
         });
+    }
+
+    public function getRecord(): Model
+    {
+        return $this->record;
     }
 }

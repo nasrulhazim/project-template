@@ -2,10 +2,35 @@
 
 namespace App\Concerns;
 
+use Illuminate\Database\Eloquent\Model;
+
 trait InteractsWithLivewireForm
 {
     public string $uuid = '';
     public $displayingModal = false;
+    protected $default_state = [];
+
+    public function mount()
+    {
+        $this->setDefaultState();
+    }
+
+    public function resetState()
+    {
+        $this->state = $this->getDefaultState();
+    }
+
+    public function getDefaultState(): array
+    {
+        return $this->default_state;
+    }
+
+    public function setDefaultState(): self
+    {
+        $this->default_state = property_exists($this, 'state') ? $this->state : [];
+
+        return $this;
+    }
 
     public function getModel(): string
     {
@@ -59,7 +84,9 @@ trait InteractsWithLivewireForm
 
         $action->execute();
 
-        $this->state = [];
+        $this->handlFileUploads($action->getRecord());
+
+        $this->resetState();
 
         if ($this->uuid) {
             $this->uuid = '';
@@ -101,5 +128,9 @@ trait InteractsWithLivewireForm
     public function render()
     {
         return view($this->getView());
+    }
+
+    public function handlFileUploads(Model $model)
+    {
     }
 }
