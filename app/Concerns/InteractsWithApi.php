@@ -3,9 +3,13 @@
 namespace App\Concerns;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
 trait InteractsWithApi
 {
+    protected $code = 200;
+
     public function getApiResponse(Request $request): array
     {
         return [
@@ -15,7 +19,7 @@ trait InteractsWithApi
         ];
     }
 
-    public function getData(Request $request): array
+    public function getData(Request $request): JsonResource | ResourceCollection | array
     {
         return self::toArray($request);
     }
@@ -27,6 +31,6 @@ trait InteractsWithApi
 
     public function getCode(): int
     {
-        return 200;
+        return $this->code;
     }
 }
