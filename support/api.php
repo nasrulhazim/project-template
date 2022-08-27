@@ -28,3 +28,15 @@ if (! function_exists('api_response')) {
         );
     }
 }
+
+if (! function_exists('api_accept_header')) {
+    function api_accept_header()
+    {
+        $config = config('api');
+
+        return 'application/'
+            .$config['standardsTree'].'.'
+            .$config['subtype'].'.'
+            .$config['version'].'+json';
+    }
+}

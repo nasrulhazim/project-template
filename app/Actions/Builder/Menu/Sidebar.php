@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
+use Laravel\Jetstream\Jetstream;
 
 class Sidebar implements Builder, Menu
 {
@@ -47,6 +48,12 @@ class Sidebar implements Builder, Menu
                 'route' => 'users.index',
                 'label' => 'Users',
                 'icon' => 'o-users',
+            ],
+            [
+                'show' => Jetstream::hasApiFeatures(),
+                'route' => 'api-tokens.index',
+                'label' => 'API Tokens',
+                'icon' => 'o-clipboard-list',
             ],
         ])->reject(fn ($menu) => $menu['show'] == false);
 
