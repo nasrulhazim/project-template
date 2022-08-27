@@ -1,0 +1,29 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Concerns\InteractsWithApi;
+use App\Contracts\Api;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+
+class {{ class }} implements Api
+{
+    use InteractsWithApi;
+
+    public function getData(Request $request): JsonResource | ResourceCollection | array
+    {
+        // do your things
+
+        if (true) {
+            return []
+        }
+
+        $this->code = 404;
+
+        return [
+            "message" => "Record not found.",
+        ];
+    }
+}

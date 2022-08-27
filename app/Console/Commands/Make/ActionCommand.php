@@ -41,6 +41,10 @@ class ActionCommand extends GeneratorCommand
             return $this->resolveStubPath('/stubs/action-menu.stub');
         }
 
+        if ($this->option('api')) {
+            return $this->resolveStubPath('/stubs/action-api.stub');
+        }
+
         return $this->resolveStubPath('/stubs/action.stub');
     }
 
@@ -71,6 +75,10 @@ class ActionCommand extends GeneratorCommand
             return $rootNamespace.'\Actions\Builder\Menu';
         }
 
+        if ($this->option('api')) {
+            return $rootNamespace.'\Actions\Api';
+        }
+
         return $rootNamespace.'\Actions';
     }
 
@@ -93,9 +101,7 @@ class ActionCommand extends GeneratorCommand
 
     protected function replaceModel(&$stub)
     {
-        if (empty($this->option('model')) && ! $this->option('menu')) {
-            throw new RuntimeException('Missing model option.');
-        }
+        $this->throwExceptionIfMissingModel();
 
         if (! $this->option('model')) {
             return $this;
@@ -115,11 +121,16 @@ class ActionCommand extends GeneratorCommand
         return 'App\\Models\\' . $this->getModel();
     }
 
-    public function getModel()
+    public function throwExceptionIfMissingModel()
     {
-        if (empty($this->option('model')) && ! $this->option('menu')) {
+        if (empty($this->option('model')) && ! $this->option('menu') && ! $this->option('api')) {
             throw new RuntimeException('Missing model option.');
         }
+    }
+
+    public function getModel()
+    {
+        $this->throwExceptionIfMissingModel();
 
         return $this->option('model');
     }
@@ -146,6 +157,7 @@ class ActionCommand extends GeneratorCommand
         return [
             ['model', '', InputOption::VALUE_REQUIRED, 'The name of the model'],
             ['menu', '', InputOption::VALUE_NONE, 'Create a menu action'],
+            ['api', '', InputOption::VALUE_NONE, 'Create an API action'],
         ];
     }
 }
