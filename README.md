@@ -62,6 +62,8 @@ Before you decided to let consumer to use the API, do choose, either to use doma
 
 If you are choosing domain based, define `API_DOMAIN` in your `.env`, else define `API_PREFIX`.
 
+You may want to import Insomnia [file](Insomnia.json) to test out your APIs.
+
 ### Livewire
 
 Using Alert component:
