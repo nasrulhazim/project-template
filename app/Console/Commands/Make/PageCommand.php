@@ -59,6 +59,7 @@ class PageCommand extends Command
         ]);
         $this->call('make:route', [
             'name' => $name,
+            '--resource' => true,
         ]);
     }
 }
