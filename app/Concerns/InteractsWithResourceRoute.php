@@ -6,7 +6,7 @@ trait InteractsWithResourceRoute
 {
     public function getResourceUrl(string $type = 'index')
     {
-        return $type === 'index '
+        return $type === 'index'
             ? route($this->getUrlRouteBaseName() . '.index')
             : route($this->getUrlRouteBaseName() . '.' . $type, $this);
     }
