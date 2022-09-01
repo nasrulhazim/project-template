@@ -6,6 +6,10 @@ This is my personal project template / boilerplate for creating Laravel based pr
 
 ![screenshot](screenshot.png)
 
+## Deployment
+
+Clone this directory and run `. ./bin/install`
+
 ## Development
 
 Some of the features has been added to this project. See the following sections for more details.

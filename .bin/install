@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+[ ! -d vendor/ ] && composer install
+
+[ ! -f .env ] && cp .env.example .env && php artisan key:generate
+
+[ ! -d node_modules/ ] && npm install && npm run build
