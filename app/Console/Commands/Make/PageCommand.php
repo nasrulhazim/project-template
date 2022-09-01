@@ -11,7 +11,7 @@ class PageCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'make:page {name}';
+    protected $signature = 'make:page {name*}';
 
     /**
      * The console command description.
@@ -27,30 +27,38 @@ class PageCommand extends Command
      */
     public function handle()
     {
+        foreach ($this->argument('name') as $key => $value) {
+            $this->createPage($value);
+        }
+
+        return 0;
+    }
+
+    private function createPage(string $name)
+    {
         $this->call('make:model', [
-            'name' => $this->argument('name'),
+            'name' => $name,
             '--controller' => true,
             '--factory' => true,
             '--migration' => true,
             '--resource' => true,
             '--pest' => true,
             '--seed' => true,
+            '--policy' => true,
         ]);
         $this->call('make:action', [
-            'name' => $this->argument('name') . 'Action',
-            '--model' => $this->argument('name'),
+            'name' => $name . 'Action',
+            '--model' => $name,
         ]);
         $this->call('make:form', [
-            'name' => $this->argument('name'),
+            'name' => $name,
         ]);
         $this->call('make:datatable', [
-            'name' => $this->argument('name') . 'Datatable',
-            'model' => $this->argument('name'),
+            'name' => $name . 'Datatable',
+            'model' => $name,
         ]);
         $this->call('make:route', [
-            'name' => $this->argument('name'),
+            'name' => $name,
         ]);
-
-        return 0;
     }
 }
