@@ -1,0 +1,7 @@
+<?php
+
+use App\Providers\RouteServiceProvider;
+
+test('able to login', function () {
+    login()->get(RouteServiceProvider::HOME)->assertOk();
+});
