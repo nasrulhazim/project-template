@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Concerns\InteractsWithMeta;
+use App\Concerns\InteractsWithResourceRoute;
 use App\Concerns\InteractsWithToken;
 use App\Concerns\InteractsWithUser;
 use App\Concerns\InteractsWithUuid;
@@ -22,6 +23,7 @@ class Base extends Model implements AuditableContract, HasMedia
     use InteractsWithUuid;
     use InteractsWithUser;
     use InteractsWithMedia;
+    use InteractsWithResourceRoute;
     use AuditableTrait;
 
     protected $guarded = [
