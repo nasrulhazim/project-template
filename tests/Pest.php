@@ -11,6 +11,8 @@
 |
 */
 
+use App\Models\User;
+
 uses(Tests\TestCase::class)->in('Feature');
 
 /*
@@ -24,9 +26,9 @@ uses(Tests\TestCase::class)->in('Feature');
 |
 */
 
-// expect()->extend('toBeOne', function () {
-//     return $this->toBe(1);
-// });
+expect()->extend('toBeOne', function () {
+    return $this->toBe(1);
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +40,7 @@ uses(Tests\TestCase::class)->in('Feature');
 | global functions to help you to reduce the number of lines of code in your test files.
 |
 */
+
+function login($user = null) {
+    return test()->actingAs($user ?? User::factory()->create());
+}
