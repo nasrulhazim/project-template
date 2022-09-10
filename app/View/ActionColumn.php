@@ -7,7 +7,7 @@ use Rappasoft\LaravelLivewireTables\Views\Column;
 
 class ActionColumn extends Column
 {
-    protected string $form;
+    protected string $form = '';
 
     public function form(string $form): self
     {
