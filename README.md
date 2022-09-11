@@ -14,6 +14,27 @@ Clone this directory and run `. ./bin/install`
 
 Some of the features has been added to this project. See the following sections for more details.
 
+### Datatable
+
+Adding Delete Bulk Action by simply import the `InteractsWithDestroy` trait then add in the datatable class:
+
+```php
+public array $bulkActions = [
+    'destroyConfirmation' => 'Delete',
+];
+protected $listeners = [
+    'destroyRecord' => 'destroy',
+];
+```
+
+Adding Action by using `ActionColumn` class:
+
+```php 
+ActionColumn::make('Actions', 'uuid')
+```
+
+By default it use `$model->getResourceUrl()` to generate the URL for actions. But you can ovewrite by providing `setView('path.to.view')`.
+
 ### API
 
 API Development are based on Dingo API. Refer to [wiki](https://github.com/dingo/api/wiki) for more details.
