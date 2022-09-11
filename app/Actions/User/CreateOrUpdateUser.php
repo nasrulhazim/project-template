@@ -1,13 +1,13 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Actions\User;
 
+use App\Models\User;
 use Bekwoh\LaravelAction\AbstractAction as Action;
-use {{ model_namespace }};
 
-class {{ class }} extends Action
+class CreateOrUpdateUser extends Action
 {
-    public $model = {{ model }}::class;
+    public $model = User::class;
 
     public function rules(): array
     {

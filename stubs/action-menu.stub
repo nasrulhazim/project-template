@@ -2,9 +2,8 @@
 
 namespace {{ namespace }};
 
-use App\Contracts\Builder;
-use App\Contracts\Menu;
-use App\Models\User;
+use Bekwoh\LaravelContract\Contracts\Builder;
+use Bekwoh\LaravelContract\Contracts\Menu;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;

@@ -2,8 +2,8 @@
 
 namespace {{ namespace }};
 
-use App\Concerns\InteractsWithApi;
-use App\Contracts\Api;
+use Bekwoh\LaravelAction\Concerns\InteractsWithApi;
+use Bekwoh\LaravelContract\Contracts\Api;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
@@ -23,7 +23,7 @@ class {{ class }} implements Api
         $this->code = 404;
 
         return [
-            "message" => "Record not found.",
+            'message' => 'Record not found.',
         ];
     }
 }
