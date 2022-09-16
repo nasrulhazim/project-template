@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Http\Livewire;
 
 use Illuminate\Support\Collection;
 use Livewire\Component;

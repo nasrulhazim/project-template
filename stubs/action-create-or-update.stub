@@ -1,0 +1,19 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Concerns\InteractsWithUuidInAction;
+use {{ model_namespace }};
+use Bekwoh\LaravelAction\AbstractAction as Action;
+
+class {{ class }} extends Action
+{
+    use InteractsWithUuidInAction;
+
+    public $model = {{ model }}::class;
+    
+    public function rules(): array
+    {
+        return [];
+    }
+}
