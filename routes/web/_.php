@@ -32,7 +32,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::impersonate();
 
     Route::get(
-        '/notifications', 
+        '/notifications',
         NotificationController::class
     )->name('notifications');
 });
