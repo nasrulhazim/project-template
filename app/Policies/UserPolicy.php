@@ -17,7 +17,7 @@ class UserPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('manage-users');
+        return $user->can('view-user');
     }
 
     /**
@@ -29,7 +29,7 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
-        return $user->can('manage-users') || $model->id == $user->id;
+        return $user->can('view-user');
     }
 
     /**
@@ -40,7 +40,7 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        return $user->can('manage-users');
+        return $user->can('create-user');
     }
 
     /**
@@ -52,7 +52,7 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        return $user->can('manage-users') || $model->id == $user->id;
+        return $user->can('update-user') || $model->id == $user->id;
     }
 
     /**
@@ -64,9 +64,11 @@ class UserPolicy
      */
     public function delete(User $user, User $model)
     {
-        // only user who can manage users, and not the person self
-        return $user->can('manage-users')
-            && $user->id != auth()->user()->id ;
+        if($user->uuid === $model->uuid) {
+            return false;
+        }
+        
+        return $user->can('delete-user');
     }
 
     /**
