@@ -64,10 +64,10 @@ class UserPolicy
      */
     public function delete(User $user, User $model)
     {
-        if($user->uuid === $model->uuid) {
+        if ($user->uuid === $model->uuid) {
             return false;
         }
-        
+
         return $user->can('delete-user');
     }
 
