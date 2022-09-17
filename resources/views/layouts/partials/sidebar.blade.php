@@ -25,10 +25,10 @@
                         @foreach ($menus as $menu)
                             @php
                                 $label = __($menu['label']);
-                                $url = route($menu['route']);
+                                $url = $menu['url'];
                                 $icon = $menu['icon'];
-                                $icon_class = request()->routeIs($menu['route']) ? 'text-indigo-700' : 'text-gray-700 group-hover:text-indigo-700';
-                                $class = request()->routeIs($menu['route']) ? 'bg-indigo-100 text-indigo-700' : 'text-gray-700 hover:bg-indigo-100 hover:text-indigo-700';
+                                $icon_class = request()->url() === $menu['url'] ? 'text-indigo-700' : 'text-gray-700 group-hover:text-indigo-700';
+                                $class = request()->url() === $menu['url'] ? 'bg-indigo-100 text-indigo-700' : 'text-gray-700 hover:bg-indigo-100 hover:text-indigo-700';
                             @endphp
                             <a href="{{ $url }}"
                                 class="{{ $class }} group flex items-center px-2 py-2 text-base font-medium rounded-md">
@@ -95,10 +95,10 @@
                     @foreach ($menus as $menu)
                         @php
                             $label = __($menu['label']);
-                            $url = route($menu['route']);
+                            $url = $menu['url'];
                             $icon = $menu['icon'];
-                            $icon_class = request()->routeIs($menu['route']) ? 'text-indigo-700' : 'text-gray-700 group-hover:text-indigo-700';
-                            $class = request()->routeIs($menu['route']) ? 'bg-indigo-100 text-indigo-700' : 'text-gray-700 hover:bg-indigo-100 hover:text-indigo-700';
+                            $icon_class = request()->url() === $menu['url'] ? 'text-indigo-700' : 'text-gray-700 group-hover:text-indigo-700';
+                            $class = request()->url() === $menu['url'] ? 'bg-indigo-100 text-indigo-700' : 'text-gray-700 hover:bg-indigo-100 hover:text-indigo-700';
                         @endphp
 
                         <a href="{{ $url }}"

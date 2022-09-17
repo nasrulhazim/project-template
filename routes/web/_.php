@@ -19,26 +19,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+Route::view('/', 'welcome')
+    ->name('welcome');
 
-    Route::get('/users', function () {
-        return view('users.index');
-    })->name('users.index');
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::view('/dashboard', 'dashboard')
+        ->name('dashboard');
+
+    Route::view('/users', 'users.index')
+        ->name('users.index');
 
     Route::impersonate();
 
-    Route::get('/notifications', NotificationController::class)->name('notifications');
+    Route::get(
+        '/notifications', 
+        NotificationController::class
+    )->name('notifications');
 });
 
-Route::get('/email/verify', function () {
-    return view('auth.verify-email');
-})->middleware('auth')->name('verification.notice');
+Route::view('/email/verify', 'auth.verify-email')
+    ->middleware('auth')
+    ->name('verification.notice');
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();

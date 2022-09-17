@@ -24,34 +24,34 @@ class Sidebar implements Builder, Menu
         $this->menus = collect([
             [
                 'show' => auth()->user() ? false : true,
-                'route' => 'welcome',
+                'url' => route('welcome'),
                 'label' => 'Welcome',
             ],
             [
                 'show' => auth()->user() ? false : Route::has('register'),
-                'route' => 'register',
+                'url' => route('register'),
                 'label' => 'Register',
             ],
             [
                 'show' => auth()->user() ? false : true,
-                'route' => 'login',
+                'url' => route('login'),
                 'label' => 'Login',
             ],
             [
                 'show' => auth()->user() ? true : false,
-                'route' => 'dashboard',
+                'url' => route('dashboard'),
                 'label' => 'Dashboard',
                 'icon' => 'o-home',
             ],
             [
                 'show' => Gate::allows('viewAny', User::class),
-                'route' => 'users.index',
+                'url' => route('users.index'),
                 'label' => 'Users',
                 'icon' => 'o-users',
             ],
             [
                 'show' => Jetstream::hasApiFeatures(),
-                'route' => 'api-tokens.index',
+                'url' => route('api-tokens.index'),
                 'label' => 'API Tokens',
                 'icon' => 'o-clipboard-list',
             ],
