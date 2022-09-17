@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Concerns\InteractsWithResourceRoute;
 use App\Concerns\InteractsWithUuid;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -32,6 +33,7 @@ class User extends Authenticatable implements MustVerifyEmail, AuditableContract
     use Notifiable;
     use TwoFactorAuthenticatable;
     use SoftDeletes;
+    use InteractsWithResourceRoute;
 
     /**
      * The attributes that are mass assignable.

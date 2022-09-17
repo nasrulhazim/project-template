@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Forms;
+namespace App\Http\Livewire\Forms;
 
 use App\Actions\User\CreateNewUser;
 use App\Concerns\InteractsWithLivewireForm;
