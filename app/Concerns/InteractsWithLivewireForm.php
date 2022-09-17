@@ -3,6 +3,7 @@
 namespace App\Concerns;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Gate;
 
 trait InteractsWithLivewireForm
 {
@@ -108,6 +109,10 @@ trait InteractsWithLivewireForm
 
     public function destroy(string $uuid)
     {
+        $model = $this->getModel()::whereUuid($uuid)->first();
+
+        Gate::allows('delete', $model);
+
         $this->getModel()::whereUuid($uuid)->delete();
 
         $this->emit('refreshDatatable');
