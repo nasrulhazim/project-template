@@ -14,6 +14,18 @@ Clone this directory and run `. ./bin/install`
 
 Some of the features has been added to this project. See the following sections for more details.
 
+### Database Schema Documentation
+
+First, run the following command:
+
+```bash 
+php artisan db:schema 
+```
+
+Then login to your app and visit your app at `http://domain/doc/db-schema`.
+
+Or you can see the link at the sidebar: `Db Schema`
+
 ### Datatable
 
 Adding Delete Bulk Action by simply import the `InteractsWithDestroy` trait then add in the datatable class:

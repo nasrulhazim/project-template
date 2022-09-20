@@ -55,6 +55,12 @@ class Sidebar implements Builder, Menu
                 'label' => 'API Tokens',
                 'icon' => 'o-clipboard-list',
             ],
+            [
+                'show' => auth()->user() && app()->environment() !== 'production', 
+                'url' => url('doc/db-schema'),
+                'label' => 'Database Schema',
+                'icon' => 'o-document',
+            ],
         ])->reject(fn ($menu) => $menu['show'] == false);
 
         return $this;
