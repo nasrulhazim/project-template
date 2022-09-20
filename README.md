@@ -1,4 +1,4 @@
-[![Lint](https://github.com/nasrulhazim/project-template/actions/workflows/lint.yml/badge.svg)](https://github.com/nasrulhazim/project-template/actions/workflows/lint.yml) [![Test](https://github.com/nasrulhazim/project-template/actions/workflows/test.yml/badge.svg)](https://github.com/nasrulhazim/project-template/actions/workflows/test.yml)
+[![Test](https://github.com/nasrulhazim/project-template/actions/workflows/run-tests.yml/badge.svg)](https://github.com/nasrulhazim/project-template/actions/workflows/run-tests.yml) [![Update Changelog](https://github.com/nasrulhazim/project-template/actions/workflows/update-changelog.yml/badge.svg)](https://github.com/nasrulhazim/project-template/actions/workflows/update-changelog.yml) [![PHPStan](https://github.com/nasrulhazim/project-template/actions/workflows/phpstan.yml/badge.svg)](https://github.com/nasrulhazim/project-template/actions/workflows/phpstan.yml) [![Fix PHP Code Styling](https://github.com/nasrulhazim/project-template/actions/workflows/fix-php-code-style-issues.yml.yml/badge.svg)](https://github.com/nasrulhazim/project-template/actions/workflows/fix-php-code-style-issues.yml.yml)
 
 # Project Template
 
