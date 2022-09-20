@@ -36,6 +36,7 @@
         "bekwoh/laravel-db-doc": "^1.0",
         "fakerphp/faker": "^1.9.1",
         "friendsofphp/php-cs-fixer": "^3.8",
+        "laravel/pint": "^1.2",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
@@ -77,20 +78,11 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ],
-        "csfix": [
-            "PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix -n",
-            "git add .",
-            "git commit -m '🎨 Apply PHP CS Fixer'"
-        ],
-        "test": [
-            "@php vendor/bin/pest --stop-on-error --stop-on-fail "
-        ],
-        "analyse": [
-            "@php vendor/bin/phpstan analyse -c phpstan.dist --error-format=table > storage/logs/phpstan.log"
-        ],
-        "lint": [
-            "@php vendor/bin/phplint "
-        ]
+        "analyse": "@php vendor/bin/phpstan analyse",
+        "test": "@php vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "@php vendor/bin/pint",
+        "lint": "@php vendor/bin/phplint"
     },
     "extra": {
         "laravel": {

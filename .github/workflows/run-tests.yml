@@ -34,7 +34,7 @@ jobs:
       - name: Install Composer dependencies
         run: composer update -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: Test with phpunit
-        run: php artisan config:clear -q && php artisan test
+        run: vendor/bin/pest
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: ":memory:"

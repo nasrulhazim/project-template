@@ -20,3 +20,4 @@ parameters:
         - stubs/
         - vendor/
     checkMissingIterableValueType: false
+    
