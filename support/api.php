@@ -3,7 +3,7 @@
 use App\Contracts\Api;
 
 if (! function_exists('api_exception')) {
-    function api_exception(\Throwable $th)
+    function api_exception(Throwable $th)
     {
         $code = $th->getCode() == 0 ? 500 : $th->getCode();
 

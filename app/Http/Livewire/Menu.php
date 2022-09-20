@@ -17,6 +17,7 @@ class Menu extends Component
     ];
 
     public Collection $menus;
+
     public string $view;
 
     public function mount(string $menu)

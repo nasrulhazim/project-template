@@ -15,7 +15,6 @@ class CreateTeam implements CreatesTeams
      *
      * @param  mixed  $user
      * @param  array  $input
-     *
      * @return mixed
      */
     public function create($user, array $input)

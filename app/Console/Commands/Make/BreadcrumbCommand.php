@@ -40,7 +40,7 @@ class BreadcrumbCommand extends GeneratorCommand
 
         $path = str_replace(base_path('/routes/'), '', $this->getPath($name));
 
-        $this->files->append(base_path('/routes/breadcrumbs.php'), PHP_EOL . "require '${path}';");
+        $this->files->append(base_path('/routes/breadcrumbs.php'), PHP_EOL."require '${path}';");
     }
 
     /**
@@ -60,8 +60,7 @@ class BreadcrumbCommand extends GeneratorCommand
     /**
      * Get the destination class path.
      *
-     * @param string $name
-     *
+     * @param  string  $name
      * @return string
      */
     protected function getPath($name)
@@ -76,8 +75,7 @@ class BreadcrumbCommand extends GeneratorCommand
     /**
      * Resolve the fully-qualified path to the stub.
      *
-     * @param string $stub
-     *
+     * @param  string  $stub
      * @return string
      */
     protected function resolveStubPath($stub)
@@ -92,7 +90,6 @@ class BreadcrumbCommand extends GeneratorCommand
      *
      * @param  string  $stub
      * @param  string  $name
-     *
      * @return string
      */
     protected function replaceClass($stub, $name)

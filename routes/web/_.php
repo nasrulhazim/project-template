@@ -1,7 +1,5 @@
 <?php
 
-
-
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\UserController;
 use App\Providers\RouteServiceProvider;

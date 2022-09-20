@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Gate;
 trait InteractsWithLivewireForm
 {
     public string $uuid = '';
+
     public $displayingModal = false;
+
     protected $default_state = [];
 
     public function mount()
@@ -117,7 +119,7 @@ trait InteractsWithLivewireForm
 
         $this->emit('refreshDatatable');
 
-        $this->emitTo('alert', 'displayAlert',  __($this->getFormTitle()), __($this->getFormTitle() . ' succesfully deleted'));
+        $this->emitTo('alert', 'displayAlert', __($this->getFormTitle()), __($this->getFormTitle().' succesfully deleted'));
     }
 
     public function getFormTitle(): string

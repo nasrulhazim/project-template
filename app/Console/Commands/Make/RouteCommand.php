@@ -49,8 +49,7 @@ class RouteCommand extends GeneratorCommand
     /**
      * Get the destination class path.
      *
-     * @param string $name
-     *
+     * @param  string  $name
      * @return string
      */
     protected function getPath($name)
@@ -65,8 +64,7 @@ class RouteCommand extends GeneratorCommand
     /**
      * Resolve the fully-qualified path to the stub.
      *
-     * @param string $stub
-     *
+     * @param  string  $stub
      * @return string
      */
     protected function resolveStubPath($stub)
@@ -81,7 +79,6 @@ class RouteCommand extends GeneratorCommand
      *
      * @param  string  $stub
      * @param  string  $name
-     *
      * @return string
      */
     protected function replaceClass($stub, $name)

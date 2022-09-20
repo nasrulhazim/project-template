@@ -47,14 +47,14 @@ class PageCommand extends Command
             '--policy' => true,
         ]);
         $this->call('make:action', [
-            'name' => $name . 'Action',
+            'name' => $name.'Action',
             '--model' => $name,
         ]);
         $this->call('make:form', [
             'name' => $name,
         ]);
         $this->call('make:datatable', [
-            'name' => $name . 'Datatable',
+            'name' => $name.'Datatable',
             'model' => $name,
         ]);
         $this->call('make:route', [

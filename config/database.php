@@ -17,7 +17,6 @@ return [
 
     'default' => env('DB_CONNECTION', 'mysql'),
 
-
     /*
     |--------------------------------------------------------------------------
     | Default Database Schema Document
