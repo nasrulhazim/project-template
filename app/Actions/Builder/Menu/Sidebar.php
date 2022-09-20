@@ -56,7 +56,7 @@ class Sidebar implements Builder, Menu
                 'icon' => 'o-clipboard-list',
             ],
             [
-                'show' => auth()->user() && app()->environment() !== 'production', 
+                'show' => auth()->user() && app()->environment() !== 'production',
                 'url' => url('doc/db-schema'),
                 'label' => 'Database Schema',
                 'icon' => 'o-document',
