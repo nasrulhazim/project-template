@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "76c796cbae6aa983f85cfd3bbc336db6",
+    "content-hash": "f7a6a600c5287ba043c5aaa259f00da3",
     "packages": [
         {
             "name": "api-ecosystem-for-laravel/dingo-api",
@@ -8490,6 +8490,79 @@
                 }
             ],
             "time": "2022-07-11T09:26:42+00:00"
+        },
+        {
+            "name": "bekwoh/laravel-db-doc",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bekwoh/laravel-db-doc.git",
+                "reference": "b622c389a790c9f666a02876805113278601ddc4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bekwoh/laravel-db-doc/zipball/b622c389a790c9f666a02876805113278601ddc4",
+                "reference": "b622c389a790c9f666a02876805113278601ddc4",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": "^3.4",
+                "illuminate/contracts": "^9.0",
+                "php": "^8.1",
+                "spatie/laravel-package-tools": "^1.13.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^6.0",
+                "nunomaduro/larastan": "^2.0.1",
+                "orchestra/testbench": "^7.0",
+                "pestphp/pest": "^1.21",
+                "pestphp/pest-plugin-laravel": "^1.1",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Bekwoh\\LaravelDbDoc\\LaravelDbDocServiceProvider"
+                    ],
+                    "aliases": {
+                        "LaravelDbDoc": "Bekwoh\\LaravelDbDoc\\Facades\\LaravelDbDoc"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bekwoh\\LaravelDbDoc\\": "src",
+                    "Bekwoh\\LaravelDbDoc\\Database\\Factories\\": "database/factories"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nasrul Hazim Bin Mohamad",
+                    "email": "nasrulhazim.m@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Generate Database Schema Documentation",
+            "homepage": "https://github.com/bekwoh/laravel-db-doc",
+            "keywords": [
+                "bekwoh",
+                "laravel",
+                "laravel-db-doc"
+            ],
+            "support": {
+                "issues": "https://github.com/bekwoh/laravel-db-doc/issues",
+                "source": "https://github.com/bekwoh/laravel-db-doc/tree/1.0.1"
+            },
+            "time": "2022-09-20T12:48:09+00:00"
         },
         {
             "name": "composer/class-map-generator",
