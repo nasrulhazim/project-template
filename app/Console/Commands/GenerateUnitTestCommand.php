@@ -52,7 +52,7 @@ class GenerateUnitTestCommand extends Command
             $class = str($route['name'])->replace('.', ' ')->headline()->replace(' ', '').'Test';
 
             $this->call('pest:test', [
-                'name' => 'Screens//'.$class,
+                'name' => $class,
                 '--force' => true,
             ]);
         }
