@@ -293,16 +293,16 @@
         },
         {
             "name": "bekwoh/laravel-media-secure",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bekwoh/laravel-media-secure.git",
-                "reference": "10bbe6f4c65f7473a7101792f095aeed9649d69d"
+                "reference": "c046dcdcf7e58a1175ba4843de66319de1e0f2b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bekwoh/laravel-media-secure/zipball/10bbe6f4c65f7473a7101792f095aeed9649d69d",
-                "reference": "10bbe6f4c65f7473a7101792f095aeed9649d69d",
+                "url": "https://api.github.com/repos/bekwoh/laravel-media-secure/zipball/c046dcdcf7e58a1175ba4843de66319de1e0f2b3",
+                "reference": "c046dcdcf7e58a1175ba4843de66319de1e0f2b3",
                 "shasum": ""
             },
             "require": {
@@ -365,9 +365,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bekwoh/laravel-media-secure/issues",
-                "source": "https://github.com/bekwoh/laravel-media-secure/tree/1.0.3"
+                "source": "https://github.com/bekwoh/laravel-media-secure/tree/1.0.4"
             },
-            "time": "2022-10-15T12:37:47+00:00"
+            "time": "2022-10-15T12:40:29+00:00"
         },
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -8832,16 +8832,16 @@
         },
         {
             "name": "bekwoh/laravel-db-doc",
-            "version": "1.0.5",
+            "version": "1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bekwoh/laravel-db-doc.git",
-                "reference": "057cb0b04a35c3f769fb99fe4beb36a383ddcbf0"
+                "reference": "0925e4fd5f6e973c37ac9d0497527efada250c98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bekwoh/laravel-db-doc/zipball/057cb0b04a35c3f769fb99fe4beb36a383ddcbf0",
-                "reference": "057cb0b04a35c3f769fb99fe4beb36a383ddcbf0",
+                "url": "https://api.github.com/repos/bekwoh/laravel-db-doc/zipball/0925e4fd5f6e973c37ac9d0497527efada250c98",
+                "reference": "0925e4fd5f6e973c37ac9d0497527efada250c98",
                 "shasum": ""
             },
             "require": {
@@ -8899,9 +8899,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bekwoh/laravel-db-doc/issues",
-                "source": "https://github.com/bekwoh/laravel-db-doc/tree/1.0.5"
+                "source": "https://github.com/bekwoh/laravel-db-doc/tree/1.0.7"
             },
-            "time": "2022-10-15T09:15:38+00:00"
+            "time": "2022-10-15T14:29:35+00:00"
         },
         {
             "name": "composer/class-map-generator",
