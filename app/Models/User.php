@@ -16,10 +16,12 @@ use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use OwenIt\Auditing\Auditable as AuditableTrait;
 use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Traits\HasRoles;
 use Yadahan\AuthenticationLog\AuthenticationLogable;
 
-class User extends Authenticatable implements MustVerifyEmail, AuditableContract
+class User extends Authenticatable implements MustVerifyEmail, AuditableContract, HasMedia
 {
     use AuthenticationLogable;
     use AuditableTrait;
@@ -29,11 +31,13 @@ class User extends Authenticatable implements MustVerifyEmail, AuditableContract
     use HasRoles;
     use HasTeams;
     use InteractsWithUuid;
+    use InteractsWithResourceRoute;
+    use InteractsWithMedia;
     use Impersonate;
     use Notifiable;
     use TwoFactorAuthenticatable;
     use SoftDeletes;
-    use InteractsWithResourceRoute;
+    
 
     /**
      * The attributes that are mass assignable.

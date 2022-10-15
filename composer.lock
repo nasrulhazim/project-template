@@ -293,16 +293,16 @@
         },
         {
             "name": "bekwoh/laravel-media-secure",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bekwoh/laravel-media-secure.git",
-                "reference": "b5c52080c388ced67742aa9684445074e6bf4012"
+                "reference": "0b9a1f6dbef9fe60cdc01fb77c32feeb043bfb68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bekwoh/laravel-media-secure/zipball/b5c52080c388ced67742aa9684445074e6bf4012",
-                "reference": "b5c52080c388ced67742aa9684445074e6bf4012",
+                "url": "https://api.github.com/repos/bekwoh/laravel-media-secure/zipball/0b9a1f6dbef9fe60cdc01fb77c32feeb043bfb68",
+                "reference": "0b9a1f6dbef9fe60cdc01fb77c32feeb043bfb68",
                 "shasum": ""
             },
             "require": {
@@ -365,9 +365,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bekwoh/laravel-media-secure/issues",
-                "source": "https://github.com/bekwoh/laravel-media-secure/tree/1.0.0"
+                "source": "https://github.com/bekwoh/laravel-media-secure/tree/1.0.1"
             },
-            "time": "2022-10-15T08:40:53+00:00"
+            "time": "2022-10-15T09:55:28+00:00"
         },
         {
             "name": "blade-ui-kit/blade-heroicons",
