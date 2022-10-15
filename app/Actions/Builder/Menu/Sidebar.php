@@ -57,7 +57,7 @@ class Sidebar implements Builder, Menu
             ],
             [
                 'show' => auth()->user() && app()->environment() !== 'production',
-                'url' => url('doc/db-schema'),
+                'url' => route('doc.db-schema'),
                 'label' => 'Database Schema',
                 'icon' => 'o-document',
             ],
