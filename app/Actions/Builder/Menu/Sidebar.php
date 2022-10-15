@@ -61,7 +61,7 @@ class Sidebar implements Builder, Menu
                 'label' => 'Database Schema',
                 'icon' => 'o-document',
             ],
-        ])->reject(fn ($menu) => $menu['show'] == false);
+        ])->reject(fn ($menu) => !$menu['show']);
 
         return $this;
     }
