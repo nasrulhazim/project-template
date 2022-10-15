@@ -3,6 +3,7 @@
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\UserController;
 use App\Providers\RouteServiceProvider;
+use Bekwoh\LaravelMediaSecure\LaravelMediaSecure;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -50,3 +51,5 @@ Route::post('/email/verification-notification', function (Request $request) {
 
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+LaravelMediaSecure::routes();
