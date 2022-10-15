@@ -37,7 +37,6 @@ class User extends Authenticatable implements MustVerifyEmail, AuditableContract
     use Notifiable;
     use TwoFactorAuthenticatable;
     use SoftDeletes;
-    
 
     /**
      * The attributes that are mass assignable.
