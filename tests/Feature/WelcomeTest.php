@@ -1,7 +1,7 @@
 <?php
 
 it('has welcome page', function () {
-    $response = $this->get('/welcome');
+    $response = $this->get(route('welcome'));
 
     $response->assertStatus(200);
 });

@@ -1,7 +1,7 @@
 <?php
 
 it('has notifications page', function () {
-    $response = $this->get('/notifications');
+    $response = login()->get('/notifications');
 
     $response->assertStatus(200);
 });
