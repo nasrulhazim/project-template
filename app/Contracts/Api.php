@@ -10,7 +10,7 @@ interface Api
 {
     public function getApiResponse(Request $request): array;
 
-    public function getData(Request $request): JsonResource | ResourceCollection | array;
+    public function getData(Request $request): JsonResource|ResourceCollection|array;
 
     public function getMessage(): string;
 

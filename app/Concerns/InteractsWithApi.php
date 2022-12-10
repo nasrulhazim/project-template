@@ -19,7 +19,7 @@ trait InteractsWithApi
         ];
     }
 
-    public function getData(Request $request): JsonResource | ResourceCollection | array
+    public function getData(Request $request): JsonResource|ResourceCollection|array
     {
         return self::toArray($request);
     }
