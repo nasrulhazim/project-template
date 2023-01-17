@@ -24,27 +24,27 @@ class Navbar implements Builder, Menu
             [
                 'show' => auth()->user() ? false : true,
                 'url' => route('welcome'),
-                'label' => 'Welcome',
+                'label' => __('Welcome'),
             ],
             [
                 'show' => auth()->user() ? false : Route::has('register'),
                 'url' => route('register'),
-                'label' => 'Register',
+                'label' => __('Register'),
             ],
             [
                 'show' => auth()->user() ? false : true,
                 'url' => route('login'),
-                'label' => 'Login',
+                'label' => __('Login'),
             ],
             [
                 'show' => auth()->user() ? true : false,
                 'url' => route('dashboard'),
-                'label' => 'Dashboard',
+                'label' => __('Dashboard'),
             ],
             [
                 'show' => Gate::allows('viewAny', User::class),
                 'url' => route('users.index'),
-                'label' => 'Users',
+                'label' => __('Users'),
             ],
         ])->reject(fn ($menu) => $menu['show'] == false);
 

@@ -25,40 +25,40 @@ class Sidebar implements Builder, Menu
             [
                 'show' => auth()->user() ? false : true,
                 'url' => route('welcome'),
-                'label' => 'Welcome',
+                'label' => __('Welcome'),
             ],
             [
                 'show' => auth()->user() ? false : Route::has('register'),
                 'url' => route('register'),
-                'label' => 'Register',
+                'label' => __('Register'),
             ],
             [
                 'show' => auth()->user() ? false : true,
                 'url' => route('login'),
-                'label' => 'Login',
+                'label' => __('Login'),
             ],
             [
                 'show' => auth()->user() ? true : false,
                 'url' => route('dashboard'),
-                'label' => 'Dashboard',
+                'label' => __('Dashboard'),
                 'icon' => 'o-home',
             ],
             [
                 'show' => Gate::allows('viewAny', User::class),
                 'url' => route('users.index'),
-                'label' => 'Users',
+                'label' => __('Users'),
                 'icon' => 'o-users',
             ],
             [
                 'show' => Jetstream::hasApiFeatures(),
                 'url' => route('api-tokens.index'),
-                'label' => 'API Tokens',
+                'label' => __('API Tokens'),
                 'icon' => 'o-clipboard-list',
             ],
             [
                 'show' => auth()->user() && app()->environment() !== 'production',
                 'url' => route('doc.db-schema'),
-                'label' => 'Database Schema',
+                'label' => __('Database Schema'),
                 'icon' => 'o-document',
             ],
         ])->reject(fn ($menu) => ! $menu['show']);
