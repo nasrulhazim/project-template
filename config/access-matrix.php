@@ -29,6 +29,6 @@ return [
         ],
         'view-telescope' => [
             'superadmin',
-        ]
+        ],
     ],
 ];

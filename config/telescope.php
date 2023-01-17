@@ -97,7 +97,7 @@ return [
 
     'ignore_paths' => [
         'nova-api*',
-        env('TELESCOPE_PATH', 'telescope*')
+        env('TELESCOPE_PATH', 'telescope*'),
     ],
 
     'ignore_commands' => [
