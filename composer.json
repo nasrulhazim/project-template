@@ -8,7 +8,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.0.2",
+        "php": "^8.2.1",
         "api-ecosystem-for-laravel/dingo-api": "^4.0",
         "bekwoh/laravel-action": "^1.1",
         "bekwoh/laravel-blacklist": "^1.0",
