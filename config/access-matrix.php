@@ -27,5 +27,8 @@ return [
         'delete-user' => [
             'superadmin',
         ],
+        'view-telescope' => [
+            'superadmin',
+        ]
     ],
 ];

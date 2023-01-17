@@ -23,6 +23,7 @@
         "laravel/horizon": "^5.9",
         "laravel/jetstream": "^2.6",
         "laravel/sanctum": "^2.14.1",
+        "laravel/telescope": "^4.11",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.10",
         "owen-it/laravel-auditing": "^13.0",

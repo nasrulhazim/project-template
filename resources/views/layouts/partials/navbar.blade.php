@@ -11,6 +11,22 @@
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
 
+                @can('viewTelescope')
+                    <div class="ml-3 relative">
+                        <a href="{{ url(config('telescope.path')) }}" target="_blank">
+                            <x-icon name="o-terminal" class="text-gray-700 hover:text-indigo-700 text-opacity-50 w-6 h-6"></x-icon>
+                        </a>
+                    </div>
+                @endcan
+
+                @can('viewHorizon')
+                    <div class="ml-3 relative">
+                        <a href="{{ url(config('horizon.path')) }}" target="_blank">
+                            <x-icon name="o-desktop-computer" class="text-gray-700 hover:text-indigo-700 text-opacity-50 w-6 h-6"></x-icon>
+                        </a>
+                    </div>
+                @endcan
+
                 <div class="ml-3 relative">
                     <a href="{{ route('notifications') }}">
                         <x-notification-badge />
