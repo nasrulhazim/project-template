@@ -14,4 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('{{ uri }}', {{ class }})->middleware('auth', 'verified');
+Route::resource(
+    '{{ uri }}',
+    {{ class }}::class
+)->middleware('auth', 'verified');

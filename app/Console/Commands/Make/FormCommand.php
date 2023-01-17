@@ -29,6 +29,7 @@ class FormCommand extends Command
     {
         $this->call('make:livewire', [
             'name' => 'Forms\\'.$this->argument('name'),
+            '--force' => true,
         ]);
 
         $this->comment('See '.base_path('stubs/livewire.form.stub').' for additional setup for the class');

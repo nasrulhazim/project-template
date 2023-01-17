@@ -91,7 +91,10 @@ class RouteCommand extends GeneratorCommand
                         ->replace($this->getNamespace($name).'\\', '', $name)
                         ->plural()
                         ->kebab(),
-                    $this->option('resource').'::class',
+                    Str::of($name)
+                        ->replace(
+                            $this->getNamespace($name).'\\', '\\App\\Http\\Controllers\\', $name
+                        ),
                 ],
                 $stub
             );

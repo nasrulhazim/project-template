@@ -38,13 +38,8 @@ class PageCommand extends Command
     {
         $this->call('make:model', [
             'name' => $name,
-            '--controller' => true,
-            '--factory' => true,
-            '--migration' => true,
-            '--resource' => true,
-            '--pest' => true,
-            '--seed' => true,
-            '--policy' => true,
+            '--all' => true,
+            '--force' => true,
         ]);
         $this->call('make:action', [
             'name' => $name.'Action',
