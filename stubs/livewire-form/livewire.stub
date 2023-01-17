@@ -2,18 +2,18 @@
 
 namespace App\Http\Livewire;
 
-use [action_import];
+use App\Actions\Forms\[class] as Action;
 use App\Concerns\InteractsWithLivewireForm;
-use [model_import];
+use App\Models\[class] as Model;
 use Livewire\Component;
 
 class [class] extends Component
 {
     use InteractsWithLivewireForm;
 
-    public string $model = [model]::class;
-    public string $action = [action]::class;
-    public string $formTitle = '[title]';
+    public string $model = Model::class;
+    public string $action = Action::class;
+    public string $formTitle = '[class]';
     public string $view = '[view]';
     protected $listeners = [
         'showRecord' => 'show',

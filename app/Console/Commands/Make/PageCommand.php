@@ -42,7 +42,7 @@ class PageCommand extends Command
             '--force' => true,
         ]);
         $this->call('make:action', [
-            'name' => $name.'Action',
+            'name' => 'Forms\\'.$name.'Action',
             '--model' => $name,
         ]);
         $this->call('make:form', [
