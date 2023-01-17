@@ -7,3 +7,4 @@ rm $LOCK_FILE
 rm -fr $MODULE_DIR
 
 npm install
+npm run build
