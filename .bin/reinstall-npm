@@ -1,14 +1,9 @@
 #!/usr/bin/env bash
 
 LOCK_FILE=package-lock.json
-
-if test -f "$LOCK_FILE"; then
-    rm $LOCK_FILE
-fi
-
 MODULE_DIR=node_modules/
-if [ -d "$MODULE_DIR" ]; then
-    rm -fr $MODULE_DIR
-fi
+
+rm $LOCK_FILE
+rm -fr $MODULE_DIR
 
 npm install
