@@ -73,7 +73,10 @@ class ViewCommand extends GeneratorCommand
      */
     protected function getPath($name)
     {
-        $directory = Str::replaceFirst($this->rootNamespace(), '', $name);
+        $directory = Str::of($name)
+            ->replaceFirst($this->rootNamespace(), '')
+            ->kebab()
+            ->lower();
 
         $name = 'view';
 
@@ -86,7 +89,7 @@ class ViewCommand extends GeneratorCommand
         }
 
         return resource_path(
-            'views/'.str_replace('\\', '/', $directory).'/'.$name.'.blade.php'
+            'views/'.str_replace('\\', '/', strtolower($directory)).'/'.$name.'.blade.php'
         );
     }
 

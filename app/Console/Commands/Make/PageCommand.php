@@ -41,6 +41,11 @@ class PageCommand extends Command
             '--all' => true,
             '--force' => true,
         ]);
+
+        $this->comment('Do add $this->authorize(); in your controller.');
+        $this->comment('Do add return view() in your controller.');
+        $this->comment('Refer app/Models/UserController.php for more details.');
+
         $this->call('make:action', [
             'name' => 'Forms\\'.$name.'Action',
             '--model' => $name,
@@ -51,10 +56,23 @@ class PageCommand extends Command
         $this->call('make:datatable', [
             'name' => $name.'Datatable',
             'model' => $name,
+            '--force' => true,
         ]);
         $this->call('make:route', [
             'name' => $name,
             '--resource' => true,
+        ]);
+        $this->call('make:view', [
+            'name' => $name,
+            '--index' => true,
+        ]);
+        $this->call('make:view', [
+            'name' => $name,
+            '--show' => true,
+        ]);
+        $this->call('make:view', [
+            'name' => $name,
+            '--form' => true,
         ]);
     }
 }
