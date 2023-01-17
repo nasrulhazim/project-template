@@ -47,14 +47,14 @@ class PageCommand extends Command
         $this->comment('Refer app/Models/UserController.php for more details.');
 
         $this->call('make:action', [
-            'name' => 'Forms\\'.$name.'Action',
+            'name' => 'Forms\\'.$name,
             '--model' => $name,
         ]);
         $this->call('make:form', [
             'name' => $name,
         ]);
         $this->call('make:datatable', [
-            'name' => $name.'Datatable',
+            'name' => 'Datatable\\'.$name,
             'model' => $name,
             '--force' => true,
         ]);

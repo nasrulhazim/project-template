@@ -6,6 +6,6 @@
     </x-slot>
 
     <x-panel>
-        <livewire:user-datatable />
+        <livewire:datatable.user />
     </x-panel>
 </x-app-layout>

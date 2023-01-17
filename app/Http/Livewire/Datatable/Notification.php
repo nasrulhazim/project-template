@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Datatable;
 
-use App\Models\Notification;
+use App\Models\Notification as Model;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 
-class NotificationDatatable extends DataTableComponent
+class Notification extends DataTableComponent
 {
-    protected $model = Notification::class;
+    protected $model = Model::class;
 
     public array $bulkActions = [
         'markAsRead' => 'Mark as Read',
@@ -32,21 +32,21 @@ class NotificationDatatable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make('Message', 'data')->sortable()->searchable(),
-            Column::make('Received at', 'created_at')->sortable()->searchable(),
-            Column::make('Read at', 'read_at')->sortable()->searchable(),
+            Column::make(__('Message'), 'data')->sortable()->searchable(),
+            Column::make(__('Received at'), 'created_at')->sortable()->searchable(),
+            Column::make(__('Read at'), 'read_at')->sortable()->searchable(),
         ];
     }
 
     public function query(): Builder
     {
-        return Notification::forUser(auth()->user());
+        return Model::forUser(auth()->user());
     }
 
     public function markAsRead()
     {
         if ($this->getSelectedCount()) {
-            Notification::forUser(auth()->user())->whereIn('id', $this->selectedKeys)->update(['read_at' => now()]);
+            Model::forUser(auth()->user())->whereIn('id', $this->selectedKeys)->update(['read_at' => now()]);
         }
 
         $this->clearSelected();
@@ -55,7 +55,7 @@ class NotificationDatatable extends DataTableComponent
     public function markAsUnread()
     {
         if ($this->getSelectedCount()) {
-            Notification::forUser(auth()->user())->whereIn('id', $this->selectedKeys)->update(['read_at' => null]);
+            Model::forUser(auth()->user())->whereIn('id', $this->selectedKeys)->update(['read_at' => null]);
         }
 
         $this->clearSelected();

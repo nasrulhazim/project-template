@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Datatable;
 
-use App\Models\User;
+use App\Models\User as Model;
 use App\View\ActionColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 
-class UserDatatable extends DataTableComponent
+class User extends DataTableComponent
 {
     protected $model = User::class;
 
@@ -46,6 +46,6 @@ class UserDatatable extends DataTableComponent
 
     public function query(): Builder
     {
-        return User::query();
+        return Model::query();
     }
 }
