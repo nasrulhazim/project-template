@@ -25,6 +25,7 @@
         "laravel/sanctum": "^2.14.1",
         "laravel/telescope": "^4.11",
         "laravel/tinker": "^2.7",
+        "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/livewire": "^2.10",
         "owen-it/laravel-auditing": "^13.0",
         "predis/predis": "^1.1",
