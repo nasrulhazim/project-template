@@ -14,6 +14,12 @@ Clone this directory and run `. ./bin/install`
 
 Some of the features has been added to this project. See the following sections for more details.
 
+### Running Docker
+
+```bash
+docker compose up -d
+```
+
 ### Database Schema Documentation
 
 First, run the following command:
