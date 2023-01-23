@@ -4,7 +4,7 @@
 
 This is my personal project template / boilerplate for creating Laravel based projects.
 
-![screenshot](screenshot.png)
+![screenshot](./.art/screenshot.png)
 
 ## Deployment
 
@@ -18,8 +18,8 @@ Some of the features has been added to this project. See the following sections 
 
 First, run the following command:
 
-```bash 
-php artisan db:schema 
+```bash
+php artisan db:schema
 ```
 
 Then login to your app and visit your app at `http://domain/doc/db-schema`.
@@ -41,7 +41,7 @@ protected $listeners = [
 
 Adding Action by using `ActionColumn` class:
 
-```php 
+```php
 ActionColumn::make('Actions', 'uuid')
 ```
 
@@ -112,7 +112,7 @@ $this->emitTo('alert', 'displayAlert',  __('Connection'), __('Connection succesf
 Using Confirm component:
 
 ```php
-<div class="cursor-pointer" class="bg-red-500" 
+<div class="cursor-pointer" class="bg-red-500"
     wire:click="$emitTo('confirm', 'displayConfirmation', 'Delete Connection', 'Are you sure?', 'connection-form', 'destroyConnection', '{{ $uuid }}')">
     {{ __('Remove') }}
 </div>
