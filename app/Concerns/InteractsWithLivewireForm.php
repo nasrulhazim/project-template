@@ -47,7 +47,7 @@ trait InteractsWithLivewireForm
 
     public function hasUuid2idMapping()
     {
-        return property_exists($this, 'uuid2id');
+        return property_exists($this, 'uuid2id') && count($this->uuid2id) > 0;
     }
 
     public function getUuid2IdMapping(): array
