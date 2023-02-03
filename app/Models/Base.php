@@ -31,7 +31,7 @@ class Base extends Model implements AuditableContract, HasMedia
     ];
 
     protected $hidden = [
-        'id'
+        'id',
     ];
 
     public function registerMediaConversions(Media $media = null): void
