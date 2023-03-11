@@ -22,7 +22,6 @@ trait Headline
     }
 
     /**
-     * @param  string  $name
      * @return int|string
      *
      * @throws UnknownEnumProperty

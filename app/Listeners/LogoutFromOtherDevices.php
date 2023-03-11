@@ -20,7 +20,6 @@ class LogoutFromOtherDevices
     /**
      * Handle the event.
      *
-     * @param  \Illuminate\Auth\Events\Authenticated  $event
      * @return void
      */
     public function handle(Authenticated $event)

@@ -64,7 +64,6 @@ class GenerateUnitTestCommand extends Command
      * Call another console command.
      *
      * @param  \Symfony\Component\Console\Command\Command|string  $command
-     * @param  array  $arguments
      * @return int
      */
     public function callBuffer($command, array $arguments = [])

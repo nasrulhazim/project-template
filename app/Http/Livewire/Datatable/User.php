@@ -25,8 +25,6 @@ class User extends DataTableComponent
 
     /**
      * The array defining the columns of the table.
-     *
-     * @return array
      */
     public function columns(): array
     {
