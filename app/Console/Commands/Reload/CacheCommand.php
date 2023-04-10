@@ -22,10 +22,8 @@ class CacheCommand extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         $this->call('event:clear');
         $this->call('optimize:clear');

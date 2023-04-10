@@ -47,9 +47,8 @@ class DefaultNotification extends Notification
      * Get the notification's delivery channels.
      *
      * @param  mixed  $notifiable
-     * @return array
      */
-    public function via($notifiable)
+    public function via($notifiable): array
     {
         return notification_drivers();
     }
@@ -58,9 +57,8 @@ class DefaultNotification extends Notification
      * Get the mail representation of the notification.
      *
      * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable)
+    public function toMail($notifiable): MailMessage
     {
         return (new MailMessage())
             ->subject($this->getSubject())
@@ -71,9 +69,8 @@ class DefaultNotification extends Notification
      * Get the array representation of the notification.
      *
      * @param  mixed  $notifiable
-     * @return array
      */
-    public function toArray($notifiable)
+    public function toArray($notifiable): array
     {
         return $this->getData();
     }
@@ -96,8 +93,6 @@ class DefaultNotification extends Notification
 
     /**
      * Get the URL of the notification.
-     *
-     * @return string
      */
     public function getUrl(): ?string
     {

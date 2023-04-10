@@ -23,10 +23,8 @@ class GenerateUnitTestCommand extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $this->buffer = new BufferedOutput();
         $this->callBuffer('route:list', [
@@ -64,9 +62,8 @@ class GenerateUnitTestCommand extends Command
      * Call another console command.
      *
      * @param  \Symfony\Component\Console\Command\Command|string  $command
-     * @return int
      */
-    public function callBuffer($command, array $arguments = [])
+    public function callBuffer($command, array $arguments = []): int
     {
         return $this->runCommand($command, $arguments, $this->buffer);
     }

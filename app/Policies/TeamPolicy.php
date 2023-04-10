@@ -12,40 +12,32 @@ class TeamPolicy
 
     /**
      * Determine whether the user can view any models.
-     *
-     * @return mixed
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return true;
     }
 
     /**
      * Determine whether the user can view the model.
-     *
-     * @return mixed
      */
-    public function view(User $user, Team $team)
+    public function view(User $user, Team $team): bool
     {
         return $user->belongsToTeam($team);
     }
 
     /**
      * Determine whether the user can create models.
-     *
-     * @return mixed
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return true;
     }
 
     /**
      * Determine whether the user can update the model.
-     *
-     * @return mixed
      */
-    public function update(User $user, Team $team)
+    public function update(User $user, Team $team): bool
     {
         return $user->ownsTeam($team);
     }
@@ -82,10 +74,8 @@ class TeamPolicy
 
     /**
      * Determine whether the user can delete the model.
-     *
-     * @return mixed
      */
-    public function delete(User $user, Team $team)
+    public function delete(User $user, Team $team): bool
     {
         return $user->ownsTeam($team);
     }

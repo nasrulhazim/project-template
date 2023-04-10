@@ -21,12 +21,9 @@ class AuthServiceProvider extends ServiceProvider
 
     /**
      * Register any authentication / authorization services.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->policies[config('laravel-media-secure.model')] = config('laravel-media-secure.policy');
-        $this->registerPolicies();
     }
 }
