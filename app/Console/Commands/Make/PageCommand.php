@@ -25,7 +25,7 @@ class PageCommand extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         foreach ($this->argument('name') as $key => $value) {
             $this->createPage($value);

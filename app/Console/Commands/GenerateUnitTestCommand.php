@@ -26,7 +26,7 @@ class GenerateUnitTestCommand extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $this->buffer = new BufferedOutput();
         $this->callBuffer('route:list', [

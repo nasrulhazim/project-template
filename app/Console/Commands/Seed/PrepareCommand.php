@@ -25,7 +25,7 @@ class PrepareCommand extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         $this->call('db:seed', [
             '--class' => '\Database\Seeders\PrepareSeeder',

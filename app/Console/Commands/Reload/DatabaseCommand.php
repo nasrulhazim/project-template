@@ -27,7 +27,7 @@ class DatabaseCommand extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handle(): int
     {
         if (app()->environment() === 'production') {
             $this->comment('Nothing need to be done here. Bye.');

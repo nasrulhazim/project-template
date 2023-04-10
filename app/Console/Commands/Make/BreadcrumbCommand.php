@@ -32,7 +32,7 @@ class BreadcrumbCommand extends GeneratorCommand
      */
     protected $type = 'Breadcrumb';
 
-    public function handle()
+    public function handle(): void
     {
         parent::handle();
 

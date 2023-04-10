@@ -25,7 +25,7 @@ class FormCommand extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $this->call('make:livewire', [
             'name' => 'Forms\\'.$this->argument('name'),

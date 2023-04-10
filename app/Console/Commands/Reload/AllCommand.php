@@ -35,7 +35,7 @@ class AllCommand extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         $this->call('reload:cache');
         $this->call('reload:db');

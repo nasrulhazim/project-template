@@ -12,7 +12,7 @@ class DevSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         User::factory()
             ->withPersonalTeam()
