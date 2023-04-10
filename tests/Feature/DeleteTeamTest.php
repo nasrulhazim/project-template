@@ -9,7 +9,7 @@ use Laravel\Jetstream\Http\Livewire\DeleteTeamForm;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-class DeleteTeamTest extends TestCase
+final class DeleteTeamTest extends TestCase
 {
     use RefreshDatabase;
 
