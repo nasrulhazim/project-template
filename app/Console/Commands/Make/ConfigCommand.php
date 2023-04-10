@@ -41,8 +41,11 @@ class ConfigCommand extends GeneratorCommand
 
     /**
      * Get the destination class path.
+     *
+     * @param  string  $name
+     * @return string
      */
-    protected function getPath(string $name): string
+    protected function getPath($name)
     {
         $name = Str::replaceFirst($this->rootNamespace(), '', $name);
 

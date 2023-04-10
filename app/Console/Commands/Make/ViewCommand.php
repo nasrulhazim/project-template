@@ -51,8 +51,12 @@ class ViewCommand extends GeneratorCommand
 
     /**
      * Replace the class name for the given stub.
+     *
+     * @param  string  $stub
+     * @param  string  $name
+     * @return string
      */
-    protected function replaceClass(string $stub, string $name): string
+    protected function replaceClass($stub, $name)
     {
         $class = str_replace($this->getNamespace($name).'\\', '', $name);
 
@@ -61,8 +65,11 @@ class ViewCommand extends GeneratorCommand
 
     /**
      * Get the destination class path.
+     *
+     * @param  string  $name
+     * @return string
      */
-    protected function getPath(string $name): string
+    protected function getPath($name)
     {
         $directory = Str::of($name)
             ->replaceFirst($this->rootNamespace(), '')

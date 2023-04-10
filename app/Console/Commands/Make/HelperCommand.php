@@ -40,8 +40,11 @@ class HelperCommand extends GeneratorCommand
 
     /**
      * Get the destination class path.
+     *
+     * @param  string  $name
+     * @return string
      */
-    protected function getPath(string $name): string
+    protected function getPath($name)
     {
         $name = \Illuminate\Support\Str::replaceFirst($this->rootNamespace(), '', $name);
 

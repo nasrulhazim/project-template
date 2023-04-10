@@ -9,7 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2.1",
-        "api-ecosystem-for-laravel/dingo-api": "^4.0",
+        "api-ecosystem-for-laravel/dingo-api": "dev-master",
         "bekwoh/laravel-action": "^1.1",
         "bekwoh/laravel-blacklist": "^1.0",
         "bekwoh/laravel-media-secure": "^1.0",
@@ -19,7 +19,7 @@
         "doctrine/dbal": "^3.5",
         "guzzlehttp/guzzle": "^7.2",
         "lab404/laravel-impersonate": "^1.7",
-        "laravel/framework": "^10.6",
+        "laravel/framework": "^10.0",
         "laravel/horizon": "^5.12",
         "laravel/jetstream": "^2.15",
         "laravel/sanctum": "^3.2",
@@ -48,8 +48,8 @@
         "nunomaduro/phpinsights": "^2.2",
         "overtrue/phplint": "^5.3",
         "pestphp/pest": "^2.0",
-        "pestphp/pest-plugin-laravel": "^1.4",
-        "phpunit/phpunit": "^9.5.10",
+        "pestphp/pest-plugin-laravel": "^2.0",
+        "phpunit/phpunit": "^10.0",
         "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
@@ -102,6 +102,12 @@
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/patoui/dingo-api"
+        }
+    ],
     "minimum-stability": "stable",
     "prefer-stable": true
 }

@@ -46,8 +46,11 @@ class RouteCommand extends GeneratorCommand
 
     /**
      * Get the destination class path.
+     *
+     * @param  string  $name
+     * @return string
      */
-    protected function getPath(string $name): string
+    protected function getPath($name)
     {
         $name = Str::of($name)
             ->replaceFirst($this->rootNamespace(), '')
@@ -68,8 +71,12 @@ class RouteCommand extends GeneratorCommand
 
     /**
      * Replace the class name for the given stub.
+     *
+     * @param  string  $stub
+     * @param  string  $name
+     * @return string
      */
-    protected function replaceClass(string $stub, string $name): string
+    protected function replaceClass($stub, $name)
     {
         if ($this->option('resource')) {
             return str_replace(
