@@ -13,7 +13,6 @@ class UpdateTeamName implements UpdatesTeamNames
      *
      * @param  mixed  $user
      * @param  mixed  $team
-     * @return void
      */
     public function update($user, $team, array $input): void
     {

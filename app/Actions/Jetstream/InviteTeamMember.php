@@ -20,7 +20,6 @@ class InviteTeamMember implements InvitesTeamMembers
      *
      * @param  mixed  $user
      * @param  mixed  $team
-     * @return void
      */
     public function invite($user, $team, string $email, ?string $role = null): void
     {
@@ -42,7 +41,6 @@ class InviteTeamMember implements InvitesTeamMembers
      * Validate the invite member operation.
      *
      * @param  mixed  $team
-     * @return void
      */
     protected function validate($team, string $email, ?string $role): void
     {
@@ -60,7 +58,6 @@ class InviteTeamMember implements InvitesTeamMembers
      * Get the validation rules for inviting a team member.
      *
      * @param  mixed  $team
-     * @return array
      */
     protected function rules($team): array
     {
@@ -79,7 +76,6 @@ class InviteTeamMember implements InvitesTeamMembers
      * Ensure that the user is not already on the team.
      *
      * @param  mixed  $team
-     * @return \Closure
      */
     protected function ensureUserIsNotAlreadyOnTeam($team, string $email): Closure
     {

@@ -18,7 +18,6 @@ class AddTeamMember implements AddsTeamMembers
      *
      * @param  mixed  $user
      * @param  mixed  $team
-     * @return void
      */
     public function add($user, $team, string $email, ?string $role = null): void
     {
@@ -42,7 +41,6 @@ class AddTeamMember implements AddsTeamMembers
      * Validate the add member operation.
      *
      * @param  mixed  $team
-     * @return void
      */
     protected function validate($team, string $email, ?string $role): void
     {
@@ -58,8 +56,6 @@ class AddTeamMember implements AddsTeamMembers
 
     /**
      * Get the validation rules for adding a team member.
-     *
-     * @return array
      */
     protected function rules(): array
     {
@@ -75,7 +71,6 @@ class AddTeamMember implements AddsTeamMembers
      * Ensure that the user is not already on the team.
      *
      * @param  mixed  $team
-     * @return \Closure
      */
     protected function ensureUserIsNotAlreadyOnTeam($team, string $email): Closure
     {

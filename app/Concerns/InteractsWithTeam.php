@@ -19,8 +19,6 @@ trait InteractsWithTeam
 
     /**
      * The "booted" method of the model.
-     *
-     * @return void
      */
     protected static function booted(): void
     {

@@ -23,8 +23,6 @@ class GenerateUnitTestCommand extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return int
      */
     public function handle(): int
     {
@@ -64,7 +62,6 @@ class GenerateUnitTestCommand extends Command
      * Call another console command.
      *
      * @param  \Symfony\Component\Console\Command\Command|string  $command
-     * @return int
      */
     public function callBuffer($command, array $arguments = []): int
     {

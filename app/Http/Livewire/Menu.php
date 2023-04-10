@@ -29,8 +29,6 @@ class Menu extends Component
 
     /**
      * Render the component.
-     *
-     * @return \Illuminate\View\View
      */
     public function render(): View
     {

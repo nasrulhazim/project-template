@@ -34,8 +34,6 @@ class RouteCommand extends GeneratorCommand
 
     /**
      * Get the stub file for the generator.
-     *
-     * @return string
      */
     protected function getStub(): string
     {
@@ -48,9 +46,6 @@ class RouteCommand extends GeneratorCommand
 
     /**
      * Get the destination class path.
-     *
-     * @param  string  $name
-     * @return string
      */
     protected function getPath(string $name): string
     {
@@ -63,9 +58,6 @@ class RouteCommand extends GeneratorCommand
 
     /**
      * Resolve the fully-qualified path to the stub.
-     *
-     * @param  string  $stub
-     * @return string
      */
     protected function resolveStubPath(string $stub): string
     {
@@ -76,10 +68,6 @@ class RouteCommand extends GeneratorCommand
 
     /**
      * Replace the class name for the given stub.
-     *
-     * @param  string  $stub
-     * @param  string  $name
-     * @return string
      */
     protected function replaceClass(string $stub, string $name): string
     {
@@ -105,8 +93,6 @@ class RouteCommand extends GeneratorCommand
 
     /**
      * Get the console command options.
-     *
-     * @return array
      */
     protected function getOptions(): array
     {

@@ -19,8 +19,6 @@ class LogoutFromOtherDevices
 
     /**
      * Handle the event.
-     *
-     * @return void
      */
     public function handle(Authenticated $event): void
     {
