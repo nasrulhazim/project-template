@@ -34,7 +34,7 @@ class ViewCommand extends GeneratorCommand
      *
      * @return string
      */
-    protected function getStub()
+    protected function getStub(): string
     {
         if ($this->option('index')) {
             return $this->resolveStubPath('/stubs/view/index.stub');
@@ -58,7 +58,7 @@ class ViewCommand extends GeneratorCommand
      * @param  string  $name
      * @return string
      */
-    protected function replaceClass($stub, $name)
+    protected function replaceClass(string $stub, string $name): string
     {
         $class = str_replace($this->getNamespace($name).'\\', '', $name);
 
@@ -71,7 +71,7 @@ class ViewCommand extends GeneratorCommand
      * @param  string  $name
      * @return string
      */
-    protected function getPath($name)
+    protected function getPath(string $name): string
     {
         $directory = Str::of($name)
             ->replaceFirst($this->rootNamespace(), '')
@@ -99,7 +99,7 @@ class ViewCommand extends GeneratorCommand
      * @param  string  $stub
      * @return string
      */
-    protected function resolveStubPath($stub)
+    protected function resolveStubPath(string $stub): string
     {
         return file_exists($customPath = $this->laravel->basePath(trim($stub, '/')))
                         ? $customPath
@@ -111,7 +111,7 @@ class ViewCommand extends GeneratorCommand
      *
      * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
             ['index', null, InputOption::VALUE_NONE, 'Create a list view'],

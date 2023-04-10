@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\View\View;
 use Illuminate\Support\Collection;
 use Livewire\Component;
 
@@ -31,7 +32,7 @@ class Menu extends Component
      *
      * @return \Illuminate\View\View
      */
-    public function render()
+    public function render(): View
     {
         return view('layouts.menu');
     }

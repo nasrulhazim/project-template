@@ -23,7 +23,7 @@ trait InteractsWithUuid
      *
      * @return string
      */
-    public function getRouteKeyName()
+    public function getRouteKeyName(): string
     {
         return $this->getUuidColumnName();
     }

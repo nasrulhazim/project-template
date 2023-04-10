@@ -37,7 +37,7 @@ class RouteCommand extends GeneratorCommand
      *
      * @return string
      */
-    protected function getStub()
+    protected function getStub(): string
     {
         if ($this->option('resource')) {
             return $this->resolveStubPath('/stubs/route-resource.stub');
@@ -52,7 +52,7 @@ class RouteCommand extends GeneratorCommand
      * @param  string  $name
      * @return string
      */
-    protected function getPath($name)
+    protected function getPath(string $name): string
     {
         $name = Str::of($name)
             ->replaceFirst($this->rootNamespace(), '')
@@ -67,7 +67,7 @@ class RouteCommand extends GeneratorCommand
      * @param  string  $stub
      * @return string
      */
-    protected function resolveStubPath($stub)
+    protected function resolveStubPath(string $stub): string
     {
         return file_exists($customPath = $this->laravel->basePath(trim($stub, '/')))
                         ? $customPath
@@ -81,7 +81,7 @@ class RouteCommand extends GeneratorCommand
      * @param  string  $name
      * @return string
      */
-    protected function replaceClass($stub, $name)
+    protected function replaceClass(string $stub, string $name): string
     {
         if ($this->option('resource')) {
             return str_replace(
@@ -108,7 +108,7 @@ class RouteCommand extends GeneratorCommand
      *
      * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
             ['resource', 'r', InputOption::VALUE_REQUIRED, 'Create a resourceful route'],

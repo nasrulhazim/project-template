@@ -81,7 +81,7 @@ class User extends Authenticatable implements MustVerifyEmail, AuditableContract
     /**
      * @return bool
      */
-    public function canImpersonate()
+    public function canImpersonate(): bool
     {
         return config('impersonate.enabled');
     }

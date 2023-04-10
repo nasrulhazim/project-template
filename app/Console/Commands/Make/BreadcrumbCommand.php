@@ -48,7 +48,7 @@ class BreadcrumbCommand extends GeneratorCommand
      *
      * @return string
      */
-    protected function getStub()
+    protected function getStub(): string
     {
         if ($this->option('resource')) {
             return $this->resolveStubPath('/stubs/breadcrumb-resource.stub');
@@ -63,7 +63,7 @@ class BreadcrumbCommand extends GeneratorCommand
      * @param  string  $name
      * @return string
      */
-    protected function getPath($name)
+    protected function getPath(string $name): string
     {
         $name = Str::of($name)
             ->replaceFirst($this->rootNamespace(), '')
@@ -78,7 +78,7 @@ class BreadcrumbCommand extends GeneratorCommand
      * @param  string  $stub
      * @return string
      */
-    protected function resolveStubPath($stub)
+    protected function resolveStubPath(string $stub): string
     {
         return file_exists($customPath = $this->laravel->basePath(trim($stub, '/')))
                         ? $customPath
@@ -92,7 +92,7 @@ class BreadcrumbCommand extends GeneratorCommand
      * @param  string  $name
      * @return string
      */
-    protected function replaceClass($stub, $name)
+    protected function replaceClass(string $stub, string $name): string
     {
         $name = Str::of($name)
             ->replace($this->getNamespace($name).'\\', '', $name)
@@ -115,7 +115,7 @@ class BreadcrumbCommand extends GeneratorCommand
      *
      * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
             ['resource', 'r', InputOption::VALUE_NONE, 'Create a resourceful breadcrumb'],

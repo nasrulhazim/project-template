@@ -20,7 +20,7 @@ class CreateNewUser implements CreatesNewUsers
      *
      * @return \App\Models\User
      */
-    public function create(array $input)
+    public function create(array $input): User
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
@@ -45,7 +45,7 @@ class CreateNewUser implements CreatesNewUsers
      *
      * @return void
      */
-    protected function createTeam(User $user)
+    protected function createTeam(User $user): void
     {
         $user->ownedTeams()->save(Team::forceCreate([
             'user_id' => $user->id,

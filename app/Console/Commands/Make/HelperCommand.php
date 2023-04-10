@@ -35,7 +35,7 @@ class HelperCommand extends GeneratorCommand
      *
      * @return string
      */
-    protected function getStub()
+    protected function getStub(): string
     {
         return $this->resolveStubPath('/stubs/helper.stub');
     }
@@ -46,7 +46,7 @@ class HelperCommand extends GeneratorCommand
      * @param  string  $name
      * @return string
      */
-    protected function getPath($name)
+    protected function getPath(string $name): string
     {
         $name = \Illuminate\Support\Str::replaceFirst($this->rootNamespace(), '', $name);
 
@@ -59,7 +59,7 @@ class HelperCommand extends GeneratorCommand
      * @param  string  $stub
      * @return string
      */
-    protected function resolveStubPath($stub)
+    protected function resolveStubPath(string $stub): string
     {
         return file_exists($customPath = $this->laravel->basePath(trim($stub, '/')))
                         ? $customPath
