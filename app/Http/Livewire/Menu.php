@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use Illuminate\View\View;
 use Illuminate\Support\Collection;
+use Illuminate\View\View;
 use Livewire\Component;
 
 class Menu extends Component
