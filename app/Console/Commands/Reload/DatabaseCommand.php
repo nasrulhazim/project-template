@@ -40,5 +40,7 @@ class DatabaseCommand extends Command
         }
 
         $this->info('Successfully reload database.');
+        
+        return Command::SUCCESS;
     }
 }
