@@ -8,7 +8,7 @@ use Laravel\Jetstream\Http\Livewire\CreateTeamForm;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-class CreateTeamTest extends TestCase
+final class CreateTeamTest extends TestCase
 {
     use RefreshDatabase;
 
