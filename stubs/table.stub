@@ -4,11 +4,11 @@ namespace [namespace];
 
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
-use [model_import];
+use [model_import] as Model;
 
 class [class] extends DataTableComponent
 {
-    protected $model = [model]::class;
+    protected $model = Model::class;
 
     public bool $displayingCreateForm = false;
 
