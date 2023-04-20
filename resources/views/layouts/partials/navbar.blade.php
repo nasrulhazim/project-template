@@ -35,8 +35,12 @@
 
                 <div class="ml-3 relative">
                     <a href="{{ route('profile.show') }}" class="flex-shrink-0 w-full group block">
-                        <p class="text-sm font-medium text-gray-700 hover:text-indigo-700">
-                            Hi, {{ Auth::user()->name }}</p>
+                        <x-icon name="o-user" class="text-gray-700 hover:text-indigo-700 text-opacity-50 w-6 h-6"></x-icon>
+                    </a>
+                </div>
+                <div class="ml-3 relative">
+                    <a href="{{ route('teams.show', Auth::user()->currentTeam->id) }}" class="flex-shrink-0 w-full group block">
+                        <x-icon name="o-cog" class="text-gray-700 hover:text-indigo-700 text-opacity-50 w-6 h-6"></x-icon>
                     </a>
                 </div>
 
