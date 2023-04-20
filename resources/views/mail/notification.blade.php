@@ -1,14 +1,14 @@
-@component('mail::message')
-{{ __('Hi') }}!<br>
+<x-mail::message>
+{{ __('Hi') }}!
 
 {{ $message }}
 
 @if(isset($url) && !empty($url) )
-	@component('mail::button', ['url' => $url])
+<x-mail::button url="{{ $url }}">
 	{{ (isset($url_text) && !empty($url_text)) ? $url_text : __('Click here') }}
-	@endcomponent
+</x-mail::button>
 @endif
 
-{{ __('Thanks') }},<br>
+Thanks,<br>
 {{ config('app.name') }}
-@endcomponent
+</x-mail::message>
