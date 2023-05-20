@@ -2,12 +2,19 @@
 
 // use Illuminate\Support\Facades\Cache;
 
+use Illuminate\Support\Collection;
+
 if (! function_exists('to_options')) {
-    function to_options(array $array): array
+    function to_options(array|Collection $array): array
     {
-        return array_merge([
-            '' => __('Any'),
-        ], $array);
+
+        if (! $array instanceof Collection) {
+            $array = Collection::make($array);
+        }
+
+        return $array
+            ->prepend('Any', 0)
+            ->toArray();
     }
 }
 
