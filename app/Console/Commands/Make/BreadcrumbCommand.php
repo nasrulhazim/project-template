@@ -40,7 +40,7 @@ class BreadcrumbCommand extends GeneratorCommand
 
         $path = str_replace(base_path('/routes/'), '', $this->getPath($name));
 
-        $this->files->append(base_path('/routes/breadcrumbs.php'), PHP_EOL."require '${path}';");
+        $this->files->append(base_path('/routes/breadcrumbs.php'), PHP_EOL."require '".$path."';");
     }
 
     /**
