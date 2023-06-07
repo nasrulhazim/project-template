@@ -9,9 +9,13 @@ trait InteractsWithLivewireForm
 {
     public string $uuid = '';
 
+    public bool $edit = false;
+
     public $displayingModal = false;
 
     protected $default_state = [];
+
+    protected $record;
 
     public function mount()
     {
@@ -91,22 +95,55 @@ trait InteractsWithLivewireForm
 
         $this->resetState();
 
-        if ($this->uuid) {
+        if (! $this->edit && $this->uuid) {
             $this->uuid = '';
         }
 
         $this->emit('saved');
         $this->emit('refreshDatatable');
 
+        $this->emitTo('alert', 'displayAlert', __($this->getFormTitle()), __($this->getFormTitle().' successfully saved'));
+
         $this->displayingModal = false;
     }
 
-    public function show(string $uuid)
+    public function create()
+    {
+        $this->edit = true;
+        $this->displayingModal = true;
+    }
+
+    public function close()
+    {
+        $this->edit = false;
+        $this->displayingModal = false;
+    }
+
+    public function show(string $uuid, bool $edit = false)
     {
         $this->uuid = $uuid;
-        $data = $this->getModel()::whereUuid($uuid)->firstOrFail();
-        $this->state = $data->toArray();
+        $this->edit = $edit;
+
+        $this->record = $data = $this->getModel()::query()
+            ->when(property_exists($this, 'eagerLoad'), fn ($query) => $query->with($this->eagerLoad))
+            ->whereUuid($uuid)->firstOrFail();
+
+        Gate::allows($edit ? 'update' : 'create', $data);
+
+        $this->loadDependencies();
+
+        $this->state = $this->toArray($data);
         $this->displayingModal = true;
+    }
+
+    public function loadDependencies()
+    {
+
+    }
+
+    public function toArray(Model $model)
+    {
+        return $model->toArray();
     }
 
     public function destroy(string $uuid)
@@ -119,7 +156,7 @@ trait InteractsWithLivewireForm
 
         $this->emit('refreshDatatable');
 
-        $this->emitTo('alert', 'displayAlert', __($this->getFormTitle()), __($this->getFormTitle().' succesfully deleted'));
+        $this->emitTo('alert', 'displayAlert', __($this->getFormTitle()), __($this->getFormTitle().' successfully deleted'));
     }
 
     public function getFormTitle(): string
