@@ -20,6 +20,42 @@ trait InteractsWithLivewireForm
     public function mount()
     {
         $this->setDefaultState();
+        $this->afterMount();
+    }
+
+    public function afterMount()
+    {
+
+    }
+
+    public function beforeSave()
+    {
+
+    }
+
+    public function afterSave()
+    {
+
+    }
+
+    public function beforeCreate()
+    {
+
+    }
+
+    public function afterCreate()
+    {
+
+    }
+
+    public function beforeClose()
+    {
+
+    }
+
+    public function afterClose()
+    {
+
     }
 
     public function resetState()
@@ -73,6 +109,8 @@ trait InteractsWithLivewireForm
     {
         $this->resetErrorBag();
 
+        $this->beforeSave();
+
         $class = $this->getAction();
 
         $action = (new $class($this->state));
@@ -91,7 +129,7 @@ trait InteractsWithLivewireForm
 
         $action->execute();
 
-        $this->handlFileUploads($action->getRecord());
+        $this->handleFilesUpload($action->getRecord());
 
         $this->resetState();
 
@@ -105,6 +143,8 @@ trait InteractsWithLivewireForm
         $this->emitTo('alert', 'displayAlert', __($this->getFormTitle()), __($this->getFormTitle().' successfully saved'));
 
         $this->displayingModal = false;
+
+        $this->afterSave();
     }
 
     public function create()
@@ -115,8 +155,10 @@ trait InteractsWithLivewireForm
 
     public function close()
     {
+        $this->beforeClose();
         $this->edit = false;
         $this->displayingModal = false;
+        $this->afterClose();
     }
 
     public function show(string $uuid, bool $edit = false)
@@ -124,9 +166,7 @@ trait InteractsWithLivewireForm
         $this->uuid = $uuid;
         $this->edit = $edit;
 
-        $this->record = $data = $this->getModel()::query()
-            ->when(property_exists($this, 'eagerLoad'), fn ($query) => $query->with($this->eagerLoad))
-            ->whereUuid($uuid)->firstOrFail();
+        $data = $this->loadRecord()->getRecord();
 
         Gate::allows($edit ? 'update' : 'create', $data);
 
@@ -134,6 +174,20 @@ trait InteractsWithLivewireForm
 
         $this->state = $this->toArray($data);
         $this->displayingModal = true;
+    }
+
+    public function getRecord()
+    {
+        return $this->record;
+    }
+
+    public function loadRecord()
+    {
+        $this->record = $this->getModel()::query()
+            ->when(property_exists($this, 'eagerLoad'), fn ($query) => $query->with($this->eagerLoad))
+            ->whereUuid($this->uuid)->firstOrFail();
+
+        return $this;
     }
 
     public function loadDependencies()
@@ -174,7 +228,7 @@ trait InteractsWithLivewireForm
         return view($this->getView());
     }
 
-    public function handlFileUploads(Model $model)
+    public function handleFilesUpload(Model $model)
     {
     }
 }
