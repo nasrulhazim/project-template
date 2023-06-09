@@ -129,7 +129,11 @@ trait InteractsWithLivewireForm
 
         $action->execute();
 
+        $this->record = $action->getRecord();
+
         $this->handleFilesUpload($action->getRecord());
+
+        $this->afterSave();
 
         $this->resetState();
 
@@ -143,8 +147,6 @@ trait InteractsWithLivewireForm
         $this->emitTo('alert', 'displayAlert', __($this->getFormTitle()), __($this->getFormTitle().' successfully saved'));
 
         $this->displayingModal = false;
-
-        $this->afterSave();
     }
 
     public function create()
