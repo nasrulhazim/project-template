@@ -21,7 +21,7 @@ trait InteractsWithLivewireForm
     {
         $this->setDefaultState();
 
-        if(method_exists($this, 'afterMount')) {
+        if (method_exists($this, 'afterMount')) {
             $this->afterMount();
         }
     }
@@ -77,7 +77,7 @@ trait InteractsWithLivewireForm
     {
         $this->resetErrorBag();
 
-        if(method_exists($this, 'beforeSave')) {
+        if (method_exists($this, 'beforeSave')) {
             $this->beforeSave();
         }
 
@@ -101,11 +101,11 @@ trait InteractsWithLivewireForm
 
         $this->record = $action->getRecord();
 
-        if(method_exists($this, 'handleFilesUpload')) {
+        if (method_exists($this, 'handleFilesUpload')) {
             $this->handleFilesUpload($action->getRecord());
         }
 
-        if(method_exists($this, 'afterSave')) {
+        if (method_exists($this, 'afterSave')) {
             $this->afterSave();
         }
 
@@ -123,7 +123,7 @@ trait InteractsWithLivewireForm
             'displayAlert',
             title: __($this->getFormTitle()),
             message: __($this->getFormTitle().' successfully saved'))
-        ->to('alert');
+            ->to('alert');
 
         $this->displayingModal = false;
     }
@@ -136,14 +136,14 @@ trait InteractsWithLivewireForm
 
     public function close()
     {
-        if(method_exists($this, 'beforeClose')) {
+        if (method_exists($this, 'beforeClose')) {
             $this->beforeClose();
         }
 
         $this->edit = false;
         $this->displayingModal = false;
 
-        if(method_exists($this, 'afterClose')) {
+        if (method_exists($this, 'afterClose')) {
             $this->afterClose();
         }
     }
@@ -157,7 +157,7 @@ trait InteractsWithLivewireForm
 
         Gate::allows($edit ? 'update' : 'create', $data);
 
-        if(method_exists($this, 'loadDependencies')) {
+        if (method_exists($this, 'loadDependencies')) {
             $this->loadDependencies();
         }
 

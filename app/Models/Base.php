@@ -17,14 +17,14 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Base extends Model implements AuditableContract, HasMedia
 {
-    use HasFactory;
-    use InteractsWithMeta;
-    use InteractsWithToken;
-    use InteractsWithUuid;
-    use InteractsWithUser;
-    use InteractsWithMedia;
-    use InteractsWithResourceRoute;
     use AuditableTrait;
+    use HasFactory;
+    use InteractsWithMedia;
+    use InteractsWithMeta;
+    use InteractsWithResourceRoute;
+    use InteractsWithToken;
+    use InteractsWithUser;
+    use InteractsWithUuid;
 
     protected $guarded = [
         'id',

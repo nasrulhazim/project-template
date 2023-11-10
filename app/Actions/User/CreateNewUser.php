@@ -9,8 +9,8 @@ use Bekwoh\LaravelAction\AbstractAction as Action;
 
 class CreateNewUser extends Action
 {
-    use PasswordValidationRules;
     use InteractsWithUuidInAction;
+    use PasswordValidationRules;
 
     public $model = User::class;
 

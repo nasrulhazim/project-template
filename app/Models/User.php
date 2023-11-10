@@ -21,22 +21,22 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Traits\HasRoles;
 use Yadahan\AuthenticationLog\AuthenticationLogable;
 
-class User extends Authenticatable implements MustVerifyEmail, AuditableContract, HasMedia
+class User extends Authenticatable implements AuditableContract, HasMedia, MustVerifyEmail
 {
-    use AuthenticationLogable;
     use AuditableTrait;
+    use AuthenticationLogable;
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
     use HasRoles;
     use HasTeams;
-    use InteractsWithUuid;
-    use InteractsWithResourceRoute;
-    use InteractsWithMedia;
     use Impersonate;
+    use InteractsWithMedia;
+    use InteractsWithResourceRoute;
+    use InteractsWithUuid;
     use Notifiable;
-    use TwoFactorAuthenticatable;
     use SoftDeletes;
+    use TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
