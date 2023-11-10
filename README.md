@@ -8,7 +8,11 @@ This is my personal project template / boilerplate for creating Laravel based pr
 
 ## Deployment
 
-Clone this directory and run `. ./bin/install`
+Clone this directory and run
+
+```bash
+/path/to/project/.bin/install
+```
 
 ## Development
 
