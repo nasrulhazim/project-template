@@ -1,5 +1,5 @@
 <div>
-    <div x-data="{ toggle : @entangle($status).defer }" class="my-2">
+    <div x-data="{ toggle : @entangle($status) }" class="my-2">
         <x-jet-label class="mb-1">{{ $label ?? 'Status' }}</x-jet-label>
         <button type="button"
              x-on:click="toggle = ! toggle"

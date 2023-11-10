@@ -28,7 +28,7 @@ class ActionColumn extends Column
         return property_exists($this, 'view') ? $this->view : 'livewire.datatable-actions';
     }
 
-    public function getContents(Model $row)
+    public function getContents(Model $row): null|string|\Illuminate\Support\HtmlString|\Rappasoft\LaravelLivewireTables\Exceptions\DataTableConfigurationException|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
     {
         return view($this->getView(), ['form' => $this->form])
             ->withColumn($this)

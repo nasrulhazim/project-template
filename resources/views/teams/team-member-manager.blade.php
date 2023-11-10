@@ -23,7 +23,7 @@
                     <!-- Member Email -->
                     <div class="col-span-6 sm:col-span-4">
                         <x-jet-label for="email" value="{{ __('Email') }}" />
-                        <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="addTeamMemberForm.email" />
+                        <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model="addTeamMemberForm.email" />
                         <x-jet-input-error for="email" class="mt-2" />
                     </div>
 
@@ -169,7 +169,7 @@
     @endif
 
     <!-- Role Management Modal -->
-    <x-jet-dialog-modal wire:model="currentlyManagingRole">
+    <x-jet-dialog-modal wire:model.live="currentlyManagingRole">
         <x-slot name="title">
             {{ __('Manage Role') }}
         </x-slot>
@@ -213,7 +213,7 @@
     </x-jet-dialog-modal>
 
     <!-- Leave Team Confirmation Modal -->
-    <x-jet-confirmation-modal wire:model="confirmingLeavingTeam">
+    <x-jet-confirmation-modal wire:model.live="confirmingLeavingTeam">
         <x-slot name="title">
             {{ __('Leave Team') }}
         </x-slot>
@@ -234,7 +234,7 @@
     </x-jet-confirmation-modal>
 
     <!-- Remove Team Member Confirmation Modal -->
-    <x-jet-confirmation-modal wire:model="confirmingTeamMemberRemoval">
+    <x-jet-confirmation-modal wire:model.live="confirmingTeamMemberRemoval">
         <x-slot name="title">
             {{ __('Remove Team Member') }}
         </x-slot>

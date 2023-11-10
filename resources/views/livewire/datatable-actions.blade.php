@@ -5,9 +5,14 @@
             </x-icon>
         </a>
     @endcan
-    
+
     @can('update', $row)
-        <div class="cursor-pointer mr-4" wire:click="$emitTo('{{ $form }}', 'showRecord', '{{ $row->uuid }}')">
+        <div class="cursor-pointer mr-4"
+            wire:click="$dispatchTo(
+                '{{ $form }}',
+                'showRecord',
+                { uuid: '{{ $row->uuid }}'}
+            )">
             <x-icon name="o-pencil" class="text-indigo hover:font-bold mr-3 flex-shrink-0 h-6 w-6">
             </x-icon>
         </div>
@@ -15,7 +20,16 @@
 
     @can('delete', $row)
         <div class="cursor-pointer"
-            wire:click="$emitTo('confirm', 'displayConfirmation', 'Delete Record', 'Are you sure?', '{{ $form }}', 'destroyRecord', '{{ $row->uuid }}')">
+            wire:click="$dispatchTo(
+                'confirm',
+                'displayConfirmation',
+                {
+                    title: 'Delete Record',
+                    message: 'Are you sure?',
+                    component: '{{ $form }}',
+                    listener: 'destroyRecord',
+                    params: '{{ $row->uuid }}'
+                })">
             <x-icon name="o-trash" class="text-indigo hover:text-red-500 mr-3 flex-shrink-0 h-6 w-6">
             </x-icon>
         </div>

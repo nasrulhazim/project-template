@@ -20,42 +20,10 @@ trait InteractsWithLivewireForm
     public function mount()
     {
         $this->setDefaultState();
-        $this->afterMount();
-    }
 
-    public function afterMount()
-    {
-
-    }
-
-    public function beforeSave()
-    {
-
-    }
-
-    public function afterSave()
-    {
-
-    }
-
-    public function beforeCreate()
-    {
-
-    }
-
-    public function afterCreate()
-    {
-
-    }
-
-    public function beforeClose()
-    {
-
-    }
-
-    public function afterClose()
-    {
-
+        if(method_exists($this, 'afterMount')) {
+            $this->afterMount();
+        }
     }
 
     public function resetState()
@@ -109,7 +77,9 @@ trait InteractsWithLivewireForm
     {
         $this->resetErrorBag();
 
-        $this->beforeSave();
+        if(method_exists($this, 'beforeSave')) {
+            $this->beforeSave();
+        }
 
         $class = $this->getAction();
 
@@ -131,9 +101,13 @@ trait InteractsWithLivewireForm
 
         $this->record = $action->getRecord();
 
-        $this->handleFilesUpload($action->getRecord());
+        if(method_exists($this, 'handleFilesUpload')) {
+            $this->handleFilesUpload($action->getRecord());
+        }
 
-        $this->afterSave();
+        if(method_exists($this, 'afterSave')) {
+            $this->afterSave();
+        }
 
         $this->resetState();
 
@@ -141,10 +115,15 @@ trait InteractsWithLivewireForm
             $this->uuid = '';
         }
 
-        $this->emit('saved');
-        $this->emit('refreshDatatable');
+        $this->dispatch('saved');
 
-        $this->emitTo('alert', 'displayAlert', __($this->getFormTitle()), __($this->getFormTitle().' successfully saved'));
+        $this->dispatch('refreshDatatable');
+
+        $this->dispatch(
+            'displayAlert',
+            title: __($this->getFormTitle()),
+            message: __($this->getFormTitle().' successfully saved'))
+        ->to('alert');
 
         $this->displayingModal = false;
     }
@@ -157,10 +136,16 @@ trait InteractsWithLivewireForm
 
     public function close()
     {
-        $this->beforeClose();
+        if(method_exists($this, 'beforeClose')) {
+            $this->beforeClose();
+        }
+
         $this->edit = false;
         $this->displayingModal = false;
-        $this->afterClose();
+
+        if(method_exists($this, 'afterClose')) {
+            $this->afterClose();
+        }
     }
 
     public function show(string $uuid, bool $edit = false)
@@ -172,7 +157,9 @@ trait InteractsWithLivewireForm
 
         Gate::allows($edit ? 'update' : 'create', $data);
 
-        $this->loadDependencies();
+        if(method_exists($this, 'loadDependencies')) {
+            $this->loadDependencies();
+        }
 
         $this->state = $this->toArray($data);
         $this->displayingModal = true;
@@ -192,11 +179,6 @@ trait InteractsWithLivewireForm
         return $this;
     }
 
-    public function loadDependencies()
-    {
-
-    }
-
     public function toArray(Model $model)
     {
         return $model->toArray();
@@ -210,9 +192,9 @@ trait InteractsWithLivewireForm
 
         $this->getModel()::whereUuid($uuid)->delete();
 
-        $this->emit('refreshDatatable');
+        $this->dispatch('refreshDatatable');
 
-        $this->emitTo('alert', 'displayAlert', __($this->getFormTitle()), __($this->getFormTitle().' successfully deleted'));
+        $this->dispatch('displayAlert', __($this->getFormTitle()), __($this->getFormTitle().' successfully deleted'))->to('alert');
     }
 
     public function getFormTitle(): string
@@ -228,9 +210,5 @@ trait InteractsWithLivewireForm
     public function render()
     {
         return view($this->getView());
-    }
-
-    public function handleFilesUpload(Model $model)
-    {
     }
 }

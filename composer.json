@@ -1,15 +1,15 @@
 {
-    "name": "laravel/laravel",
+    "name": "nasrulhazim/project-template",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "My official project template to buiild system with Laravel.",
     "keywords": [
-        "framework",
-        "laravel"
+        "event",
+        "manager"
     ],
     "license": "MIT",
     "require": {
         "php": "^8.2.1",
-        "api-ecosystem-for-laravel/dingo-api": "dev-master",
+        "api-ecosystem-for-laravel/dingo-api": "^4.1",
         "bekwoh/laravel-action": "^1.1",
         "bekwoh/laravel-blacklist": "^1.0",
         "bekwoh/laravel-media-secure": "^1.0",
@@ -26,10 +26,10 @@
         "laravel/telescope": "^4.12",
         "laravel/tinker": "^2.8",
         "league/flysystem-aws-s3-v3": "^3.0",
-        "livewire/livewire": "^2.11",
+        "livewire/livewire": "^3.1",
         "owen-it/laravel-auditing": "^13.1",
         "predis/predis": "^1.1",
-        "rappasoft/laravel-livewire-tables": "^2.11",
+        "rappasoft/laravel-livewire-tables": "^3.1",
         "spatie/laravel-enum": "^3.0",
         "spatie/laravel-medialibrary": "^10.7",
         "spatie/laravel-permission": "^5.8",
@@ -102,12 +102,6 @@
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/patoui/dingo-api"
-        }
-    ],
     "minimum-stability": "stable",
     "prefer-stable": true
 }

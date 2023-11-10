@@ -7,7 +7,7 @@
 ])
 
 <div>
-    <input wire:model.defer="{{ $name }}"
+    <input wire:model="{{ $name }}"
         class="bg-gray-50 block border border-gray-300 cursor-pointer dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 focus:outline-none text-gray-900 w-full rounded"
         type="file"
         @if($accept) accept="{{ $accept }}" @endif

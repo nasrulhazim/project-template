@@ -112,14 +112,14 @@ You may want to import Insomnia [file](Insomnia.json) to test out your APIs.
 Using Alert component:
 
 ```php
-$this->emitTo('alert', 'displayAlert',  __('Connection'), __('Connection succesfully deleted'));
+$this->dispatchTo('alert', 'displayAlert',  __('Connection'), __('Connection succesfully deleted'));
 ```
 
 Using Confirm component:
 
 ```php
 <div class="cursor-pointer" class="bg-red-500"
-    wire:click="$emitTo('confirm', 'displayConfirmation', 'Delete Connection', 'Are you sure?', 'connection-form', 'destroyConnection', '{{ $uuid }}')">
+    wire:click="$dispatchTo('confirm', 'displayConfirmation', 'Delete Connection', 'Are you sure?', 'connection-form', 'destroyConnection', '{{ $uuid }}')">
     {{ __('Remove') }}
 </div>
 ```

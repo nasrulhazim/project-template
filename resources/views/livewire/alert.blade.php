@@ -1,5 +1,5 @@
 <div>
-    <x-jet-dialog-modal wire:model="displayingModal">
+    <x-jet-dialog-modal wire:model.live="displayingModal">
         <x-slot name="title">
             {{ $state['title'] }}
         </x-slot>
