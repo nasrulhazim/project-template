@@ -6,7 +6,7 @@ use App\Concerns\InteractsWithUuid;
 use OwenIt\Auditing\Auditable as AuditingTrait;
 use OwenIt\Auditing\Contracts\Auditable;
 
-class Role extends \Spatie\Permission\Models\Role implements Auditable
+class Permission extends \Spatie\Permission\Models\Permission implements Auditable
 {
     use AuditingTrait;
     use InteractsWithUuid;

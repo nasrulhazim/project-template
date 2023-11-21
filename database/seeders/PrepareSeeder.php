@@ -13,14 +13,8 @@ class PrepareSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->seedAccessMatrix();
+        $this->call(AccessControlSeeder::class);
         $this->createSuperUser();
-    }
-
-    private function seedAccessMatrix()
-    {
-        $this->seedRoles();
-        $this->seedPermissions();
     }
 
     private function createSuperUser()
@@ -29,32 +23,5 @@ class PrepareSeeder extends Seeder
         $user->assignRole('superadmin');
         $user->assignRole('user');
         $user->update(['email_verified_at' => now()]);
-    }
-
-    private function seedRoles()
-    {
-        collect(config('access-matrix.roles'))->each(function ($role) {
-            Role::updateOrCreate(['name' => $role, 'guard_name' => 'web']);
-        });
-    }
-
-    private function seedPermissions()
-    {
-        $permissions = collect(config('access-matrix.roles_permissions'));
-        Role::query()->each(function ($role) use ($permissions) {
-            $permissions->each(function ($roles, $permission) use ($role) {
-                $permission = \Spatie\Permission\Models\Permission::updateOrCreate([
-                    'name' => $permission,
-                    'guard_name' => 'web',
-                ]);
-                foreach ($roles as $role_permission) {
-                    if ($role->name == $role_permission) {
-                        if ($role && ! $role->hasPermissionTo($permission)) {
-                            $role->givePermissionTo($permission);
-                        }
-                    }
-                }
-            });
-        });
     }
 }

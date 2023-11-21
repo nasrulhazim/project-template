@@ -2,33 +2,54 @@
 
 return [
     'roles' => [
-        'superadmin',
-        'administrator',
-        'user',
+        'superadmin' => 'Dictactor',
+        'administrator' => 'Play a role in working with administration works.',
+        'user' => 'Default user role that able to create event, participate in events, etc.',
+    ],
+
+    'permissions' => [
+        [
+            'module' => 'Administration',
+            'functions' => [
+                'role' => ['view', 'create', 'update', 'delete'],
+                'user' => ['view', 'create', 'update', 'delete'],
+                'audit' => ['view'],
+            ],
+        ],
+        [
+            'module' => 'Dashboard',
+            'functions' => [
+                'user' => ['view'],
+                'administrator' => ['view'],
+            ],
+        ],
     ],
 
     'roles_permissions' => [
-        'manage-users' => [
-            'superadmin', 'administrator',
-        ],
 
-        'view-user' => [
-            'superadmin', 'administrator',
-        ],
+        /** Administration */
+        'view-role-administration' => ['superadmin'],
+        'create-role-administration' => ['superadmin'],
+        'update-role-administration' => ['superadmin'],
+        'delete-role-administration' => ['superadmin'],
+        'view-user-administration' => ['superadmin', 'administrator'],
+        'create-user-administration' => ['superadmin', 'administrator'],
+        'update-user-administration' => ['superadmin', 'administrator'],
+        'delete-user-administration' => ['superadmin'],
+        'view-audit-administration' => ['superadmin'],
 
-        'create-user' => [
-            'superadmin', 'administrator',
-        ],
+        /** Dashboard */
+        'view-user-dashboard' => ['user'],
+        'view-administrator-dashboard' => ['superadmin', 'administrator'],
 
-        'update-user' => [
-            'superadmin', 'administrator', 'user',
-        ],
+        /** Generic Permissions */
+        'update-settings' => ['superadmin', 'administrator'],
+        'update-administration' => ['superadmin', 'administrator'],
+        'impersonate' => ['superadmin', 'administrator'],
+        'manage-api-token' => ['superadmin', 'administrator'],
+    ],
 
-        'delete-user' => [
-            'superadmin',
-        ],
-        'view-telescope' => [
-            'superadmin',
-        ],
+    'generic_permissions' => [
+        'update-settings', 'update-administration', 'impersonate', 'manage-api-token',
     ],
 ];
