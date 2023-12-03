@@ -10,9 +10,9 @@
     "require": {
         "php": "^8.2.1",
         "api-ecosystem-for-laravel/dingo-api": "^4.1",
-        "bekwoh/laravel-action": "^1.1",
-        "bekwoh/laravel-blacklist": "^1.0",
-        "bekwoh/laravel-media-secure": "^1.0",
+        "cleaniquecoders/laravel-action": "^1.2",
+        "cleaniquecoders/laravel-blacklist": "^1.1",
+        "cleaniquecoders/laravel-media-secure": "^1.1",
         "blade-ui-kit/blade-heroicons": "^2.1",
         "blade-ui-kit/blade-icons": "^1.5",
         "diglactic/laravel-breadcrumbs": "^8.1",
@@ -37,7 +37,7 @@
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8",
-        "bekwoh/laravel-db-doc": "^1.0",
+        "cleaniquecoders/laravel-db-doc": "^1.1",
         "fakerphp/faker": "^1.9.1",
         "friendsofphp/php-cs-fixer": "^3.8",
         "laravel/pint": "^1.2",
