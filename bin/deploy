@@ -13,6 +13,16 @@ pull_latest_codes() {
     git fetch origin "$1" && git checkout "$1" && git pull origin "$1"
 }
 
+# Function to display script usage
+display_help() {
+    echo "Usage: $(basename "$0") [OPTIONS]"
+    echo "Options:"
+    echo "  -t, --tag             Checkout latest tag"
+    echo "  -b, --branch BRANCH   Checkout specific branch"
+    echo "  -h, --help            Display this help message"
+    exit 0
+}
+
 # Parse command line arguments
 while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -23,6 +33,9 @@ while [[ $# -gt 0 ]]; do
         -b|--branch)
             branch="$2"
             shift 2
+            ;;
+        -h|--help)
+            display_help
             ;;
         *)
             echo "Unknown option: $1"
