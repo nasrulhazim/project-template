@@ -56,6 +56,12 @@
                                             {{ __('Access Control') }}
                                         </x-dropdown-link>
                                     @endcan
+
+                                    {{-- @can('viewUser') --}}
+                                    <x-dropdown-link href="{{ route('admin.users.index') }}">
+                                        {{ __('Users') }}
+                                    </x-dropdown-link>
+                                {{-- @endcan --}}
                                 </div>
                             </x-slot>
                         </x-dropdown>

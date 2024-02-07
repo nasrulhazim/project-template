@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\NotificationController;
-use App\Http\Controllers\UserController;
 use App\Providers\RouteServiceProvider;
 use CleaniqueCoders\LaravelMediaSecure\LaravelMediaSecure;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -25,8 +24,6 @@ Route::view('/', 'welcome')
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::view('/dashboard', 'dashboard')
         ->name('dashboard');
-
-    Route::resource('/users', UserController::class);
 
     Route::impersonate();
 

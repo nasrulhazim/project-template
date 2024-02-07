@@ -3,14 +3,14 @@
 namespace App\Livewire\Datatable;
 
 use App\Models\User as Model;
-use App\View\ActionColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
 
 class User extends DataTableComponent
 {
-    protected $model = User::class;
+    protected $model = Model::class;
 
     /**
      * Set any configuration options
@@ -18,8 +18,13 @@ class User extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('uuid')
+            ->setAdditionalSelects([
+                'users.id',
+                'users.uuid',
+            ])
+            ->setEagerLoadAllRelationsEnabled()
             ->setConfigurableAreas([
-                'before-toolbar' => 'users.form',
+                'before-toolbar' => 'administration.users.form',
             ]);
     }
 
@@ -30,19 +35,23 @@ class User extends DataTableComponent
     {
         return [
             Column::make('Name', 'name')
+                ->searchable()
+                ->view('administration.users.partials.info')
                 ->sortable(),
-            Column::make('Email', 'email')
-                ->sortable(),
-            Column::make('Created at', 'created_at')
-                ->sortable(),
-            Column::make('Updated at', 'updated_at')
-                ->sortable(),
-            ActionColumn::make('Actions', 'uuid')
-                ->form('forms.user'),
+            Column::make('Email', 'email')->hideIf(true)->searchable(),
         ];
     }
 
-    public function query(): Builder
+    public function filters(): array
+    {
+        return [
+            SelectFilter::make('Role')
+                ->options(to_options(role_options()))
+                ->filter(fn ($query, $value) => $query->role($value)),
+        ];
+    }
+
+    public function builder(): Builder
     {
         return Model::query();
     }

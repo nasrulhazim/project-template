@@ -13,7 +13,7 @@ trait InteractsWithUuid
     {
         static::creating(function (Model $model) {
             if (Schema::hasColumn($model->getTable(), $model->getUuidColumnName()) && is_null($model->{$model->getUuidColumnName()})) {
-                $model->{$model->getUuidColumnName()} = Str::uuid();
+                $model->{$model->getUuidColumnName()} = Str::orderedUuid();
             }
         });
     }

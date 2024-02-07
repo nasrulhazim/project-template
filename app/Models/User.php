@@ -45,7 +45,7 @@ class User extends Authenticatable implements AuditableContract, HasMedia, MustV
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'uuid', 'deleted_at',
     ];
 
     /**
