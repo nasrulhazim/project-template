@@ -12,27 +12,27 @@
         <x-slot name="content">
             <div class="col-span-6 sm:col-span-4">
                 <x-label for="name" value="{{ __('Name') }}" />
-                <x-input id="name" type="text" class="mt-1 block w-full" wire:model="state.name" />
+                <x-input id="name" type="text" class="mt-1 block w-full" wire:model.live="state.name" />
                 <x-input-error for="name" class="mt-2" />
             </div>
 
             <div class="col-span-6 sm:col-span-4 mt-2">
                 <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" type="email" class="mt-1 block w-full" wire:model="state.email" />
+                <x-input id="email" type="email" class="mt-1 block w-full" wire:model.live="state.email" />
                 <x-input-error for="email" class="mt-2" />
             </div>
 
             <div class="col-span-6 sm:col-span-4 mt-2">
                 <x-label for="password" value="{{ __('Password') }}" />
                 <x-input id="password" type="password" class="mt-1 block w-full"
-                    wire:model="state.password" />
+                    wire:model.live="state.password" />
                 <x-input-error for="password" class="mt-2" />
             </div>
 
             <div class="col-span-6 sm:col-span-4 mt-2">
                 <x-label for="password_confirmation" value="{{ __('Password Confirmation') }}" />
                 <x-input id="password_confirmation" type="password" class="mt-1 block w-full"
-                    wire:model="state.password_confirmation" />
+                    wire:model.live="state.password_confirmation" />
                 <x-input-error for="password_confirmation" class="mt-2" />
             </div>
         </x-slot>

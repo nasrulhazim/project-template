@@ -1,24 +1,24 @@
 <div>
     <div class="flex justify-end mb-4">
-        <x-jet-button wire:click="create" wire:loading.attr="disabled">
+        <x-button wire:click="create" wire:loading.attr="disabled">
             {{ __('Add New Record') }}
-        </x-jet-button>
+        </x-button>
     </div>
-    <x-jet-dialog-modal wire:model="displayingModal">
+    <x-dialog-modal wire:model="displayingModal">
         <x-slot name="title">
             {{ __('Record Details') }}
         </x-slot>
 
         <x-slot name="content">
             <div class="col-span-6 sm:col-span-4 mt-2">
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" />
-                <x-jet-input-error for="name" class="mt-2" />
+                <x-label for="name" value="{{ __('Name') }}" />
+                <x-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" />
+                <x-input-error for="name" class="mt-2" />
             </div>
         </x-slot>
 
         <x-slot name="footer">
             @include('livewire.forms.footer')
         </x-slot>
-    </x-jet-dialog-modal>
+    </x-dialog-modal>
 </div>

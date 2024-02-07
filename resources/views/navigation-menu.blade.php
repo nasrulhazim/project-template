@@ -50,6 +50,12 @@
                                             {{ __('Queues') }}
                                         </x-dropdown-link>
                                     @endcan
+
+                                    @can('viewAccessControl')
+                                        <x-dropdown-link href="{{ route('admin.access-control.index') }}">
+                                            {{ __('Access Control') }}
+                                        </x-dropdown-link>
+                                    @endcan
                                 </div>
                             </x-slot>
                         </x-dropdown>
@@ -287,6 +293,12 @@
                     @can('viewHorizon')
                         <x-responsive-nav-link  href="{{ url(config('horizon.path')) }}" target="_blank">
                             {{ __('Queues') }}
+                        </x-responsive-nav-link >
+                    @endcan
+
+                    @can('viewAccessControl')
+                        <x-responsive-nav-link  href="{{ route('admin.access-control.index') }}">
+                            {{ __('Access Control') }}
                         </x-responsive-nav-link >
                     @endcan
                 @endcan

@@ -1,5 +1,5 @@
 <div>
-    <div x-data="{ toggle : @entangle($status) }" class="my-2">
+    <div x-data="{ toggle : @entangle($status).live }" class="my-2">
         <x-label class="mb-1">{{ $label ?? 'Status' }}</x-label>
         <button type="button"
              x-on:click="toggle = ! toggle"

@@ -20,7 +20,7 @@ class AccessControlSeeder extends Seeder
 
     private function seedRoles()
     {
-        foreach (config('access-matrix.roles') as $role => $description) {
+        foreach (config('access-control.roles') as $role => $description) {
             Role::updateOrCreate([
                 'name' => $role,
                 'display_name' => str($role)->headline()->toString(),
@@ -33,7 +33,7 @@ class AccessControlSeeder extends Seeder
 
     private function seedPermissions()
     {
-        collect(config('access-matrix.permissions'))
+        collect(config('access-control.permissions'))
             ->each(function ($permission) {
                 $module = $permission['module'];
                 $functions = $permission['functions'];
@@ -53,7 +53,7 @@ class AccessControlSeeder extends Seeder
                 }
             });
 
-        collect(config('access-matrix.generic_permissions'))
+        collect(config('access-control.generic_permissions'))
             ->each(function ($permission) {
                 Permission::updateOrCreate([
                     'name' => $permission,
@@ -64,7 +64,7 @@ class AccessControlSeeder extends Seeder
 
     private function mapPermissionRole()
     {
-        foreach (config('access-matrix.roles_permissions') as $permission => $roles) {
+        foreach (config('access-control.roles_permissions') as $permission => $roles) {
             $roles = Role::whereIn('name', $roles)->get();
             foreach ($roles as $role) {
                 if ($role && ! $role->hasPermissionTo($permission)) {

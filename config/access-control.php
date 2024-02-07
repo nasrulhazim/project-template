@@ -1,6 +1,9 @@
 <?php
 
 return [
+
+    'enabled' => env('ACCESS_CONTROL_ENABLED', true),
+
     'roles' => [
         'superadmin' => 'Dictactor',
         'administrator' => 'Play a role in working with administration works.',
@@ -50,10 +53,15 @@ return [
         'view-telescope' => ['superadmin'],
         'view-horizon' => ['superadmin'],
         'view-admin' => ['superadmin'],
+        'view-access-control' => ['superadmin', 'administrator'],
+        'update-access-control' => ['superadmin', 'administrator'],
+        'create-access-control' => ['superadmin', 'administrator'],
+        'delete-access-control' => ['superadmin', 'administrator'],
     ],
 
     'generic_permissions' => [
         'update-settings', 'update-administration', 'impersonate', 'manage-api-token',
         'view-telescope', 'view-horizon', 'view-admin',
+        'view-access-control', 'update-access-control', 'create-access-control', 'delete-access-control',
     ],
 ];
