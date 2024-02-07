@@ -36,7 +36,7 @@ class DefaultNotification extends Notification
      *
      * @return void
      */
-    public function __construct(string $subject, string $message, string $url = null)
+    public function __construct(string $subject, string $message, ?string $url = null)
     {
         $this->subject = $subject;
         $this->message = $message;
