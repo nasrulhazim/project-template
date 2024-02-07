@@ -1,23 +1,71 @@
 #!/usr/bin/env bash
 
+# Define project directory
+project_dir="/var/www/project-template"
+
+# Navigate to project directory
 echo "Navigate to project directory..."
-cd /var/www/project-template
-echo "Pulling codes..."
+cd "$project_dir" || exit
 
-git fetch --tags
-tag=$(git describe --tags `git rev-list --tags --max-count=1`)
-echo "Checkout latest tag"
-git checkout $tag
+# Function to pull latest codes from a specific branch
+pull_latest_codes() {
+    echo "Pulling latest codes from $1 branch..."
+    git fetch origin "$1" && git checkout "$1" && git pull origin "$1"
+}
 
+# Parse command line arguments
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -t|--tag)
+            tag="latest"
+            shift
+            ;;
+        -b|--branch)
+            branch="$2"
+            shift 2
+            ;;
+        *)
+            echo "Unknown option: $1"
+            exit 1
+            ;;
+    esac
+done
+
+# Check if tag or branch is specified
+if [[ -n "$tag" ]]; then
+    # Get latest tag
+    tag=$(git describe --tags "$(git rev-list --tags --max-count=1)")
+    # Checkout latest tag
+    echo "Checkout tag: $tag"
+    git fetch --tags && git checkout "$tag"
+elif [[ -n "$branch" ]]; then
+    # Pull from specific branch if specified
+    pull_latest_codes "$branch"
+else
+    # Default to master branch
+    branch="master"
+    pull_latest_codes "$branch"
+fi
+
+# Install dependencies
 echo "Install dependencies..."
-y | composer install
+yes | composer install
 
+# Clear config caches
 echo "Clear config caches..."
 php artisan config:clear
+
+# Clear view caches
 echo "Clear view caches..."
 php artisan view:clear
 
-echo "Change project ownerhship to web server..."
-chown nginx:nginx /var/www/project-template -R
+# Restart horizon
+echo "Restart horizon..."
+php artisan horizon:terminate
 
+# Change project ownership to web server
+echo "Change project ownership to web server..."
+chown nginx:nginx "$project_dir" -R
+
+# Clear the terminal
 clear
