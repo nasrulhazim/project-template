@@ -1,6 +1,6 @@
 <?php
 
-use Bekwoh\LaravelMediaSecure\Http\Controllers\MediaController;
+use CleaniqueCoders\LaravelMediaSecure\Http\Controllers\MediaController;
 
 return [
     /**
@@ -11,7 +11,7 @@ return [
     /**
      * Spatie's Model Media Policy
      */
-    'policy' => \Bekwoh\LaravelMediaSecure\Policies\MediaPolicy::class,
+    'policy' => \CleaniqueCoders\LaravelMediaSecure\Policies\MediaPolicy::class,
 
     /**
      * Controller to manage access to the media.

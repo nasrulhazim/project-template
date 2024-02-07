@@ -2,7 +2,7 @@
 
 namespace App\Actions\Fortify;
 
-use Bekwoh\LaravelBlacklist\Rules\Blacklist;
+use CleaniqueCoders\LaravelBlacklist\Rules\Blacklist;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;

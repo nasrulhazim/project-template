@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ea84297fcbf7e82af0f52e05b1681082",
+    "content-hash": "d9f80a1ec33abcc20b209314c8a34ce0",
     "packages": [
         {
             "name": "api-ecosystem-for-laravel/dingo-api",
@@ -788,16 +788,16 @@
         },
         {
             "name": "cleaniquecoders/laravel-media-secure",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cleaniquecoders/laravel-media-secure.git",
-                "reference": "1f0cad338cddb1a4a77d303e8f5b9fdc27aacc8b"
+                "reference": "97e710576d122c6782997b1b4201a0c8967609de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cleaniquecoders/laravel-media-secure/zipball/1f0cad338cddb1a4a77d303e8f5b9fdc27aacc8b",
-                "reference": "1f0cad338cddb1a4a77d303e8f5b9fdc27aacc8b",
+                "url": "https://api.github.com/repos/cleaniquecoders/laravel-media-secure/zipball/97e710576d122c6782997b1b4201a0c8967609de",
+                "reference": "97e710576d122c6782997b1b4201a0c8967609de",
                 "shasum": ""
             },
             "require": {
@@ -824,10 +824,10 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "Bekwoh\\LaravelMediaSecure\\LaravelMediaSecureServiceProvider"
+                        "CleaniqueCoders\\LaravelMediaSecure\\LaravelMediaSecureServiceProvider"
                     ],
                     "aliases": {
-                        "LaravelMediaSecure": "Bekwoh\\LaravelMediaSecure\\Facades\\LaravelMediaSecure"
+                        "LaravelMediaSecure": "CleaniqueCoders\\LaravelMediaSecure\\Facades\\LaravelMediaSecure"
                     }
                 }
             },
@@ -836,8 +836,8 @@
                     "support/helpers.php"
                 ],
                 "psr-4": {
-                    "Bekwoh\\LaravelMediaSecure\\": "src",
-                    "Bekwoh\\LaravelMediaSecure\\Database\\Factories\\": "database/factories"
+                    "CleaniqueCoders\\LaravelMediaSecure\\": "src",
+                    "CleaniqueCoders\\LaravelMediaSecure\\Database\\Factories\\": "database/factories"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -852,17 +852,17 @@
                 }
             ],
             "description": "Securely display Media",
-            "homepage": "https://github.com/bekwoh/laravel-media-secure",
+            "homepage": "https://github.com/cleaniquecoders/laravel-media-secure",
             "keywords": [
-                "bekwoh",
+                "cleaniquecoders",
                 "laravel",
                 "laravel-media-secure"
             ],
             "support": {
                 "issues": "https://github.com/cleaniquecoders/laravel-media-secure/issues",
-                "source": "https://github.com/cleaniquecoders/laravel-media-secure/tree/1.1.0"
+                "source": "https://github.com/cleaniquecoders/laravel-media-secure/tree/1.2.0"
             },
-            "time": "2023-02-25T03:10:50+00:00"
+            "time": "2023-12-03T07:44:40+00:00"
         },
         {
             "name": "cleaniquecoders/mailhistory",

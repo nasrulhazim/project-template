@@ -1,9 +1,9 @@
 <?php
 
-// config for Bekwoh/LaravelDbDoc
+// config for CleaniqueCoders/LaravelDbDoc
 
-use Bekwoh\LaravelDbDoc\Presentation\Json;
-use Bekwoh\LaravelDbDoc\Presentation\Markdown;
+use CleaniqueCoders\LaravelDbDoc\Presentation\Json;
+use CleaniqueCoders\LaravelDbDoc\Presentation\Markdown;
 
 return [
     'format' => 'markdown',
