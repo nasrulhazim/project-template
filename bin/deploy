@@ -1,25 +1,24 @@
 #!/usr/bin/env bash
 
-# Define project directory
+# Default project directory
 project_dir="/var/www/project-template"
-
-# Navigate to project directory
-echo "Navigate to project directory..."
-cd "$project_dir" || exit
 
 # Function to pull latest codes from a specific branch
 pull_latest_codes() {
-    echo "Pulling latest codes from $1 branch..."
-    git fetch origin "$1" && git checkout "$1" && git pull origin "$1"
+    local branch=$1
+    echo "Pulling latest codes from $branch branch..."
+    git fetch origin "$branch" && git checkout "$branch" && git pull origin "$branch"
 }
 
 # Function to display script usage
 display_help() {
-    echo "Usage: $(basename "$0") [OPTIONS]"
+    echo "Usage: deploy [OPTIONS]"
     echo "Options:"
-    echo "  -t, --tag             Checkout latest tag"
-    echo "  -b, --branch BRANCH   Checkout specific branch"
-    echo "  -h, --help            Display this help message"
+    echo "  -t, --tag              Checkout latest tag"
+    echo "  -b, --branch BRANCH    Checkout specific branch"
+    echo "  -d, --directory DIR    Project directory path (default: /var/www/project-template)"
+    echo "  -h, --help             Display this help message"
+    echo " "
     exit 0
 }
 
@@ -34,6 +33,10 @@ while [[ $# -gt 0 ]]; do
             branch="$2"
             shift 2
             ;;
+        -d|--directory)
+            project_dir="$2"
+            shift 2
+            ;;
         -h|--help)
             display_help
             ;;
@@ -43,6 +46,16 @@ while [[ $# -gt 0 ]]; do
             ;;
     esac
 done
+
+# Check if provided project directory exists
+if [[ ! -d "$project_dir" ]]; then
+    echo "Error: Project directory '$project_dir' does not exist."
+    exit 1
+fi
+
+# Navigate to project directory
+echo "Navigate to project directory: $project_dir"
+cd "$project_dir" || exit
 
 # Check if tag or branch is specified
 if [[ -n "$tag" ]]; then
