@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "633ef68e1a1ac27819727beb7a083dc9",
+    "content-hash": "ea84297fcbf7e82af0f52e05b1681082",
     "packages": [
         {
             "name": "api-ecosystem-for-laravel/dingo-api",
@@ -863,6 +863,77 @@
                 "source": "https://github.com/cleaniquecoders/laravel-media-secure/tree/1.1.0"
             },
             "time": "2023-02-25T03:10:50+00:00"
+        },
+        {
+            "name": "cleaniquecoders/mailhistory",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cleaniquecoders/mail-history.git",
+                "reference": "ac987876a869cff59b060e5d416385daca8a6d0a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cleaniquecoders/mail-history/zipball/ac987876a869cff59b060e5d416385daca8a6d0a",
+                "reference": "ac987876a869cff59b060e5d416385daca8a6d0a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^9.0|^10.0",
+                "php": "^8.1",
+                "spatie/laravel-package-tools": "^1.14.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^6.1|^7.9",
+                "nunomaduro/larastan": "^2.0.1",
+                "orchestra/testbench": "^8.0",
+                "pestphp/pest": "^1.21|^2.0",
+                "pestphp/pest-plugin-laravel": "^1.4|^2.0",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "CleaniqueCoders\\MailHistory\\MailHistoryServiceProvider"
+                    ],
+                    "aliases": {
+                        "MailHistory": "CleaniqueCoders\\MailHistory\\Facades\\MailHistory"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "CleaniqueCoders\\MailHistory\\": "src/",
+                    "CleaniqueCoders\\MailHistory\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nasrul Hazim Bin Mohamad",
+                    "email": "nasrulhazim.m@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Keep track all the emails sent in the your Laravel application.",
+            "homepage": "https://github.com/cleaniquecoders/mailhistory",
+            "keywords": [
+                "cleaniquecoders",
+                "laravel",
+                "mailhistory"
+            ],
+            "support": {
+                "issues": "https://github.com/cleaniquecoders/mail-history/issues",
+                "source": "https://github.com/cleaniquecoders/mail-history/tree/1.4.0"
+            },
+            "time": "2023-06-06T03:55:36+00:00"
         },
         {
             "name": "dasprid/enum",
