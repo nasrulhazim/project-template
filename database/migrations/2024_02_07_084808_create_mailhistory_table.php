@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->string('hash')->index();
-            $table->enum('status', ['Sending', 'Sent'])->default('Sending');
+            $table->string('status')->default('Sending')->comment('Sending / Sent');
             $table->json('headers');
             $table->text('body')->nullable();
             $table->json('content')
