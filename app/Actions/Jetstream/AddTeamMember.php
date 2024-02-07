@@ -19,7 +19,7 @@ class AddTeamMember implements AddsTeamMembers
      * @param  mixed  $user
      * @param  mixed  $team
      */
-    public function add($user, $team, string $email, string $role = null): void
+    public function add($user, $team, string $email, ?string $role = null): void
     {
         Gate::forUser($user)->authorize('addTeamMember', $team);
 
