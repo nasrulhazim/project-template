@@ -47,9 +47,13 @@ return [
         'update-administration' => ['superadmin', 'administrator'],
         'impersonate' => ['superadmin', 'administrator'],
         'manage-api-token' => ['superadmin', 'administrator'],
+        'view-telescope' => ['superadmin'],
+        'view-horizon' => ['superadmin'],
+        'view-admin' => ['superadmin'],
     ],
 
     'generic_permissions' => [
         'update-settings', 'update-administration', 'impersonate', 'manage-api-token',
+        'view-telescope', 'view-horizon', 'view-admin',
     ],
 ];

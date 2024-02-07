@@ -6,6 +6,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Horizon Web Access
+    |--------------------------------------------------------------------------
+    |
+    | This option may be used to enable or disable horizon to be view from
+    | browser. Disabling this doesn't means Horizon didn't run.
+    |
+    */
+
+    'enabled' => env('HORIZON_ENABLED', true),
+
+    /*
+    |--------------------------------------------------------------------------
     | Horizon Domain
     |--------------------------------------------------------------------------
     |

@@ -37,6 +37,7 @@ class User extends Authenticatable implements AuditableContract, HasMedia, MustV
     use Notifiable;
     use SoftDeletes;
     use TwoFactorAuthenticatable;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -76,4 +77,20 @@ class User extends Authenticatable implements AuditableContract, HasMedia, MustV
     protected $appends = [
         'profile_photo_url',
     ];
+
+
+    public function canImpersonate(): bool
+    {
+        return config('impersonate.enabled');
+    }
+
+    public function canBeImpersonated()
+    {
+        return ! $this->hasRole('superadmin');
+    }
+
+    public function hasNotifications()
+    {
+        return $this->notifications()->unread()->exists();
+    }
 }
