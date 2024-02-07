@@ -27,7 +27,7 @@
         "laravel/telescope": "^4.12",
         "laravel/tinker": "^2.8",
         "league/flysystem-aws-s3-v3": "^3.0",
-        "livewire/livewire": "^3.0",
+        "livewire/livewire": "^3.4",
         "owen-it/laravel-auditing": "^13.1",
         "predis/predis": "^1.1",
         "rappasoft/laravel-livewire-tables": "^3.1",
