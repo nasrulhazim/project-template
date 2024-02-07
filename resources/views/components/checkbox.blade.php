@@ -1,7 +1,1 @@
-@props(['value' => true, 'label' => null])
-<div class="inline-flex space-x-4 mx-2">
-    <x-jet-checkbox value="{{ $value }}" {{ $attributes->merge(['class' => 'mt-1 inline-flex']) }} />
-    @if($label)
-        <span class=""> {{ __($label) }} </span>
-    @endif
-</div>
+<input type="checkbox" {!! $attributes->merge(['class' => 'rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800']) !!}>

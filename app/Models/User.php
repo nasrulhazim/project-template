@@ -41,16 +41,16 @@ class User extends Authenticatable implements AuditableContract, HasMedia, MustV
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<string>
+     * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'email', 'password', 'deleted_at',
+        'name', 'email', 'password',
     ];
 
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $hidden = [
         'password',
@@ -62,34 +62,18 @@ class User extends Authenticatable implements AuditableContract, HasMedia, MustV
     /**
      * The attributes that should be cast.
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'deleted_at' => 'datetime',
     ];
 
     /**
      * The accessors to append to the model's array form.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $appends = [
         'profile_photo_url',
     ];
-
-    public function canImpersonate(): bool
-    {
-        return config('impersonate.enabled');
-    }
-
-    public function canBeImpersonated()
-    {
-        return ! $this->hasRole('superadmin');
-    }
-
-    public function hasNotifications()
-    {
-        return $this->notifications()->unread()->exists();
-    }
 }

@@ -44,30 +44,24 @@ class TeamPolicy
 
     /**
      * Determine whether the user can add team members.
-     *
-     * @return mixed
      */
-    public function addTeamMember(User $user, Team $team)
+    public function addTeamMember(User $user, Team $team): bool
     {
         return $user->ownsTeam($team);
     }
 
     /**
      * Determine whether the user can update team member permissions.
-     *
-     * @return mixed
      */
-    public function updateTeamMember(User $user, Team $team)
+    public function updateTeamMember(User $user, Team $team): bool
     {
         return $user->ownsTeam($team);
     }
 
     /**
      * Determine whether the user can remove team members.
-     *
-     * @return mixed
      */
-    public function removeTeamMember(User $user, Team $team)
+    public function removeTeamMember(User $user, Team $team): bool
     {
         return $user->ownsTeam($team);
     }

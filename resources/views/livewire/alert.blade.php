@@ -1,5 +1,5 @@
 <div>
-    <x-jet-dialog-modal wire:model.live="displayingModal">
+    <x-dialog-modal wire:model.live="displayingModal">
         <x-slot name="title">
             {{ $state['title'] }}
         </x-slot>
@@ -11,9 +11,9 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-jet-button class="ml-3" wire:click="$set('displayingModal', false)" wire:loading.attr="disabled">
+            <x-button class="ml-3" wire:click="$set('displayingModal', false)" wire:loading.attr="disabled">
                 {{ __('Close') }}
-            </x-jet-button>
+            </x-button>
         </x-slot>
-    </x-jet-dialog-modal>
+    </x-dialog-modal>
 </div>

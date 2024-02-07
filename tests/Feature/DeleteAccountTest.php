@@ -1,46 +1,31 @@
 <?php
 
-namespace Tests\Feature;
-
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Jetstream\Features;
 use Laravel\Jetstream\Http\Livewire\DeleteUserForm;
 use Livewire\Livewire;
-use Tests\TestCase;
 
-final class DeleteAccountTest extends TestCase
-{
-    use RefreshDatabase;
+test('user accounts can be deleted', function () {
+    $this->actingAs($user = User::factory()->create());
 
-    public function test_user_accounts_can_be_deleted(): void
-    {
-        if (! Features::hasAccountDeletionFeatures()) {
-            $this->markTestSkipped('Account deletion is not enabled.');
-        }
+    $component = Livewire::test(DeleteUserForm::class)
+        ->set('password', 'password')
+        ->call('deleteUser');
 
-        $this->actingAs($user = User::factory()->create());
+    expect($user->fresh())->toBeNull();
+})->skip(function () {
+    return ! Features::hasAccountDeletionFeatures();
+}, 'Account deletion is not enabled.');
 
-        $component = Livewire::test(DeleteUserForm::class)
-            ->set('password', 'password')
-            ->call('deleteUser');
+test('correct password must be provided before account can be deleted', function () {
+    $this->actingAs($user = User::factory()->create());
 
-        $this->assertNull($user->deleted_at);
-    }
+    Livewire::test(DeleteUserForm::class)
+        ->set('password', 'wrong-password')
+        ->call('deleteUser')
+        ->assertHasErrors(['password']);
 
-    public function test_correct_password_must_be_provided_before_account_can_be_deleted(): void
-    {
-        if (! Features::hasAccountDeletionFeatures()) {
-            $this->markTestSkipped('Account deletion is not enabled.');
-        }
-
-        $this->actingAs($user = User::factory()->create());
-
-        Livewire::test(DeleteUserForm::class)
-            ->set('password', 'wrong-password')
-            ->call('deleteUser')
-            ->assertHasErrors(['password']);
-
-        $this->assertNotNull($user->fresh());
-    }
-}
+    expect($user->fresh())->not->toBeNull();
+})->skip(function () {
+    return ! Features::hasAccountDeletionFeatures();
+}, 'Account deletion is not enabled.');

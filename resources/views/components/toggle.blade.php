@@ -1,6 +1,6 @@
 <div>
     <div x-data="{ toggle : @entangle($status) }" class="my-2">
-        <x-jet-label class="mb-1">{{ $label ?? 'Status' }}</x-jet-label>
+        <x-label class="mb-1">{{ $label ?? 'Status' }}</x-label>
         <button type="button"
              x-on:click="toggle = ! toggle"
             x-bind:class="toggle ? 'bg-indigo-600' : 'bg-gray-200' "

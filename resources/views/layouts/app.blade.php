@@ -8,51 +8,38 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
-        <!-- Styles -->
-        @vite('resources/css/app.css')
-
-        @livewireStyles
-
-        @stack('styles')
-    </head>
-    <body class="font-sans antialiased bg-slate-100">
-        <div class="fixed top-0 inset-x-0 z-20">
-            <x-impersonating></x-impersonating>
-        </div>
-
-        <div>
-            @livewire('menu', ['menu' => 'sidebar'])
-            <div class="md:pl-64">
-                @livewire('menu', ['menu' => 'navbar'])
-                <div>
-                    @if(breadcrumb_enabled())
-                        <div>
-                            {{ Breadcrumbs::render() }}
-                        </div>
-                    @endif
-                    @isset($header)
-                        <div class="px-4 py-10">
-                            {{ $header }}
-                        </div>
-                    @endisset
-                </div>
-                <div>
-                    {{ $slot }}
-                </div>
-            </div>
-        </div>
-        
-        @stack('modals')
+        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        @vite('resources/js/app.js')
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <!-- Styles -->
+        @livewireStyles
+    </head>
+    <body class="font-sans antialiased">
+        <x-banner />
+
+        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+            @livewire('navigation-menu')
+
+            <!-- Page Heading -->
+            @if (isset($header))
+                <header class="bg-white dark:bg-gray-800 shadow">
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        {{ $header }}
+                    </div>
+                </header>
+            @endif
+
+            <!-- Page Content -->
+            <main>
+                {{ $slot }}
+            </main>
+        </div>
+
+        @stack('modals')
 
         @livewireScripts
-
-        @livewire('confirm')
-        @livewire('alert')
-        @stack('scripts')
     </body>
 </html>

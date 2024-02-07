@@ -14,5 +14,5 @@
         @if($multiple) multiple @endif
         @if($required) required @endif
     >
-    <x-jet-input-error for="{{ $name }}" class="mt-2" />
+    <x-input-error for="{{ $name }}" class="mt-2" />
 </div>
