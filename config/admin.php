@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'enabled' => env('ADMIN_ENABLED', true)
+    'enabled' => env('ADMIN_ENABLED', true),
 ];

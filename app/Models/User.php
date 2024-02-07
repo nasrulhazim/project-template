@@ -35,9 +35,9 @@ class User extends Authenticatable implements AuditableContract, HasMedia, MustV
     use InteractsWithResourceRoute;
     use InteractsWithUuid;
     use Notifiable;
+    use Notifiable;
     use SoftDeletes;
     use TwoFactorAuthenticatable;
-    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -77,7 +77,6 @@ class User extends Authenticatable implements AuditableContract, HasMedia, MustV
     protected $appends = [
         'profile_photo_url',
     ];
-
 
     public function canImpersonate(): bool
     {
