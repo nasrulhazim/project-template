@@ -39,11 +39,6 @@
 
                             <x-slot name="content">
                                 <div class="w-60">
-
-                                    <div class="block px-4 py-2 text-xs text-gray-400">
-                                        {{ __('Monitoring') }}
-                                    </div>
-
                                     @can('viewTelescope')
                                         <x-dropdown-link href="{{ url(config('telescope.path')) }}" target="_blank">
                                             {{ __('Issues') }}
@@ -275,6 +270,26 @@
                         @endforeach
                     @endif
                 @endif
+
+                @can('viewAdmin')
+                    <div class="border-t border-gray-200 dark:border-gray-600"></div>
+
+                    <div class="block px-4 py-2 text-xs text-gray-400">
+                        {{ __('Administration') }}
+                    </div>
+
+                    @can('viewTelescope')
+                        <x-responsive-nav-link  href="{{ url(config('telescope.path')) }}" target="_blank">
+                            {{ __('Issues') }}
+                        </x-responsive-nav-link >
+                    @endcan
+
+                    @can('viewHorizon')
+                        <x-responsive-nav-link  href="{{ url(config('horizon.path')) }}" target="_blank">
+                            {{ __('Queues') }}
+                        </x-responsive-nav-link >
+                    @endcan
+                @endcan
             </div>
         </div>
     </div>
