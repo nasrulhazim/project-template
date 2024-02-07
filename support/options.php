@@ -18,7 +18,6 @@ if (! function_exists('to_options')) {
     }
 }
 
-use App\Models\Setup\Category;
 use Illuminate\Support\Facades\Cache;
 
 if (! function_exists('role_options')) {
@@ -60,4 +59,3 @@ if (! function_exists('audit_type_options')) {
         });
     }
 }
-
