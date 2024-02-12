@@ -16,7 +16,7 @@ class ActionColumn extends Column
         return $this;
     }
 
-    public function setView($view)
+    public function setView($view): self
     {
         $this->view = $view;
 

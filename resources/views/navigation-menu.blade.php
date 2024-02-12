@@ -61,7 +61,13 @@
                                     <x-dropdown-link href="{{ route('admin.users.index') }}">
                                         {{ __('Users') }}
                                     </x-dropdown-link>
-                                {{-- @endcan --}}
+                                    {{-- @endcan --}}
+
+                                    {{-- @can('viewAudit') --}}
+                                    <x-dropdown-link href="{{ route('admin.audit-trail.index') }}">
+                                        {{ __('Audit Trail') }}
+                                    </x-dropdown-link>
+                                    {{-- @endcan --}}
                                 </div>
                             </x-slot>
                         </x-dropdown>
@@ -307,6 +313,18 @@
                             {{ __('Access Control') }}
                         </x-responsive-nav-link >
                     @endcan
+
+                    {{-- @can('viewUser') --}}
+                        <x-responsive-nav-link  href="{{ route('admin.users.index') }}">
+                            {{ __('User') }}
+                        </x-responsive-nav-link >
+                    {{-- @endcan --}}
+
+                    {{-- @can('viewAudit') --}}
+                        <x-responsive-nav-link  href="{{ route('admin.audit-trail.index') }}">
+                            {{ __('Audit Trail') }}
+                        </x-responsive-nav-link >
+                    {{-- @endcan --}}
                 @endcan
             </div>
         </div>
