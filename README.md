@@ -4,19 +4,27 @@
 
 This is my personal project template / boilerplate for creating Laravel based projects.
 
-![screenshot](./.art/screenshot.png)
+## Development
 
-## Deployment
+Some of the features has been added to this project. See the following sections for more details.
 
 Clone this directory and run
 
 ```bash
-/path/to/project/.bin/install
+/path/to/project/bin/install
 ```
 
-## Development
+You may found the following commands are useful during development:
 
-Some of the features has been added to this project. See the following sections for more details.
+| Command | Description |
+|---------|-------------|
+| `php artisan reload:db` | Drop all tables and remigrate and seed database |
+| `php artisan reload:cache` | Clear all caches and cache back all caches available |
+| `php artisan reload:all` | Run `reload:cache` and `reload:db` |
+| `php artisan seed:prepare` | By default this command run `PrepareSeeder` which seed all necessary data for first time deployment. This command run by default in `reload:db` command |
+| `php artisan seed:dev` | Seed any data for development purpose. You may configure `DevSeeder` to meet your requirements. |
+
+You may run other make commands which available under `app/Console/Commands/Make` namespace.
 
 ### Running Docker
 
@@ -116,14 +124,14 @@ You may want to import Insomnia [file](Insomnia.json) to test out your APIs.
 Using Alert component:
 
 ```php
-$this->dispatchTo('alert', 'displayAlert',  __('Connection'), __('Connection succesfully deleted'));
+$this->dispatch('alert', 'displayAlert',  __('Connection'), __('Connection succesfully deleted'));
 ```
 
 Using Confirm component:
 
 ```php
 <div class="cursor-pointer" class="bg-red-500"
-    wire:click="$dispatchTo('confirm', 'displayConfirmation', 'Delete Connection', 'Are you sure?', 'connection-form', 'destroyConnection', '{{ $uuid }}')">
+    wire:click="$dispatch('confirm', 'displayConfirmation', 'Delete Connection', 'Are you sure?', 'connection-form', 'destroyConnection', '{{ $uuid }}')">
     {{ __('Remove') }}
 </div>
 ```
