@@ -60,7 +60,7 @@ class DefaultNotification extends Notification
      */
     public function toMail($notifiable): MailMessage
     {
-        return (new MailMessage())
+        return (new MailMessage)
             ->subject($this->getSubject())
             ->markdown('mail.notification', $this->getData());
     }

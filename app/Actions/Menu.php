@@ -12,7 +12,7 @@ class Menu
 {
     public static function make()
     {
-        return new self();
+        return new self;
     }
 
     public function build(string $builder): Builder|ContractsMenu
@@ -26,7 +26,7 @@ class Menu
         /**
          * @var \App\Contracts\Builder|\App\Contracts\Menu
          */
-        $builder = new $class();
+        $builder = new $class;
 
         ContractException::throwUnless(! $builder instanceof Builder, 'missingContract', $class, Builder::class);
         ContractException::throwUnless(! $builder instanceof ContractsMenu, 'missingContract', $class, Builder::class);

@@ -24,7 +24,7 @@ trait InteractsWithTeam
     {
         parent::booted();
 
-        static::addGlobalScope(new TeamScope());
+        static::addGlobalScope(new TeamScope);
     }
 
     public function team()
