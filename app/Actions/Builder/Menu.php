@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\Builder;
 
 use App\Actions\Builder\Menu\Navbar;
 use App\Actions\Builder\Menu\Sidebar;

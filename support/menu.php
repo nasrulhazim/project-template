@@ -1,6 +1,6 @@
 <?php
 
-use App\Actions\Menu;
+use App\Actions\Builder\Menu;
 
 if (! function_exists('menu')) {
     function menu(string $builder)
