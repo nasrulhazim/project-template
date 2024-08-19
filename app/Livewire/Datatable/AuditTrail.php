@@ -46,7 +46,7 @@ class AuditTrail extends DataTableComponent
                 ->searchable()
                 ->sortable(),
             Column::make('URL', 'url')
-                ->format(fn ($value) => str_replace(url('/'), '', $value))
+                ->format(fn ($value) => str_replace(config('app.url'), '', $value))
                 ->searchable()
                 ->sortable(),
             Column::make('Type', 'auditable_type')

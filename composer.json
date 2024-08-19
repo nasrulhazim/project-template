@@ -73,8 +73,7 @@
             "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
-            "@php artisan livewire:publish"
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
@@ -84,6 +83,7 @@
         ],
         "analyse": "@php vendor/bin/phpstan analyse",
         "test": "@php vendor/bin/pest",
+        "test-arch": "@php vendor/bin/pest tests/Feature/ArchitectureTest.php",
         "test-coverage": "vendor/bin/pest --coverage",
         "format": "@php vendor/bin/pint",
         "lint": "@php vendor/bin/phplint"
