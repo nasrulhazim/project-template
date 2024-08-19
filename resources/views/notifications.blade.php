@@ -7,7 +7,7 @@
         </div>
     </x-slot>
 
-    <x-panel>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 pt-8">
         <livewire:datatable.notification />
-    </x-panel>
+    </div>
 </x-app-layout>
