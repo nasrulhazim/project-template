@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# Exit script if any command fails
+set -e
+
+# Exit script if an unset variable is used
+set -u
+
+# Update Composer dependencies
+composer update
+
+# Upgrade npm packages and fix any vulnerabilities
+npm upgrade
+npm audit fix --force
+
+# Build the assets
+npm run build
+
+# Check if there are any changes to commit
+if [[ -n $(git status --porcelain) ]]; then
+    # Stage the updated files
+    git add composer.json composer.lock package.json public/build
+
+    # Commit the changes
+    git commit -m "Update dependencies"
+
+    # Inform the user of success
+    echo "You have successfully updated the dependencies! 🎉🎉🎉"
+else
+    # Inform the user that there is nothing to commit
+    echo "Nothing to do here."
+fi

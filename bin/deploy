@@ -1,97 +1,73 @@
 #!/usr/bin/env bash
 
-# Default project directory
-project_dir="/var/www/project-template"
+BRANCH=""
+REMOTE="origin"
+PROJECT_PATH="/var/www/project-template"
+COMPOSER_ALLOW_SUPERUSER=1
 
-# Function to pull latest codes from a specific branch
-pull_latest_codes() {
-    local branch=$1
-    echo "Pulling latest codes from $branch branch..."
-    git fetch origin "$branch" && git checkout "$branch" && git pull origin "$branch"
+# Function to display usage
+usage() {
+    echo "Usage: $0 [-b branch] [-r remote] [-p project_path]"
+    exit 1
 }
 
-# Function to display script usage
-display_help() {
-    echo "Usage: deploy [OPTIONS]"
-    echo "Options:"
-    echo "  -t, --tag              Checkout latest tag"
-    echo "  -b, --branch BRANCH    Checkout specific branch"
-    echo "  -d, --directory DIR    Project directory path (default: /var/www/project-template)"
-    echo "  -h, --help             Display this help message"
-    echo " "
-    exit 0
+# Function to get the latest tag
+get_latest_tag() {
+    git fetch --tags
+    LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
+    echo $LATEST_TAG
 }
 
-# Parse command line arguments
-while [[ $# -gt 0 ]]; do
-    case "$1" in
-        -t|--tag)
-            tag="latest"
-            shift
-            ;;
-        -b|--branch)
-            branch="$2"
-            shift 2
-            ;;
-        -d|--directory)
-            project_dir="$2"
-            shift 2
-            ;;
-        -h|--help)
-            display_help
-            ;;
-        *)
-            echo "Unknown option: $1"
-            exit 1
-            ;;
+# Parse command line arguments for branch, remote, and project path
+while getopts "b:r:p:" flag
+do
+    case "${flag}" in
+        b) BRANCH=${OPTARG};;
+        r) REMOTE=${OPTARG};;
+        p) PROJECT_PATH=${OPTARG};;
+        *) usage;;  # Handle invalid flag
     esac
 done
 
-# Check if provided project directory exists
-if [[ ! -d "$project_dir" ]]; then
-    echo "Error: Project directory '$project_dir' does not exist."
+if [ ! -d "$PROJECT_PATH" ]; then
+    echo "$PROJECT_PATH does not exist. Nothing to do."
     exit 1
 fi
 
-# Navigate to project directory
-echo "Navigate to project directory: $project_dir"
-cd "$project_dir" || exit
+clear
 
-# Check if tag or branch is specified
-if [[ -n "$tag" ]]; then
-    # Get latest tag
-    tag=$(git describe --tags "$(git rev-list --tags --max-count=1)")
-    # Checkout latest tag
-    echo "Checkout tag: $tag"
-    git fetch --tags && git checkout "$tag"
-elif [[ -n "$branch" ]]; then
-    # Pull from specific branch if specified
-    pull_latest_codes "$branch"
-else
-    # Default to master branch
-    branch="master"
-    pull_latest_codes "$branch"
+if [ -z "$BRANCH" ]; then
+    echo "No branch provided, using the latest tag."
+    BRANCH=$(get_latest_tag)
 fi
 
-# Install dependencies
-echo "Install dependencies..."
-yes | composer install
+echo "🚀 Deploying codes for branch/tag $BRANCH from remote $REMOTE at path $PROJECT_PATH"
 
-# Clear config caches
-echo "Clear config caches..."
+echo "Navigate to $PROJECT_PATH"
+cd "$PROJECT_PATH" || exit
+
+echo "Pulling codes"
+git checkout "$BRANCH"
+git pull "$REMOTE" "$BRANCH"
+
+echo "Install dependencies"
+y | composer install
+
+echo "Clear config caches"
 php artisan config:clear
 
-# Clear view caches
-echo "Clear view caches..."
+echo "Clear view caches"
 php artisan view:clear
 
-# Restart horizon
-echo "Restart horizon..."
+echo "Running migration"
+php artisan migrate --force
+
+echo "Restart Horizon"
 php artisan horizon:terminate
 
-# Change project ownership to web server
-echo "Change project ownership to web server..."
-chown nginx:nginx "$project_dir" -R
+echo "Change project ownership to web server"
+chown nginx:nginx "$PROJECT_PATH" -R
 
-# Clear the terminal
 clear
+echo ""
+echo "🚀 Deployed codes for $BRANCH from remote $REMOTE at path $PROJECT_PATH"
