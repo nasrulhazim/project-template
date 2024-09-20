@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Administration;
+namespace App\Http\Controllers\Security;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -16,7 +16,7 @@ class AuditTrailController extends Controller
 
         $sub = 'Audit trail log';
 
-        return view('administration.audit-trail.index', compact('sub'));
+        return view('security.audit-trail.index', compact('sub'));
     }
 
     /**
@@ -30,6 +30,6 @@ class AuditTrailController extends Controller
 
         $sub = 'Audit trail details';
 
-        return view('administration.audit-trail.show', compact('audit', 'sub'));
+        return view('security.audit-trail.show', compact('audit', 'sub'));
     }
 }

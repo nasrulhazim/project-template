@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b-2 border-gray-700 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -52,22 +52,22 @@
                                     @endcan
 
                                     @can('viewAccessControl')
-                                        <x-dropdown-link href="{{ route('admin.access-control.index') }}">
+                                        <x-dropdown-link href="{{ route('security.access-control.index') }}">
                                             {{ __('Access Control') }}
                                         </x-dropdown-link>
                                     @endcan
 
-                                    {{-- @can('viewUser') --}}
-                                    <x-dropdown-link href="{{ route('admin.users.index') }}">
-                                        {{ __('Users') }}
-                                    </x-dropdown-link>
-                                    {{-- @endcan --}}
+                                    @can('viewUser')
+                                        <x-dropdown-link href="{{ route('security.users.index') }}">
+                                            {{ __('Users') }}
+                                        </x-dropdown-link>
+                                    @endcan
 
-                                    {{-- @can('viewAudit') --}}
-                                    <x-dropdown-link href="{{ route('admin.audit-trail.index') }}">
-                                        {{ __('Audit Trail') }}
-                                    </x-dropdown-link>
-                                    {{-- @endcan --}}
+                                    @can('viewAudit')
+                                        <x-dropdown-link href="{{ route('security.audit-trail.index') }}">
+                                            {{ __('Audit Trail') }}
+                                        </x-dropdown-link>
+                                    @endcan
                                 </div>
                             </x-slot>
                         </x-dropdown>
@@ -297,34 +297,34 @@
                     </div>
 
                     @can('viewTelescope')
-                        <x-responsive-nav-link  href="{{ url(config('telescope.path')) }}" target="_blank">
+                        <x-responsive-nav-link href="{{ url(config('telescope.path')) }}" target="_blank">
                             {{ __('Issues') }}
-                        </x-responsive-nav-link >
+                        </x-responsive-nav-link>
                     @endcan
 
                     @can('viewHorizon')
-                        <x-responsive-nav-link  href="{{ url(config('horizon.path')) }}" target="_blank">
+                        <x-responsive-nav-link href="{{ url(config('horizon.path')) }}" target="_blank">
                             {{ __('Queues') }}
-                        </x-responsive-nav-link >
+                        </x-responsive-nav-link>
                     @endcan
 
                     @can('viewAccessControl')
-                        <x-responsive-nav-link  href="{{ route('admin.access-control.index') }}">
+                        <x-responsive-nav-link href="{{ route('security.access-control.index') }}">
                             {{ __('Access Control') }}
-                        </x-responsive-nav-link >
+                        </x-responsive-nav-link>
                     @endcan
 
-                    {{-- @can('viewUser') --}}
-                        <x-responsive-nav-link  href="{{ route('admin.users.index') }}">
+                    @can('viewUser')
+                        <x-responsive-nav-link href="{{ route('security.users.index') }}">
                             {{ __('User') }}
-                        </x-responsive-nav-link >
-                    {{-- @endcan --}}
+                        </x-responsive-nav-link>
+                    @endcan
 
-                    {{-- @can('viewAudit') --}}
-                        <x-responsive-nav-link  href="{{ route('admin.audit-trail.index') }}">
+                    @can('viewAudit')
+                        <x-responsive-nav-link href="{{ route('security.audit-trail.index') }}">
                             {{ __('Audit Trail') }}
-                        </x-responsive-nav-link >
-                    {{-- @endcan --}}
+                        </x-responsive-nav-link>
+                    @endcan
                 @endcan
             </div>
         </div>

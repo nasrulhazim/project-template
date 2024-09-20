@@ -12,10 +12,22 @@ return [
 
     'permissions' => [
         [
-            'module' => 'Administration',
+            'module' => 'General',
             'functions' => [
+                'administration' => ['view', 'update'],
+                'security' => ['view', 'update'],
+                'settings' => ['view', 'update'],
+                'impersonate' => ['view', 'create', 'update'],
+            ],
+        ],
+        [
+            'module' => 'Security',
+            'functions' => [
+                'access-control' => ['view', 'create', 'update', 'delete'],
                 'role' => ['view', 'create', 'update', 'delete'],
                 'user' => ['view', 'create', 'update', 'delete'],
+                'issues' => ['view', 'update'],
+                'queues' => ['view', 'update'],
                 'audit' => ['view'],
             ],
         ],
@@ -30,38 +42,38 @@ return [
 
     'roles_permissions' => [
 
-        /** Administration */
-        'view-role-administration' => ['superadmin'],
-        'create-role-administration' => ['superadmin'],
-        'update-role-administration' => ['superadmin'],
-        'delete-role-administration' => ['superadmin'],
-        'view-user-administration' => ['superadmin', 'administrator'],
-        'create-user-administration' => ['superadmin', 'administrator'],
-        'update-user-administration' => ['superadmin', 'administrator'],
-        'delete-user-administration' => ['superadmin'],
-        'view-audit-administration' => ['superadmin'],
+        /** General */
+        'update-administration-general' => ['superadmin'],
+        'view-administration-general' => ['superadmin'],
+        'update-security-general' => ['superadmin'],
+        'view-security-general' => ['superadmin'],
+        'update-settings-general' => ['superadmin'],
+        'view-settings-general' => ['superadmin'],
+        'view-impersonate-general' => ['superadmin'],
+        'create-impersonate-general' => ['superadmin'],
+        'update-impersonate-general' => ['superadmin'],
+
+        /** Security */
+        'view-access-control-security' => ['superadmin'],
+        'create-access-control-security' => ['superadmin'],
+        'update-access-control-security' => ['superadmin'],
+        'delete-access-control-security' => ['superadmin'],
+        'view-role-security' => ['superadmin'],
+        'create-role-security' => ['superadmin'],
+        'update-role-security' => ['superadmin'],
+        'delete-role-security' => ['superadmin'],
+        'view-user-security' => ['superadmin'],
+        'create-user-security' => ['superadmin'],
+        'update-user-security' => ['superadmin'],
+        'delete-user-security' => ['superadmin'],
+        'view-issues-security' => ['superadmin'],
+        'update-issues-security' => ['superadmin'],
+        'view-queues-security' => ['superadmin'],
+        'update-queues-security' => ['superadmin'],
+        'view-audit-security' => ['superadmin'],
 
         /** Dashboard */
-        'view-user-dashboard' => ['user'],
-        'view-administrator-dashboard' => ['superadmin', 'administrator'],
-
-        /** Generic Permissions */
-        'update-settings' => ['superadmin', 'administrator'],
-        'update-administration' => ['superadmin', 'administrator'],
-        'impersonate' => ['superadmin', 'administrator'],
-        'manage-api-token' => ['superadmin', 'administrator'],
-        'view-telescope' => ['superadmin'],
-        'view-horizon' => ['superadmin'],
-        'view-admin' => ['superadmin'],
-        'view-access-control' => ['superadmin', 'administrator'],
-        'update-access-control' => ['superadmin', 'administrator'],
-        'create-access-control' => ['superadmin', 'administrator'],
-        'delete-access-control' => ['superadmin', 'administrator'],
-    ],
-
-    'generic_permissions' => [
-        'update-settings', 'update-administration', 'impersonate', 'manage-api-token',
-        'view-telescope', 'view-horizon', 'view-admin',
-        'view-access-control', 'update-access-control', 'create-access-control', 'delete-access-control',
+        'view-user-dashboard' => ['superadmin'],
+        'view-administrator-dashboard' => ['superadmin'],
     ],
 ];

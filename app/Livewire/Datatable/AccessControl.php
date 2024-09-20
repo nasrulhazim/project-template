@@ -24,7 +24,7 @@ class AccessControl extends DataTableComponent
         $this->setPrimaryKey('uuid')
             ->setAdditionalSelects(['roles.id', 'roles.name', 'roles.is_enabled', 'roles.description', 'roles.uuid'])
             ->setConfigurableAreas([
-                'before-toolbar' => 'administration.access-control.partials.datatable-modal',
+                'before-toolbar' => 'security.access-control.partials.datatable-modal',
             ])->setFilterLayoutSlideDown();
     }
 
@@ -32,7 +32,7 @@ class AccessControl extends DataTableComponent
     {
         return [
             Column::make('Role', 'display_name')
-                ->view('administration.access-control.partials.info')
+                ->view('security.access-control.partials.info')
                 ->sortable()
                 ->searchable(),
         ];

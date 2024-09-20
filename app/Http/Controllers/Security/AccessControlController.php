@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Administration;
+namespace App\Http\Controllers\Security;
 
 use App\Http\Controllers\Controller;
 use App\Models\Permission;
@@ -18,7 +18,7 @@ class AccessControlController extends Controller
 
         $sub = 'Manage access in the application';
 
-        return view('administration.access-control.index', compact('sub'));
+        return view('security.access-control.index', compact('sub'));
     }
 
     public function show(Request $reqeust, string $uuid)
@@ -30,6 +30,6 @@ class AccessControlController extends Controller
 
         $permissions = Permission::where('is_enabled', true)->get()->groupBy('module');
 
-        return view('administration.access-control.show', compact('role', 'permissions', 'sub'));
+        return view('security.access-control.show', compact('role', 'permissions', 'sub'));
     }
 }

@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\Administration\AccessControlController;
-use App\Http\Controllers\Administration\AuditTrailController;
-use App\Http\Controllers\Administration\UserController;
+use App\Http\Controllers\Security\AccessControlController;
+use App\Http\Controllers\Security\AuditTrailController;
+use App\Http\Controllers\Security\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('can:view-admin')->as('admin.')->prefix('admin')->group(function () {
+Route::as('security.')->prefix('security')->group(function () {
+
     // Access Control
     Route::get('access-control', [AccessControlController::class, 'index'])
         ->name('access-control.index');

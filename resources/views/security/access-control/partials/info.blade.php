@@ -34,7 +34,7 @@
                 <div>
                     <a class="cursor-pointer mr-4" x-data
                         x-tooltip="Manage permissions for {{ str($role->name)->headline() }}"
-                        href="{{ route('admin.access-control.show', $role->uuid) }}">
+                        href="{{ route('security.access-control.show', $role->uuid) }}">
                         <x-icon name="o-lock-open" class="text-indigo hover:font-bold mr-3 flex-shrink-0 h-6 w-6">
                         </x-icon>
                     </a>

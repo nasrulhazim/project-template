@@ -60,7 +60,7 @@
         </div>
     </div>
 
-    @include('administration.audit-trail.partials.table', ['values' => $audit->old_values])
+    @include('security.audit-trail.partials.table', ['values' => $audit->old_values])
 </div>
 
 <div class="bg-white  mx-8 py-4 px-8 rounded shadow-sm mt-8">
@@ -73,5 +73,5 @@
         </div>
     </div>
 
-    @include('administration.audit-trail.partials.table', ['values' => $audit->new_values])
+    @include('security.audit-trail.partials.table', ['values' => $audit->new_values])
 </div>

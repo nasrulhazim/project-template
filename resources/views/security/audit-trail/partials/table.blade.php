@@ -15,7 +15,7 @@
                     <td class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-500 sm:pl-0">{{ strtoupper(str($key)->headline()) }}</td>
                     <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">
                         @if(is_valid_json($value))
-                            @include('administration.audit-trail.partials.table', ['values' => json_decode($value, JSON_OBJECT_AS_ARRAY)])
+                            @include('security.audit-trail.partials.table', ['values' => json_decode($value, JSON_OBJECT_AS_ARRAY)])
                         @else
                             @if(str($key)->contains('is_'))
                                 <x-status :condition="$value"
@@ -23,7 +23,7 @@
                                     falseLabel=""/>
                             @else
                                 @if(is_array($value))
-                                    @include('administration.audit-trail.partials.table', ['values' => $value])
+                                    @include('security.audit-trail.partials.table', ['values' => $value])
                                 @else
                                     <span @if(strlen($value) > 80) x-data x-tooltip="{{ $value }}" @endif>{{ $value }}</span>
                                 @endif

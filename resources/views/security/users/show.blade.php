@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <x-container class="mb-8">
-            @include('administration.users.partials.info')
+            @include('security.users.partials.info')
         </x-container>
 
         <x-container class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -33,7 +33,7 @@
                     <div class="col-span-1 flex justify-center align-middle ml-8 pt-4" x-data
                         x-tooltip="Give or revoke {{ str($role->name)->headline() }} access to this user">
                         @livewire(
-                            'administration.toggle-user-role',
+                            'security.toggle-user-role',
                             [
                                 'uuid' => $user->uuid,
                                 'role' => $role->name,

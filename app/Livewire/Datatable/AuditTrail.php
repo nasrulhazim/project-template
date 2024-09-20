@@ -55,7 +55,7 @@ class AuditTrail extends DataTableComponent
                 ->sortable(),
             ActionColumn::make('Actions', 'uuid')
                 ->form('')
-                ->setView('administration.audit-trail.partials.datatable-actions'),
+                ->setView('security.audit-trail.partials.datatable-actions'),
         ];
     }
 

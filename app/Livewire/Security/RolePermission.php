@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Administration;
+namespace App\Livewire\Security;
 
 use App\Models\Role;
 use Livewire\Component;
@@ -35,6 +35,6 @@ class RolePermission extends Component
 
     public function render()
     {
-        return view('livewire.administration.role-permission');
+        return view('livewire.security.role-permission');
     }
 }

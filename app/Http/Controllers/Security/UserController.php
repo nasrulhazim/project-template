@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Administration;
+namespace App\Http\Controllers\Security;
 
 use App\Http\Controllers\Controller;
 use App\Models\Role;
@@ -18,7 +18,7 @@ class UserController extends Controller
 
         $sub = 'Manage user in the application';
 
-        return view('administration.users.index', compact('sub'));
+        return view('security.users.index', compact('sub'));
     }
 
     /**
@@ -33,6 +33,6 @@ class UserController extends Controller
         $roles = Role::whereNotIn('name', ['Superadmin', 'User'])->where('is_enabled', true)->get();
         $sub = 'Manage roles for user in the application';
 
-        return view('administration.users.show', compact('user', 'roles', 'sub'));
+        return view('security.users.show', compact('user', 'roles', 'sub'));
     }
 }

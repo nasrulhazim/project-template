@@ -71,7 +71,7 @@
                                 </td>
                                 <td class="py-2 text-center">
                                     @if ($_permission->where('name', $view)->count() > 0)
-                                        @livewire('administration.role-permission', [
+                                        @livewire('security.role-permission', [
                                             'role_id' => $role->id,
                                             'permission_name' => $view,
                                             'checked' => $role->hasPermissionTo($view),
@@ -80,7 +80,7 @@
                                 </td>
                                 <td class="py-2 text-center">
                                     @if ($_permission->where('name', $create)->count() > 0)
-                                        @livewire('administration.role-permission', [
+                                        @livewire('security.role-permission', [
                                             'role_id' => $role->id,
                                             'permission_name' => $create,
                                             'checked' => $role->hasPermissionTo($create),
@@ -89,7 +89,7 @@
                                 </td>
                                 <td class="py-2 text-center">
                                     @if ($_permission->where('name', $update)->count() > 0)
-                                        @livewire('administration.role-permission', [
+                                        @livewire('security.role-permission', [
                                             'role_id' => $role->id,
                                             'permission_name' => $update,
                                             'checked' => $role->hasPermissionTo($update),
@@ -98,7 +98,7 @@
                                 </td>
                                 <td class="py-2 text-center">
                                     @if ($_permission->where('name', $delete)->count() > 0)
-                                        @livewire('administration.role-permission', [
+                                        @livewire('security.role-permission', [
                                             'role_id' => $role->id,
                                             'permission_name' => $delete,
                                             'checked' => $role->hasPermissionTo($delete),
