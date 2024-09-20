@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', fn() => redirect()->route(auth()->check() ? 'dashboard' : 'login') )
+Route::get('/', fn () => redirect()->route(auth()->check() ? 'dashboard' : 'login'))
     ->name('welcome');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
