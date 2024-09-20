@@ -11,7 +11,7 @@ class PageCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'make:page {name*}';
+    protected $signature = 'make:page {name*} {--force}';
 
     /**
      * The console command description.
@@ -34,43 +34,80 @@ class PageCommand extends Command
 
     private function createPage(string $name)
     {
-        $this->call('make:model', [
+        $force = $this->option('force') ?? false;
+
+        $this->callSilently('make:model', [
             'name' => $name,
             '--all' => true,
-            '--force' => true,
+            '--force' => $force,
         ]);
 
-        $this->comment('Do add $this->authorize(); in your controller.');
-        $this->comment('Do add return view() in your controller.');
-        $this->comment('Refer app/Models/UserController.php for more details.');
+        $this->components->info('MODEL CREATED  🤙');
 
-        $this->call('make:action', [
+        $this->callSilently('make:action', [
             'name' => 'Forms\\'.$name,
             '--model' => $name,
         ]);
-        $this->call('make:form', [
+
+        $this->components->info('ACTION CREATED  🤙');
+
+        $this->callSilently('make:form', [
             'name' => $name,
         ]);
-        $this->call('make:datatable', [
+
+        $this->components->info('FORM CREATED  🤙');
+
+        $this->callSilently('make:controller', [
+            'name' => $name.'Controller',
+            '--invokable' => true,
+            '--force' => $force,
+        ]);
+
+        $this->callSilently('make:controller', [
+            'name' => $name.'DetailsController',
+            '--invokable' => true,
+            '--force' => $force,
+        ]);
+
+        $this->callSilently('make:controller', [
+            'name' => $name.'FormController',
+            '--invokable' => true,
+            '--force' => $force,
+        ]);
+
+        $this->components->info('CONTROLLERS CREATED  🤙');
+
+        $this->callSilently('make:datatable', [
             'name' => 'Datatable\\'.$name,
             'model' => $name,
-            '--force' => true,
+            '--force' => $force,
         ]);
-        $this->call('make:route', [
+
+        $this->components->info('DATATABLE CREATED  🤙');
+
+        $this->callSilently('make:route', [
             'name' => $name,
             '--resource' => true,
         ]);
-        $this->call('make:view', [
+
+        $this->components->info('ROUTE CREATED  🤙');
+
+        $this->callSilently('make:view', [
             'name' => $name,
             '--index' => true,
         ]);
-        $this->call('make:view', [
+        $this->callSilently('make:view', [
             'name' => $name,
             '--show' => true,
         ]);
-        $this->call('make:view', [
+        $this->callSilently('make:view', [
             'name' => $name,
             '--form' => true,
         ]);
+
+        $this->components->info('VIEWS CREATED  🤙');
+
+        $this->components->warn('Do add $this->authorize(); in your controller.');
+        $this->components->warn('Do add return view() in your controller.');
     }
 }

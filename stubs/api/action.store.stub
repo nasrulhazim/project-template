@@ -1,0 +1,26 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Actions\Api\Base;
+use App\Models\{{ model }};
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+
+class Store{{ model }} extends Base
+{
+    protected int $code = 201;
+
+    public function getData(Request $request): JsonResource|ResourceCollection|array
+    {
+        $data = match ($request->getContentTypeFormat()) {
+            'json' => json_decode($request->getContent(), JSON_OBJECT_AS_ARRAY),
+            default => $request->all()
+        };
+
+        $this->model = {{ model }}::create($data);
+
+        return $this->model->toArray();
+    }
+}

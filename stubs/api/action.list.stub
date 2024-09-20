@@ -1,0 +1,17 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Actions\Api\Base;
+use App\Models\{{ model }};
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+
+class Get{{ model }}List extends Base
+{
+    public function getData(Request $request): JsonResource|ResourceCollection|array
+    {
+        return {{ model }}::paginate()->toArray();
+    }
+}
