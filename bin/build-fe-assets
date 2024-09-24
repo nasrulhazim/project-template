@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+npm run build
+
+# Check if there are changes in the public/ directory
+if [ -n "$(git status --porcelain public/)" ]; then
+  git add public/
+  git commit -m "Update FE Assets"
+  echo "Successfully compiled and committed FE Assets"
+else
+  echo "No changes in public/ directory. Nothing to commit."
+fi
+
+echo ""

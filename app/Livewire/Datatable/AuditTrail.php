@@ -46,7 +46,7 @@ class AuditTrail extends DataTableComponent
                 ->searchable()
                 ->sortable(),
             Column::make('URL', 'url')
-                ->format(fn ($value) => str_replace(url('/'), '', $value))
+                ->format(fn ($value) => str_replace(config('app.url'), '', $value))
                 ->searchable()
                 ->sortable(),
             Column::make('Type', 'auditable_type')
@@ -55,7 +55,7 @@ class AuditTrail extends DataTableComponent
                 ->sortable(),
             ActionColumn::make('Actions', 'uuid')
                 ->form('')
-                ->setView('administration.audit-trail.partials.datatable-actions'),
+                ->setView('security.audit-trail.partials.datatable-actions'),
         ];
     }
 

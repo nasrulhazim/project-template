@@ -1,0 +1,9 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Actions\Api\Base;
+
+class {{ model }} extends Base
+{
+}

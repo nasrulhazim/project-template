@@ -26,7 +26,7 @@ class GenerateUnitTestCommand extends Command
      */
     public function handle(): int
     {
-        $this->buffer = new BufferedOutput();
+        $this->buffer = new BufferedOutput;
         $this->callBuffer('route:list', [
             '--json' => true,
             '--except-vendor' => true,

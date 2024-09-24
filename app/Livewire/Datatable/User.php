@@ -24,7 +24,7 @@ class User extends DataTableComponent
             ])
             ->setEagerLoadAllRelationsEnabled()
             ->setConfigurableAreas([
-                'before-toolbar' => 'administration.users.form',
+                'before-toolbar' => 'security.users.form',
             ]);
     }
 
@@ -36,7 +36,7 @@ class User extends DataTableComponent
         return [
             Column::make('Name', 'name')
                 ->searchable()
-                ->view('administration.users.partials.info')
+                ->view('security.users.partials.info')
                 ->sortable(),
             Column::make('Email', 'email')->hideIf(true)->searchable(),
         ];

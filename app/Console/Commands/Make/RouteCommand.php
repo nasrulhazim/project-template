@@ -79,17 +79,27 @@ class RouteCommand extends GeneratorCommand
     protected function replaceClass($stub, $name)
     {
         if ($this->option('resource')) {
+
+            $uri = $name = str($name)
+                ->replace($this->getNamespace($name).'\\', '', $name)
+                ->plural()
+                ->kebab()
+                ->toString();
+            $class = str($name)
+                ->replace(
+                    $this->getNamespace($name).'\\', '\\App\\Http\\Controllers\\', $name
+                )
+                ->singular()
+                ->studly()
+                ->prepend('\\App\\Http\\Controllers\\')
+                ->toString();
+
             return str_replace(
-                ['{{ uri }}', '{{ class }}'],
+                ['{{ uri }}', '{{ class }}', '{{ name }}'],
                 [
-                    Str::of($name)
-                        ->replace($this->getNamespace($name).'\\', '', $name)
-                        ->plural()
-                        ->kebab(),
-                    Str::of($name)
-                        ->replace(
-                            $this->getNamespace($name).'\\', '\\App\\Http\\Controllers\\', $name
-                        ),
+                    $uri,
+                    $class,
+                    $name,
                 ],
                 $stub
             );

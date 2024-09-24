@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Set source and destination directories
+source_dir="/var/www/project-template"
+backup_dir="/home/project-template/backup"
+
+# Create backup directory if it doesn't exist
+mkdir -p "$backup_dir"
+
+# Create a unique timestamp for the backup file
+timestamp=$(date +"%Y%m%d")
+
+# Initialize incremental value
+incremental=0
+
+# Function to generate the zip file name
+generate_zip_name() {
+  if [ "$incremental" -eq 0 ]; then
+    echo "${timestamp}-project-template-app.zip"
+  else
+    echo "${timestamp}-project-template-app-${incremental}.zip"
+  fi
+}
+
+# Check if the zip file already exists, and increment the value if necessary
+while [ -e "$backup_dir/$(generate_zip_name)" ]; do
+  ((incremental++))
+done
+
+# Create the zip file
+zip_file="$backup_dir/$(generate_zip_name)"
+zip -r "$zip_file" "$source_dir"
+
+chown -R project-template:project-template "$backup_dir"
+
+echo "Backup completed: $zip_file"

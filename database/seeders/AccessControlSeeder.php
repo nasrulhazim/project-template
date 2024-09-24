@@ -52,14 +52,6 @@ class AccessControlSeeder extends Seeder
                     }
                 }
             });
-
-        collect(config('access-control.generic_permissions'))
-            ->each(function ($permission) {
-                Permission::updateOrCreate([
-                    'name' => $permission,
-                    'guard_name' => 'web',
-                ]);
-            });
     }
 
     private function mapPermissionRole()

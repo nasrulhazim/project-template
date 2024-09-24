@@ -86,8 +86,10 @@ class ViewCommand extends GeneratorCommand
             $name = 'form';
         }
 
+        $directory = str(str_replace('\\', '/', strtolower($directory)))->plural()->toString();
+
         return resource_path(
-            'views/'.str_replace('\\', '/', strtolower($directory)).'/'.$name.'.blade.php'
+            'views/'.$directory.'/'.$name.'.blade.php'
         );
     }
 

@@ -18,7 +18,7 @@ class PrepareSeeder extends Seeder
 
     private function createSuperUser()
     {
-        $user = (new CreateNewUser())->create(config('seeder.users.superadmin'));
+        $user = (new CreateNewUser)->create(config('seeder.users.superadmin'));
         $user->assignRole('superadmin');
         $user->assignRole('user');
         $user->update(['email_verified_at' => now()]);

@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Set source and destination directories
+source_dir="/var/www/project-template/storage/media"
+backup_dir="/home/project-template/backup/media"
+
+# Create backup directory if it doesn't exist
+mkdir -p "$backup_dir"
+
+# Create a unique timestamp for the backup file
+timestamp=$(date +"%Y%m%d")
+
+# Initialize incremental value
+incremental=0
+
+# Function to generate the zip file name
+generate_zip_name() {
+  if [ "$incremental" -eq 0 ]; then
+    echo "${timestamp}-project-template-media.zip"
+  else
+    echo "${timestamp}-project-template-media-${incremental}.zip"
+  fi
+}
+
+# Check if the zip file already exists, and increment the value if necessary
+while [ -e "$backup_dir/$(generate_zip_name)" ]; do
+  ((incremental++))
+done
+
+# Find files modified in the last 24 hours and create the zip file
+find "$source_dir" -type f -mtime -1 -exec zip -q -r "$backup_dir/$(generate_zip_name)" {} +
+
+echo "Media backup completed: $backup_dir/$(generate_zip_name)"

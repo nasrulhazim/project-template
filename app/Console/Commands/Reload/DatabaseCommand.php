@@ -39,7 +39,7 @@ class DatabaseCommand extends Command
             $this->call('seed:dev');
         }
 
-        $this->call('db:schema');
+        // $this->call('db:schema');
 
         $this->info('Successfully reload database.');
 

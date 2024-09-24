@@ -17,7 +17,7 @@ class AuditPolicy
      */
     public function viewAny(User $user)
     {
-        return auth()->user()->can('view-audit-administration');
+        return auth()->user()->can('view-audit-security');
     }
 
     /**
@@ -27,7 +27,7 @@ class AuditPolicy
      */
     public function view(User $user, Audit $audit)
     {
-        return auth()->user()->can('view-audit-administration');
+        return auth()->user()->can('view-audit-security');
     }
 
     /**
