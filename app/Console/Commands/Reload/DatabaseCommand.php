@@ -41,7 +41,7 @@ class DatabaseCommand extends Command
 
         // $this->call('db:schema');
 
-        $this->info('Successfully reload database.');
+        $this->components->info('Successfully reload database.');
 
         return Command::SUCCESS;
     }
