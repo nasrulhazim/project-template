@@ -36,6 +36,10 @@ class MediaPathGenerator implements PathGenerator
      */
     protected function getBasePath(Media $media): string
     {
-        return $media->uuid;
+        $model_type = str($media->model_type)->replace('App\\Models\\', '')->kebab()->toString();
+        $model_id = $media->model_id;
+        $collection_name = $media->collection_name;
+
+        return $model_type.DIRECTORY_SEPARATOR.$model_id.DIRECTORY_SEPARATOR.$collection_name;
     }
 }
