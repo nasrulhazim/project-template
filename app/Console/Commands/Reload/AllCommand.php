@@ -52,6 +52,6 @@ class AllCommand extends Command
             '--force' => true,
         ]);
 
-        $this->info('Successfully reload caches and database.');
+        $this->components->info('Successfully reload caches and database.');
     }
 }
