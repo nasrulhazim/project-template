@@ -32,6 +32,6 @@ class CacheCommand extends Command
         $this->call('config:clear');
         $this->call('cache:clear');
 
-        $this->info('Successfully reload caches.');
+        $this->components->info('Successfully reload caches.');
     }
 }
