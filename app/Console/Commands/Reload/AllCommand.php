@@ -46,6 +46,8 @@ class AllCommand extends Command
             $this->call('seed:demo');
         }
 
+        $this->call('reload:media');
+
         $this->call('storage:link', [
             '--force' => true,
         ]);
