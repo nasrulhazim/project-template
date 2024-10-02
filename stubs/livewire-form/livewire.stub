@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Actions\Forms\[class] as Action;
 use App\Concerns\InteractsWithLivewireForm;
@@ -12,18 +12,23 @@ class [class] extends Component
     use InteractsWithLivewireForm;
 
     public string $model = Model::class;
+    
     public string $action = Action::class;
+
     public string $formTitle = '[class]';
+
     public string $view = '[view]';
+
     protected $listeners = [
         'showRecord' => 'show',
         'destroyRecord' => 'destroy',
     ];
+
     protected array $uuid2id = [];
+
     protected array $hashFields = [];
+
     public $state = [];
 
-    public function mount()
-    {
-    }
+    public function mount() {}
 }
