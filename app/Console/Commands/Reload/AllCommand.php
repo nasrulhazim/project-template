@@ -38,7 +38,7 @@ class AllCommand extends Command
         $this->call('reload:cache');
         $this->call('reload:db');
         $this->call('reload:media');
-        
+
         if ($this->option('dev')) {
             $this->call('seed:dev');
         }
