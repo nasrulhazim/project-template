@@ -23,7 +23,6 @@ trait Searchable
         }
 
         foreach ($fields as $field) {
-            $field = '"'.str_replace('.', '"."', $field).'"';
             $query->orWhereRaw('LOWER('.$field.') LIKE ?', ['%'.$keyword.'%']);
         }
 
