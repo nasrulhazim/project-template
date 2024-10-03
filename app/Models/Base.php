@@ -7,6 +7,7 @@ use App\Concerns\InteractsWithResourceRoute;
 use App\Concerns\InteractsWithToken;
 use App\Concerns\InteractsWithUser;
 use App\Concerns\InteractsWithUuid;
+use App\Concerns\Scopes\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Auditable as AuditableTrait;
@@ -25,6 +26,7 @@ class Base extends Model implements AuditableContract, HasMedia
     use InteractsWithToken;
     use InteractsWithUser;
     use InteractsWithUuid;
+    use Searchable;
 
     protected $guarded = [
         'id',
