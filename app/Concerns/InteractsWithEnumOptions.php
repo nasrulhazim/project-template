@@ -9,7 +9,7 @@ trait InteractsWithEnumOptions
      */
     public static function options(): array
     {
-        return array_map(fn($case) => [
+        return array_map(fn ($case) => [
             'value' => $case->value,
             'label' => $case->label(),
             'description' => $case->description(),
