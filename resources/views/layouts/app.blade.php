@@ -41,5 +41,8 @@
         @stack('modals')
 
         @livewireScripts
+
+        @livewire('confirm')
+        @livewire('alert')
     </body>
 </html>
