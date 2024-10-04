@@ -36,6 +36,14 @@
             <main>
                 {{ $slot }}
             </main>
+
+            <!-- Toastr -->
+            <x-toastr></x-toastr>
+            <!-- Toastr Modal-->
+            <x-toastr-modal></x-toastr-modal>
+            <!-- Toastr using Livewire Event (alternative for session()->flash) -->
+            <!-- trigger using:  $this->emit('flashMessage', $message); -->
+            <x-toastr-event />
         </div>
 
         @stack('modals')
