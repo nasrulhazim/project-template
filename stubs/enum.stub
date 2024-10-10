@@ -1,0 +1,29 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Contracts\Enum as Contract;
+use App\Concerns\InteractsWithEnumOptions;
+
+enum {{ class }} implements Contract
+{
+    use InteractsWithEnumOptions;
+
+    case EXAMPLE; // Add actual cases here
+
+    public function label(): string
+    {
+        return match ($this) {
+            self::EXAMPLE => 'Example Label', // Add labels for other cases
+            default => throw new \Exception('Unknown enum value requested for the label'),
+        };
+    }
+
+    public function description(): string
+    {
+        return match ($this) {
+            self::EXAMPLE => 'This is an example description.', // Add descriptions for other cases
+            default => throw new \Exception('Unknown enum value requested for the description'),
+        };
+    }
+}
