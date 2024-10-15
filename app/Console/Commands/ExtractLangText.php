@@ -25,6 +25,15 @@ class ExtractLangText extends Command
             mkdir($path, 0755, true);
         }
 
+        $outputFile = $path."/$locale.json";
+
+        if (file_exists($outputFile) && ! $this->confirm("$outputFile already exists. Are you sure want to overwrite it?")) {
+            return;
+        } else {
+            unlink($outputFile);
+            $this->components->info("$outputFile removed.");
+        }
+
         // Find all files in app, routes, and resources/views directories
         $directories = [
             base_path('app'),
@@ -53,9 +62,10 @@ class ExtractLangText extends Command
             }
         }
 
+        ksort($translations);
+
         // Write translations to a JSON file in the target directory
-        $outputFile = $path."/$locale.json";
-        file_put_contents($outputFile, json_encode($translations, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        file_put_contents($outputFile, json_encode($translations, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
 
         $this->components->info("Translations extracted successfully and saved to $outputFile");
     }

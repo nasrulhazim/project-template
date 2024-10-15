@@ -27,11 +27,11 @@
                 @foreach ($roles as $role)
                     <div class="mb-4 col-span-3">
                         <p>{{ str($role->name)->headline() }}</p>
-                        <p class="mt-1 text-xs text-gray-600 italic">{{ $role->description }}</p>
+                        <p class="mt-1 text-xs text-gray-600 italic">{{ __($role->description) }}</p>
                     </div>
 
                     <div class="col-span-1 flex justify-center align-middle ml-8 pt-4" x-data
-                        x-tooltip="Give or revoke {{ str($role->name)->headline() }} access to this user">
+                        data-tippy-content="{{ __('Give or revoke access to this user') }}">
                         @livewire(
                             'security.toggle-user-role',
                             [

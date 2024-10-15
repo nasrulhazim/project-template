@@ -8,16 +8,16 @@
 <div class="flex justify-between align-middle">
     <div class=" w-full max-w-full">
         <div class="font-semibold text-lg">
-            {{ $role->display_name }}
+            {{ __($role->display_name) }}
         </div>
         <div class="mt-1 text-xs text-wrap text-gray-600 italic">
-            {{ str($role->description)->toString() }}
+            {{ __(str($role->description)->toString()) }}
         </div>
     </div>
     <div class="flex justify-end">
         @can('update', $role)
             @if ($edit)
-                <div x-data x-tooltip="Update {{ str($role->name)->headline() }} Details">
+                <div x-data data-tippy-content="{{ __('Update Details for') }} {{ str($role->name)->headline() }} ">
                     @livewire('forms.access-control', [
                         'displayCreateRecord' => false,
                         'uuid' => $role->uuid,
@@ -33,7 +33,7 @@
             @else
                 <div>
                     <a class="cursor-pointer mr-4" x-data
-                        x-tooltip="Manage permissions for {{ str($role->name)->headline() }}"
+                        data-tippy-content="{{ __('Manage permissions for') }} {{ str($role->name)->headline() }}"
                         href="{{ route('security.access-control.show', $role->uuid) }}">
                         <x-icon name="o-lock-open" class="text-indigo hover:font-bold mr-3 flex-shrink-0 h-6 w-6">
                         </x-icon>
@@ -44,7 +44,7 @@
 
         <div class="flex justify-between">
             <div x-data
-                x-tooltip="{{ $role->is_enabled ? 'Disable' : 'Enable' }} {{ str($role->name)->headline() . ' Role' }}">
+                data-tippy-content="{{ $role->is_enabled ? __('Disable') : __('Enable') }} {{ str($role->name)->headline() . ' ' . __('Role') }}">
                 @livewire('toggle', [
                     'key' => 'role',
                     'field' => 'id',

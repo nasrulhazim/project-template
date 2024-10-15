@@ -34,7 +34,7 @@ class User extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make('Name', 'name')
+            Column::make(__('Name'), 'name')
                 ->searchable()
                 ->view('security.users.partials.info')
                 ->sortable(),
@@ -45,7 +45,7 @@ class User extends DataTableComponent
     public function filters(): array
     {
         return [
-            SelectFilter::make('Role')
+            SelectFilter::make(__('Role'), 'role')
                 ->options(to_options(role_options()))
                 ->filter(fn ($query, $value) => $query->role($value)),
         ];

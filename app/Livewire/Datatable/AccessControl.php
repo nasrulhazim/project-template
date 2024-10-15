@@ -31,7 +31,7 @@ class AccessControl extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make('Role', 'display_name')
+            Column::make(__('Role'), 'display_name')
                 ->view('security.access-control.partials.info')
                 ->sortable()
                 ->searchable(),

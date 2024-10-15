@@ -25,7 +25,7 @@
                                 @if(is_array($value))
                                     @include('security.audit-trail.partials.table', ['values' => $value])
                                 @else
-                                    <span @if(strlen($value) > 80) x-data x-tooltip="{{ $value }}" @endif>{{ $value }}</span>
+                                    <span @if(strlen($value) > 80) x-data data-tippy-content="{{ $value }}" @endif>{{ $value }}</span>
                                 @endif
                             @endif
                         @endif

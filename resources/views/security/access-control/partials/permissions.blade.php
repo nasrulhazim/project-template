@@ -4,10 +4,10 @@
             <div>
                 <div class="md:col-span-1 flex justify-between mb-4">
                     <div class="px-4 sm:px-0">
-                        <h3 class="text-md font-medium text-gray-900">{{ $module }}</h3>
+                        <h3 class="text-md font-medium text-gray-900">{{ __($module) }}</h3>
 
                         <p class="mt-1 text-xs text-gray-600 italic">
-                            {{ __('Update Access Control for ' . $module . ' Module') }}
+                            {{ __('Update Access Control for Module ').__($module) }}
                         </p>
                     </div>
                 </div>
@@ -19,10 +19,10 @@
                 <table class="table-fixed w-full">
                     <tr>
                         <th class="text-center">&nbsp;</th>
-                        <th class="text-center">View</th>
-                        <th class="text-center">Create</th>
-                        <th class="text-center">Update</th>
-                        <th class="text-center">Delete</th>
+                        <th class="text-center">{{ __('View') }}</th>
+                        <th class="text-center">{{ __('Create') }}</th>
+                        <th class="text-center">{{ __('Update') }}</th>
+                        <th class="text-center">{{ __('Delete') }}</th>
                     </tr>
                     @foreach ($functions as $function => $_permission)
                         @if (!empty($function))
@@ -67,7 +67,7 @@
 
                             <tr class="text-sm">
                                 <td class="py-2 ml-4">
-                                    <span>{{ $function == 'Rmk' ? 'RMK' : $function }}</span>
+                                    <span>{{ __($function) }}</span>
                                 </td>
                                 <td class="py-2 text-center">
                                     @if ($_permission->where('name', $view)->count() > 0)

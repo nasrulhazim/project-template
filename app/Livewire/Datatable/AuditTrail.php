@@ -31,29 +31,29 @@ class AuditTrail extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make('Event', 'event')
+            Column::make(__('Event'), 'event')
                 ->view('components.badge')
                 ->searchable()
                 ->sortable(),
-            Column::make('User', 'user.name')
+            Column::make(__('User'), 'user.name')
                 ->searchable()
                 ->sortable(),
-            Column::make('IP Address', 'ip_address')
+            Column::make(__('IP Address'), 'ip_address')
                 ->searchable()
                 ->sortable(),
-            Column::make('Created Date', 'created_at')
+            Column::make(__('Created At'), 'created_at')
                 ->format(fn ($value) => Carbon::parse($value)->format('d-m-Y H:i:s'))
                 ->searchable()
                 ->sortable(),
-            Column::make('URL', 'url')
+            Column::make(__('URL'), 'url')
                 ->format(fn ($value) => str_replace(config('app.url'), '', $value))
                 ->searchable()
                 ->sortable(),
-            Column::make('Type', 'auditable_type')
+            Column::make(__('Type'), 'auditable_type')
                 ->format(fn ($value) => class_basename($value))
                 ->searchable()
                 ->sortable(),
-            ActionColumn::make('Actions', 'uuid')
+            ActionColumn::make(__('Actions'), 'uuid')
                 ->form('')
                 ->setView('security.audit-trail.partials.datatable-actions'),
         ];
@@ -72,23 +72,23 @@ class AuditTrail extends DataTableComponent
         return [
             SelectFilter::make('Event')
                 ->options([
-                    'created' => 'Created',
-                    'updated' => 'Updated',
-                    'deleted' => 'Deleted',
+                    'created' => __('Created'),
+                    'updated' => __('Updated'),
+                    'deleted' => __('Deleted'),
                 ])
                 ->filter(function (Builder $builder, $value) {
                     $builder->where('event', $value);
                 }),
-            SelectFilter::make('Type')
+            SelectFilter::make(__('Type'), 'type')
                 ->options(audit_type_options())
                 ->filter(function (Builder $builder, $value) {
                     $builder->where('auditable_type', $value);
                 }),
-            DateFilter::make('Date From', 'from')
+            DateFilter::make(__('Date From'), 'from')
                 ->filter(function (Builder $builder, string $value) {
                     $builder->whereDate('audits.created_at', '>=', $value);
                 })->setFilterSlidedownColspan('2'),
-            DateFilter::make('Date To', 'to')
+            DateFilter::make(__('Date To'), 'to')
                 ->filter(function (Builder $builder, string $value) {
                     $builder->whereDate('audits.created_at', '<=', $value);
                 })->setFilterSlidedownColspan('2'),
