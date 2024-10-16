@@ -2,32 +2,31 @@
 
 namespace App\Enums;
 
-use App\Concerns\Enums\Headline;
-use App\Concerns\Enums\Options;
-use Spatie\Enum\Laravel\Enum;
+use CleaniqueCoders\Traitify\Concerns\InteractsWithEnum;
+use CleaniqueCoders\Traitify\Contracts\Enum as Contract;
 
-/**
- * @method static self active()
- * @method static self inactive()
- */
-final class Status extends Enum
+enum Status implements Contract
 {
-    use Headline;
-    use Options;
+    use InteractsWithEnum;
 
-    protected static function values(): array
+    case ACTIVE;
+    case INACTIVE;
+
+    public function label(): string
     {
-        return [
-            'active' => 1,
-            'inactive' => 0,
-        ];
+        return match ($this) {
+            self::ACTIVE => __('Active'),
+            self::ACTIVE => __('Inactive'),
+            default => throw new \Exception('Unknown enum value requested for the label'),
+        };
     }
 
-    protected static function labels(): array
+    public function description(): string
     {
-        return [
-            'active' => __('Active'),
-            'inactive' => __('Inactive'),
-        ];
+        return match ($this) {
+            self::ACTIVE => __('Status is active.'),
+            self::INACTIVE => __('Status is inactive.'),
+            default => throw new \Exception('Unknown enum value requested for the description'),
+        };
     }
 }

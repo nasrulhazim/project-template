@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Concerns\InteractsWithUuid;
+use CleaniqueCoders\Traitify\Concerns\InteractsWithUuid;
 use OwenIt\Auditing\Auditable as AuditingTrait;
 use OwenIt\Auditing\Contracts\Auditable;
 

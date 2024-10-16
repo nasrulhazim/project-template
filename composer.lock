@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "091c9e9f0819a5dd9e5cd05e9801825e",
+    "content-hash": "d22387f70160a7b38a3c66dffd861fdb",
     "packages": [
         {
             "name": "api-ecosystem-for-laravel/dingo-api",
@@ -944,6 +944,84 @@
                 "source": "https://github.com/cleaniquecoders/mail-history/tree/2.1.0"
             },
             "time": "2024-03-21T04:14:47+00:00"
+        },
+        {
+            "name": "cleaniquecoders/traitify",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cleaniquecoders/traitify.git",
+                "reference": "5a65a89c76d5f214a5abc15a34299ad5f1f23fb0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cleaniquecoders/traitify/zipball/5a65a89c76d5f214a5abc15a34299ad5f1f23fb0",
+                "reference": "5a65a89c76d5f214a5abc15a34299ad5f1f23fb0",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^10.0||^11.0",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.16"
+            },
+            "require-dev": {
+                "larastan/larastan": "^2.9",
+                "laravel/pint": "^1.14",
+                "nunomaduro/collision": "^8.1.1||^7.10.0",
+                "orchestra/testbench": "^9.5",
+                "pestphp/pest": "^2.34",
+                "pestphp/pest-plugin-arch": "^2.7",
+                "pestphp/pest-plugin-laravel": "^2.3",
+                "phpstan/extension-installer": "^1.3",
+                "phpstan/phpstan-deprecation-rules": "^1.1",
+                "phpstan/phpstan-phpunit": "^1.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "CleaniqueCoders\\Traitify\\TraitifyServiceProvider"
+                    ],
+                    "aliases": {
+                        "Traitify": "CleaniqueCoders\\Traitify\\Facades\\Traitify"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "CleaniqueCoders\\Traitify\\": "src/",
+                    "CleaniqueCoders\\Traitify\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nasrul Hazim Bin Mohamad",
+                    "email": "nasrulhazim.m@gmail.com",
+                    "role": "Solution Architect | Software Engineer"
+                }
+            ],
+            "description": "Traitify is a Laravel package designed to streamline and enhance your development process by providing a collection of reusable traits and contracts.",
+            "homepage": "https://github.com/cleaniquecoders/traitify",
+            "keywords": [
+                "Cleanique Coders",
+                "laravel",
+                "traitify"
+            ],
+            "support": {
+                "issues": "https://github.com/cleaniquecoders/traitify/issues",
+                "source": "https://github.com/cleaniquecoders/traitify/tree/v1.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Cleanique Coders",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-10-15T13:49:26+00:00"
         },
         {
             "name": "composer/semver",
@@ -15016,5 +15094,5 @@
         "php": "^8.3"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }

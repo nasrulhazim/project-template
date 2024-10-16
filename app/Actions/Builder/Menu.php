@@ -4,9 +4,9 @@ namespace App\Actions\Builder;
 
 use App\Actions\Builder\Menu\Navbar;
 use App\Actions\Builder\Menu\Sidebar;
-use App\Contracts\Builder;
-use App\Contracts\Menu as ContractsMenu;
 use App\Exceptions\ContractException;
+use CleaniqueCoders\Traitify\Contracts\Builder;
+use CleaniqueCoders\Traitify\Contracts\Menu as ContractsMenu;
 
 class Menu
 {
@@ -24,7 +24,7 @@ class Menu
         };
 
         /**
-         * @var \App\Contracts\Builder|\App\Contracts\Menu
+         * @var \CleaniqueCoders\Traitify\Contracts\Builder|\CleaniqueCoders\Traitify\Contracts\Menu
          */
         $builder = new $class;
 

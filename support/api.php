@@ -1,6 +1,8 @@
 <?php
 
-use App\Contracts\Api;
+// use App\Contracts\Api;
+
+use CleaniqueCoders\Traitify\Contracts\Api;
 
 if (! function_exists('api_exception')) {
     function api_exception(Throwable $th)

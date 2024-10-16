@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Concerns\InteractsWithResourceRoute;
-use App\Concerns\InteractsWithUuid;
+use CleaniqueCoders\Traitify\Concerns\InteractsWithResourceRoute;
+use CleaniqueCoders\Traitify\Concerns\InteractsWithUuid;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;

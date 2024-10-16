@@ -2,9 +2,9 @@
 
 namespace App\Actions\Builder\Menu;
 
-use App\Contracts\Builder;
-use App\Contracts\Menu;
 use App\Models\User;
+use CleaniqueCoders\Traitify\Contracts\Builder;
+use CleaniqueCoders\Traitify\Contracts\Menu;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;

@@ -16,6 +16,7 @@
         "cleaniquecoders/laravel-blacklist": "^1.1",
         "cleaniquecoders/laravel-media-secure": "^2.0",
         "cleaniquecoders/mailhistory": "^2.1",
+        "cleaniquecoders/traitify": "^1.0",
         "diglactic/laravel-breadcrumbs": "^9.0",
         "doctrine/dbal": "^3.5",
         "guzzlehttp/guzzle": "^7.2",
@@ -31,7 +32,6 @@
         "owen-it/laravel-auditing": "^13.1",
         "predis/predis": "^1.1",
         "rappasoft/laravel-livewire-tables": "^3.1",
-        "spatie/laravel-enum": "^3.0",
         "spatie/laravel-medialibrary": "^11.0",
         "spatie/laravel-permission": "^6.0",
         "yadahan/laravel-authentication-log": "^1.6"

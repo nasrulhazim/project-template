@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Concerns\InteractsWithUuid;
+use CleaniqueCoders\Traitify\Concerns\InteractsWithUuid;
 
 class Audit extends \OwenIt\Auditing\Models\Audit
 {

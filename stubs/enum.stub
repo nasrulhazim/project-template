@@ -2,12 +2,12 @@
 
 namespace {{ namespace }};
 
-use App\Contracts\Enum as Contract;
-use App\Concerns\InteractsWithEnumOptions;
+use CleaniqueCoders\Traitify\Contracts\Enum as Contract;
+use CleaniqueCoders\Traitify\Concerns\InteractsWithEnum;
 
 enum {{ class }} implements Contract
 {
-    use InteractsWithEnumOptions;
+    use InteractsWithEnum;
 
     case EXAMPLE; // Add actual cases here
 

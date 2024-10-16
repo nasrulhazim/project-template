@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use App\Concerns\InteractsWithMeta;
-use App\Concerns\InteractsWithResourceRoute;
-use App\Concerns\InteractsWithToken;
-use App\Concerns\InteractsWithUser;
-use App\Concerns\InteractsWithUuid;
-use App\Concerns\Scopes\Searchable;
+use CleaniqueCoders\Traitify\Concerns\InteractsWithMeta;
+use CleaniqueCoders\Traitify\Concerns\InteractsWithResourceRoute;
+use CleaniqueCoders\Traitify\Concerns\InteractsWithSearchable;
+use CleaniqueCoders\Traitify\Concerns\InteractsWithToken;
+use CleaniqueCoders\Traitify\Concerns\InteractsWithUser;
+use CleaniqueCoders\Traitify\Concerns\InteractsWithUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Auditable as AuditableTrait;
@@ -23,10 +23,10 @@ class Base extends Model implements AuditableContract, HasMedia
     use InteractsWithMedia;
     use InteractsWithMeta;
     use InteractsWithResourceRoute;
+    use InteractsWithSearchable;
     use InteractsWithToken;
     use InteractsWithUser;
     use InteractsWithUuid;
-    use Searchable;
 
     protected $guarded = [
         'id',
