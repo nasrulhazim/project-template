@@ -3,8 +3,9 @@
     "type": "project",
     "description": "My official project template to buiild system with Laravel.",
     "keywords": [
-        "event",
-        "manager"
+        "laravel",
+        "project",
+        "template"
     ],
     "license": "MIT",
     "require": {
