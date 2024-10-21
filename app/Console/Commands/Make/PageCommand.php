@@ -34,7 +34,7 @@ class PageCommand extends Command
 
     private function createPage(string $name)
     {
-        $force = $this->option('force') ?? false;
+        $force = $this->option('force') ? true : false;
 
         $this->callSilently('make:model', [
             'name' => $name,

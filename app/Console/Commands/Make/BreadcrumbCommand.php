@@ -32,7 +32,7 @@ class BreadcrumbCommand extends GeneratorCommand
      */
     protected $type = 'Breadcrumb';
 
-    public function handle(): void
+    public function handle()
     {
         parent::handle();
 
@@ -41,6 +41,8 @@ class BreadcrumbCommand extends GeneratorCommand
         $path = str_replace(base_path('/routes/'), '', $this->getPath($name));
 
         $this->files->append(base_path('/routes/breadcrumbs.php'), PHP_EOL."require '".$path."';");
+
+        return self::SUCCESS;
     }
 
     /**

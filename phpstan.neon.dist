@@ -1,5 +1,5 @@
 includes:
-    - ./vendor/nunomaduro/larastan/extension.neon
+    - vendor/larastan/larastan/extension.neon
 
 parameters:
     paths:
@@ -7,10 +7,8 @@ parameters:
         - tinker/
         - config/
         - database/
-        - resources/
         - routes/
         - support/
-        - tests/
     level: 4
     excludePaths:
         - .bin/
@@ -19,5 +17,6 @@ parameters:
         - node_modules/
         - stubs/
         - vendor/
+        - tests/
+        - resources/
     checkMissingIterableValueType: false
-    

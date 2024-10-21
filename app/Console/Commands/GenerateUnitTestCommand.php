@@ -22,6 +22,11 @@ class GenerateUnitTestCommand extends Command
     protected $description = 'Generate tests from routes';
 
     /**
+     * Buffer output
+     */
+    private BufferedOutput $buffer;
+
+    /**
      * Execute the console command.
      */
     public function handle(): int

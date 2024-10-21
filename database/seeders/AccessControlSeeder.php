@@ -59,7 +59,7 @@ class AccessControlSeeder extends Seeder
         foreach (config('access-control.roles_permissions') as $permission => $roles) {
             $roles = Role::whereIn('name', $roles)->get();
             foreach ($roles as $role) {
-                if ($role && ! $role->hasPermissionTo($permission)) {
+                if (! $role->hasPermissionTo($permission)) {
                     $role->givePermissionTo($permission);
                 }
             }

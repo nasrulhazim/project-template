@@ -11,50 +11,40 @@ class UserPolicy
 
     /**
      * Determine whether the user can view any models.
-     *
-     * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user): bool
+    public function viewAny(User $user): \Illuminate\Auth\Access\Response|bool
     {
         return auth()->user()->can('view-user-security');
     }
 
     /**
      * Determine whether the user can view the model.
-     *
-     * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, User $model): bool
+    public function view(User $user, User $model): \Illuminate\Auth\Access\Response|bool
     {
         return auth()->user()->can('view-user-security');
     }
 
     /**
      * Determine whether the user can create models.
-     *
-     * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user): bool
+    public function create(User $user): \Illuminate\Auth\Access\Response|bool
     {
         return auth()->user()->can('create-user-security');
     }
 
     /**
      * Determine whether the user can update the model.
-     *
-     * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, User $model): bool
+    public function update(User $user, User $model): \Illuminate\Auth\Access\Response|bool
     {
         return auth()->user()->can('update-user-security') || $model->id == $user->id;
     }
 
     /**
      * Determine whether the user can delete the model.
-     *
-     * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, User $model): bool
+    public function delete(User $user, User $model): \Illuminate\Auth\Access\Response|bool
     {
         if ($user->uuid === $model->uuid) {
             return false;
@@ -65,20 +55,16 @@ class UserPolicy
 
     /**
      * Determine whether the user can restore the model.
-     *
-     * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, User $model): bool
+    public function restore(User $user, User $model): \Illuminate\Auth\Access\Response|bool
     {
         return false;
     }
 
     /**
      * Determine whether the user can permanently delete the model.
-     *
-     * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, User $model): bool
+    public function forceDelete(User $user, User $model): \Illuminate\Auth\Access\Response|bool
     {
         return false;
     }

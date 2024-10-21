@@ -16,8 +16,7 @@ enum Status implements Contract
     {
         return match ($this) {
             self::ACTIVE => __('Active'),
-            self::ACTIVE => __('Inactive'),
-            default => throw new \Exception('Unknown enum value requested for the label'),
+            self::INACTIVE => __('Inactive'),
         };
     }
 
@@ -26,7 +25,6 @@ enum Status implements Contract
         return match ($this) {
             self::ACTIVE => __('Status is active.'),
             self::INACTIVE => __('Status is inactive.'),
-            default => throw new \Exception('Unknown enum value requested for the description'),
         };
     }
 }

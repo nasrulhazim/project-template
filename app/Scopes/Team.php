@@ -14,7 +14,7 @@ class Team implements Scope
     public function apply(Builder $builder, Model $model): void
     {
         if (! app()->runningInConsole()) {
-            $builder->where($model->getTable().'.team_id', auth()->user()->currentTeam->id);
+            $builder->where($model->getTable().'.team_id', data_get(auth()->user(), 'currentTeam.id'));
         }
     }
 }

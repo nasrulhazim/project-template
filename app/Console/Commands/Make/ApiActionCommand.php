@@ -84,6 +84,8 @@ class ApiActionCommand extends GeneratorCommand
     protected function getPath($name)
     {
         $base = class_basename($name);
+        $filename = '';
+
         if ($this->option('delete')) {
             $filename = "Delete$base";
         }
