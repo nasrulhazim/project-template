@@ -2,8 +2,7 @@
 
 # Project Template
 
-This is my personal project template / boilerplate for creating Laravel based projects.
-
+- [Installation](docs/installation.md)
 - [Development](docs/development.md)
 - [Deployment](docs/deployment.md)
 
