@@ -7,7 +7,7 @@ use CleaniqueCoders\LaravelAction\AbstractAction as Action;
 
 class CreateNewRole extends Action
 {
-    public $model = Model::class;
+    public string $model = Model::class;
 
     public function rules(): array
     {

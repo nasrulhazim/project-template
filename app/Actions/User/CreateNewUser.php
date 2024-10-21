@@ -12,7 +12,7 @@ class CreateNewUser extends Action
     use InteractsWithUuidInAction;
     use PasswordValidationRules;
 
-    public $model = User::class;
+    public string $model = User::class;
 
     public function rules(): array
     {

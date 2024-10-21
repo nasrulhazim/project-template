@@ -50,7 +50,7 @@ trait InteractsWithUuidInAction
         }
     }
 
-    public function prepare()
+    public function prepare(): void
     {
         $this->transformUuid2Id();
     }
