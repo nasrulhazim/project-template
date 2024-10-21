@@ -1,9 +1,110 @@
 #!/usr/bin/env bash
 
-[ ! -d vendor/ ] && composer install
+# Get the current directory name
+CURRENT_DIR_NAME=$(basename "$PWD")
 
-[ ! -f .env ] && cp .env.example .env && php artisan key:generate
+# Convert the directory name to snake_case (e.g., loop-tag -> loop_tag)
+DB_DATABASE=$(echo "$CURRENT_DIR_NAME" | tr '-' '_' | sed -r 's/([A-Z])/_\L\1/g' | sed 's/^_//')
 
-[ ! -d node_modules/ ] && npm upgrade && npm audit fix --force && npm run build
+# Convert the directory name to kebab-case (e.g., loop_tag -> loop-tag)
+KEBAB_NAME=$(echo "$DB_DATABASE" | tr '_' '-')
 
+# Convert the directory name to Title Case (e.g., loop-tag -> Loop Tag)
+APP_NAME=$(echo "$CURRENT_DIR_NAME" | tr '-' ' ' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) tolower(substr($i,2))}1')
+
+# Database credentials (use environment variables if available)
+DB_USER=${DB_USERNAME:-root}
+DB_PASS=${DB_PASSWORD}
+DB_HOST=${DB_HOST:-localhost}
+
+# Create the database if it does not exist
+echo "Checking if database '$DB_DATABASE' exists..."
+MYSQL_CMD="mysql -u$DB_USER -h$DB_HOST"
+if [ -n "$DB_PASS" ]; then
+    MYSQL_CMD+=" -p$DB_PASS"
+fi
+
+if ! $MYSQL_CMD -e "USE $DB_DATABASE;" 2>/dev/null; then
+    echo "Database '$DB_DATABASE' does not exist. Creating..."
+    $MYSQL_CMD -e "CREATE DATABASE $DB_DATABASE;"
+else
+    echo "Database '$DB_DATABASE' already exists."
+fi
+
+# Update .env.example with the current directory name
+sed -i.bak "s/^APP_NAME=.*/APP_NAME=\"$APP_NAME\"/" .env.example
+sed -i.bak "s/^DB_DATABASE=.*/DB_DATABASE=$DB_DATABASE/" .env.example
+rm -f .env.example.bak  # Remove backup
+
+# Commit the changes to .env.example
+git add .env.example
+git commit -m "Update .env.example with APP_NAME=\"$APP_NAME\" and DB_DATABASE=$DB_DATABASE"
+
+# Copy .env.example to .env if not already present
+if [ ! -f .env ]; then
+    cp .env.example .env
+    php artisan key:generate
+fi
+
+# Install composer dependencies if not already installed
+if [ ! -d vendor/ ]; then
+    composer install
+    if [ -f ./update-dependencies ]; then
+        bash ./update-dependencies
+    fi
+fi
+
+# Install and build npm dependencies if not already installed
+if [ ! -d node_modules/ ]; then
+    npm upgrade
+    npm audit fix --force
+    npm run build
+
+    # Commit changes to public/ if any
+    if [ -n "$(git status public/ --porcelain)" ]; then
+        git add public/
+        git commit -m "Update public/ directory after build"
+    fi
+fi
+
+# Ensure todo.md exists
 [ ! -f todo.md ] && touch todo.md
+
+# Update .config/supervisord.ini with project path and log settings
+SUPERVISOR_CONFIG="./.config/supervisord.ini"
+if [ -f "$SUPERVISOR_CONFIG" ]; then
+    # Update the command path to use kebab-case
+    COMMAND="command=php /var/www/${KEBAB_NAME}/artisan horizon"
+    sed -i.bak "s|^command=.*|$COMMAND|" "$SUPERVISOR_CONFIG"
+
+    # Update the log file path to use kebab-case
+    LOGFILE_NAME="stdout_logfile=/var/log/supervisor/${KEBAB_NAME}-horizon.log"
+    sed -i.bak "s|^stdout_logfile=.*|$LOGFILE_NAME|" "$SUPERVISOR_CONFIG"
+
+    rm -f "$SUPERVISOR_CONFIG.bak"  # Remove backup
+
+    # Commit changes to supervisord.ini if modified
+    if [ -n "$(git status .config/supervisord.ini --porcelain)" ]; then
+        git add .config/supervisord.ini
+        git commit -m "Update supervisord.ini with project-specific configurations"
+    fi
+fi
+
+# Get the current Git remote URL and remove the .git suffix
+GIT_REMOTE_URL=$(git config --get remote.origin.url | sed 's|\.git$||')
+
+# Update README.md with the project information
+if [ -f README.md ]; then
+    # Replace project-template with the current Git remote URL
+    sed -i.bak "s|nasrulhazim/project-template|${GIT_REMOTE_URL}|g" README.md
+
+    # Replace "Project Template" with the APP_NAME in Title Case
+    sed -i.bak "s|Project Template|$APP_NAME|g" README.md
+    rm -f README.md.bak  # Remove backup
+
+    # Commit changes to README.md if modified
+    if [ -n "$(git status README.md --porcelain)" ]; then
+        git add README.md
+        git commit -m "Update README.md to reflect project name: $APP_NAME"
+    fi
+fi
