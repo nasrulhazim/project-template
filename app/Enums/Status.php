@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Enums;
+namespace CleaniqueCoders\Doora\Enums;
 
 use CleaniqueCoders\Traitify\Concerns\InteractsWithEnum;
 use CleaniqueCoders\Traitify\Contracts\Enum as Contract;
 
-enum Status implements Contract
+enum Status: string implements Contract
 {
     use InteractsWithEnum;
 
-    case ACTIVE;
-    case INACTIVE;
+    case ACTIVE = 'active';
+    case INACTIVE = 'inactive';
 
     public function label(): string
     {
