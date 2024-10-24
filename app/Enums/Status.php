@@ -1,6 +1,6 @@
 <?php
 
-namespace CleaniqueCoders\Doora\Enums;
+namespace App\Enums;
 
 use CleaniqueCoders\Traitify\Concerns\InteractsWithEnum;
 use CleaniqueCoders\Traitify\Contracts\Enum as Contract;
