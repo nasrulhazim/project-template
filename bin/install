@@ -70,6 +70,9 @@ fi
 # Ensure todo.md exists
 [ ! -f todo.md ] && touch todo.md
 
+# Ensure draft.yaml exists
+[ ! -f draft.yaml ] && touch draft.yaml
+
 # Update .config/supervisord.ini with project path and log settings
 SUPERVISOR_CONFIG="./.config/supervisord.ini"
 if [ -f "$SUPERVISOR_CONFIG" ]; then
