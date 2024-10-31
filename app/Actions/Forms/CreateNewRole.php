@@ -3,7 +3,7 @@
 namespace App\Actions\Forms;
 
 use App\Models\Role as Model;
-use CleaniqueCoders\LaravelAction\AbstractAction as Action;
+use CleaniqueCoders\LaravelAction\ResourceAction as Action;
 
 class CreateNewRole extends Action
 {

@@ -5,7 +5,7 @@ namespace App\Actions\User;
 use App\Actions\Fortify\PasswordValidationRules;
 use App\Concerns\InteractsWithUuidInAction;
 use App\Models\User;
-use CleaniqueCoders\LaravelAction\AbstractAction as Action;
+use CleaniqueCoders\LaravelAction\ResourceAction as Action;
 
 class CreateNewUser extends Action
 {
