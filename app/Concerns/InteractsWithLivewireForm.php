@@ -86,15 +86,15 @@ trait InteractsWithLivewireForm
         $action = (new $class($this->state));
 
         if ($this->uuid) {
-            $action->setConstrainedBy(['uuid' => $this->uuid]);
+            $action->setProperty('constrainedBy', ['uuid' => $this->uuid]);
         }
 
         if ($this->hasUuid2idMapping()) {
-            $action->setUuid2IdMapping($this->getUuid2IdMapping());
+            $action->setProperty('uuid2id', $this->getUuid2IdMapping());
         }
 
         if ($this->hasHashFieldsMapping()) {
-            $action->setHashFields($this->getHashFieldsMapping());
+            $action->setProperty('hashFields', $this->getHashFieldsMapping());
         }
 
         $action->execute();
