@@ -81,7 +81,7 @@ trait InteractsWithLivewireForm
             $this->beforeSave();
         }
 
-        $class = $this->getAction();
+        $class = $this->getAction(); // @todo should we create an action contract?
 
         $action = (new $class($this->state));
 
@@ -97,7 +97,7 @@ trait InteractsWithLivewireForm
             $action->setProperty('hashFields', $this->getHashFieldsMapping());
         }
 
-        $action->execute();
+        $action->handle();
 
         $this->record = $action->getRecord();
 
