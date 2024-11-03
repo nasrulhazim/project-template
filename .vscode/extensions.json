@@ -1,0 +1,23 @@
+{
+  "recommendations": [
+    "bmewburn.vscode-intelephense-client",
+    "amiralizadeh9480.laravel-extra-intellisense",
+    "junstyle.php-cs-fixer",
+    "codingyu.laravel-goto-view",
+    "onecentlin.laravel-blade",
+    "ryannaddy.laravel-artisan",
+    "shufo.vscode-blade-formatter",
+    "mikestead.dotenv",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "eamodio.gitlens",
+    "mhutchie.git-graph",
+    "ms-azuretools.vscode-docker",
+    "adpyke.vscode-sql-formatter",
+    "clarkyu.vscode-sql-beautify",
+    "deerawan.vscode-faker",
+    "ritwickdey.liveserver",
+    "dansysanalyst.pest-snippets",
+    "shashraf.vscode-pestphp"
+  ]
+}
