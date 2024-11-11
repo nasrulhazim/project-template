@@ -40,12 +40,6 @@ rm -f .env.example.bak  # Remove backup
 git add .env.example
 git commit -m "Update .env.example with APP_NAME=\"$APP_NAME\" and DB_DATABASE=$DB_DATABASE"
 
-# Copy .env.example to .env if not already present
-if [ ! -f .env ]; then
-    cp .env.example .env
-    php artisan key:generate
-fi
-
 # Install composer dependencies if not already installed
 if [ ! -d vendor/ ]; then
     composer install
@@ -65,6 +59,12 @@ if [ ! -d node_modules/ ]; then
         git add public/
         git commit -m "Update public/ directory after build"
     fi
+fi
+
+# Copy .env.example to .env if not already present
+if [ ! -f .env ]; then
+    cp .env.example .env
+    php artisan key:generate
 fi
 
 # Ensure todo.md exists
