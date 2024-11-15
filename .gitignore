@@ -20,5 +20,4 @@ todo.md
 _ide_helper_models.php
 *.sql
 .phplint.cache
-package-lock.json
 draft.yaml
