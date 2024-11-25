@@ -7,7 +7,9 @@ use Rappasoft\LaravelLivewireTables\Views\Column;
 
 class ActionColumn extends Column
 {
-    protected string $form;
+    protected string $form = '';
+
+    protected string $actionView = '';
 
     public function form(string $form): self
     {
@@ -16,16 +18,16 @@ class ActionColumn extends Column
         return $this;
     }
 
-    public function setView($view): self
+    public function setView($actionView): self
     {
-        $this->view = $view;
+        $this->actionView = $actionView;
 
         return $this;
     }
 
     public function getView(): string
     {
-        return property_exists($this, 'view') ? $this->view : 'livewire.datatable-actions';
+        return ! empty($this->actionView) ? $this->actionView : 'livewire.datatable-actions';
     }
 
     public function getContents(Model $row): null|string|\Illuminate\Support\HtmlString|\Rappasoft\LaravelLivewireTables\Exceptions\DataTableConfigurationException|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
