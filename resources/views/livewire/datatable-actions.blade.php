@@ -11,7 +11,7 @@
             wire:click="$dispatchTo(
                 '{{ $form }}',
                 'showRecord',
-                { uuid: '{{ $row->uuid }}'}
+                { uuid: '{{ $row->uuid }}', edit: true}
             )">
             <x-icon name="o-pencil" class="text-indigo hover:font-bold mr-3 flex-shrink-0 h-6 w-6">
             </x-icon>
