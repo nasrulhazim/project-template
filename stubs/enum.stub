@@ -14,16 +14,14 @@ enum {{ class }} implements Contract
     public function label(): string
     {
         return match ($this) {
-            self::EXAMPLE => 'Example Label', // Add labels for other cases
-            default => throw new \Exception('Unknown enum value requested for the label'),
+            self::EXAMPLE => 'Example Label', 
         };
     }
 
     public function description(): string
     {
         return match ($this) {
-            self::EXAMPLE => 'This is an example description.', // Add descriptions for other cases
-            default => throw new \Exception('Unknown enum value requested for the description'),
+            self::EXAMPLE => 'This is an example description.',
         };
     }
 }
