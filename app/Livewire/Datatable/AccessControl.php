@@ -9,7 +9,7 @@ use Rappasoft\LaravelLivewireTables\Views\Column;
 
 class AccessControl extends DataTableComponent
 {
-    public int $perPage = 100;
+    public ?int $perPage = 100;
 
     public array $perPageAccepted = [100];
 
