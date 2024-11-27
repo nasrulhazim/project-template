@@ -5,16 +5,16 @@ namespace {{ namespace }};
 use CleaniqueCoders\Traitify\Contracts\Enum as Contract;
 use CleaniqueCoders\Traitify\Concerns\InteractsWithEnum;
 
-enum {{ class }} implements Contract
+enum {{ class }}: string implements Contract
 {
     use InteractsWithEnum;
 
-    case EXAMPLE; // Add actual cases here
+    case EXAMPLE = 'example';
 
     public function label(): string
     {
         return match ($this) {
-            self::EXAMPLE => 'Example Label', 
+            self::EXAMPLE => 'Example Label',
         };
     }
 
