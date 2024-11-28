@@ -2,6 +2,7 @@
 
 namespace App\Actions\Builder;
 
+use App\Actions\Builder\Menu\Administration;
 use App\Actions\Builder\Menu\Navbar;
 use App\Actions\Builder\Menu\Sidebar;
 use App\Exceptions\ContractException;
@@ -20,6 +21,7 @@ class Menu
         $class = match ($builder) {
             'navbar' => Navbar::class,
             'sidebar' => Sidebar::class,
+            'administration' => Administration::class,
             default => Navbar::class,
         };
 
