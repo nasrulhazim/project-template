@@ -4,8 +4,6 @@ namespace App\Console\Commands;
 
 use App\Mail\DefaultMail;
 use Illuminate\Console\Command;
-use Illuminate\Mail\Message;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Mail;
 
 class TestSendMail extends Command
@@ -33,7 +31,7 @@ class TestSendMail extends Command
         $email = $this->argument('email');
         $name = str($this->argument('email'))->before('@')->title()->toString();
 
-        if($this->option('queue')) {
+        if ($this->option('queue')) {
             $mail->onQueue($this->option('queue'));
         }
 
