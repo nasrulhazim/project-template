@@ -129,11 +129,6 @@
 
                             <div class="border-t border-gray-200 dark:border-gray-600"></div>
 
-                            @can('viewAdmin')
-                            @endcan
-
-                            <div class="border-t border-gray-200 dark:border-gray-600"></div>
-
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}" x-data>
                                 @csrf
@@ -200,6 +195,12 @@
                     </x-responsive-nav-link>
                 @endif
 
+                @can('viewAdmin')
+                    <x-responsive-nav-link href="{{ route('administration.index') }}" target="_blank">
+                        {{ __('Administration') }}
+                    </x-responsive-nav-link>
+                @endcan
+
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}" x-data>
                     @csrf
@@ -242,44 +243,6 @@
                         @endforeach
                     @endif
                 @endif
-
-                @can('viewAdmin')
-                    <div class="border-t border-gray-200 dark:border-gray-600"></div>
-
-                    <div class="block px-4 py-2 text-xs text-gray-400">
-                        {{ __('Administration') }}
-                    </div>
-
-                    @can('viewTelescope')
-                        <x-responsive-nav-link href="{{ url(config('telescope.path')) }}" target="_blank">
-                            {{ __('Issues') }}
-                        </x-responsive-nav-link>
-                    @endcan
-
-                    @can('viewHorizon')
-                        <x-responsive-nav-link href="{{ url(config('horizon.path')) }}" target="_blank">
-                            {{ __('Queues') }}
-                        </x-responsive-nav-link>
-                    @endcan
-
-                    @can('viewAccessControl')
-                        <x-responsive-nav-link href="{{ route('security.access-control.index') }}">
-                            {{ __('Access Control') }}
-                        </x-responsive-nav-link>
-                    @endcan
-
-                    @can('viewUser')
-                        <x-responsive-nav-link href="{{ route('security.users.index') }}">
-                            {{ __('User') }}
-                        </x-responsive-nav-link>
-                    @endcan
-
-                    @can('viewAudit')
-                        <x-responsive-nav-link href="{{ route('security.audit-trail.index') }}">
-                            {{ __('Audit Trail') }}
-                        </x-responsive-nav-link>
-                    @endcan
-                @endcan
             </div>
         </div>
     </div>
