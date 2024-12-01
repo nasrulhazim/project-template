@@ -11,7 +11,7 @@
         '4xl' => 'sm:max-w-4xl',
         '5xl' => 'sm:max-w-5xl',
         '6xl' => 'sm:max-w-6xl',
-        '7xl' => 'sm:max-w-7xl',
+        '7xl' => 'sm:',
         'full' => 'sm:max-w-full'
     ][$maxWidth ?? '2xl'];
 @endphp

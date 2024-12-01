@@ -10,7 +10,7 @@
             @include('security.users.partials.info')
         </x-container>
 
-        <x-container class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <x-container class=" mx-auto sm:px-6 lg:px-8">
             <div>
                 <div class="md:col-span-1 flex justify-between mb-4 pb-4 border-b border-gray-200 ">
                     <div class="px-4 sm:px-0">
