@@ -29,6 +29,11 @@ class MenuItem implements Builder
 
     private ?string $tooltip = null;
 
+    private string $type = 'link'; // 'link' or 'form'
+
+    /** @var array<string, mixed> */
+    private array $formAttributes = []; // Attributes specific to forms
+
     /** @var callable|bool */
     private $visible = true;
 
@@ -132,6 +137,32 @@ class MenuItem implements Builder
     }
 
     /**
+     * Set the type of the menu item.
+     */
+    public function setType(string $type): self
+    {
+        if (! in_array($type, ['link', 'form'], true)) {
+            throw new InvalidArgumentException('The type must be "link" or "form".');
+        }
+
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Add form-specific attributes.
+     *
+     * @param  array<string, mixed>  $attributes
+     */
+    public function setFormAttributes(array $attributes): self
+    {
+        $this->formAttributes = $attributes;
+
+        return $this;
+    }
+
+    /**
      * Determine if the menu item is visible.
      */
     public function isVisible(): bool
@@ -152,6 +183,8 @@ class MenuItem implements Builder
             'icon' => $this->icon,
             'description' => $this->description,
             'tooltip' => $this->tooltip,
+            'type' => $this->type,
+            'formAttributes' => $this->type === 'form' ? $this->formAttributes : [],
             'children' => array_filter(
                 array_map(fn (MenuItem $child) => $child->build()->toArray(), $this->children),
                 fn (array $child) => ! empty($child) // Exclude hidden children

@@ -33,13 +33,13 @@
                             </svg>
                         </button>
                     </div>
-                    <x-sidebar :menus="menu('administration')" />
+                    <x-sidebar :menus="menu('sidebar')" />
                 </div>
             </div>
 
             <!-- Sidebar for desktop -->
             <div class="hidden md:flex md:w-64 md:flex-col bg-white text-black">
-                <x-sidebar :menus="menu('administration')" />
+                <x-sidebar :menus="menu('sidebar')" />
             </div>
 
             <!-- Main Content -->
