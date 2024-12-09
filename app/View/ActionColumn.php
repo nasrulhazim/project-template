@@ -27,7 +27,7 @@ class ActionColumn extends Column
 
     public function getView(): string
     {
-        return ! empty($this->actionView) ? $this->actionView : 'livewire.datatable-actions';
+        return $this->actionView === '' || $this->actionView === '0' ? 'livewire.datatable-actions' : $this->actionView;
     }
 
     public function getContents(Model $row): null|string|\Illuminate\Support\HtmlString|\Rappasoft\LaravelLivewireTables\Exceptions\DataTableConfigurationException|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View

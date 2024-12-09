@@ -42,7 +42,7 @@ class Notification extends DataTableComponent
 
     public function markAsRead()
     {
-        if ($this->getSelectedCount()) {
+        if ($this->getSelectedCount() !== 0) {
             Model::forUser(auth()->user())->whereIn('id', $this->getSelected())->update(['read_at' => now()]);
         }
 
@@ -51,7 +51,7 @@ class Notification extends DataTableComponent
 
     public function markAsUnread()
     {
-        if ($this->getSelectedCount()) {
+        if ($this->getSelectedCount() !== 0) {
             Model::forUser(auth()->user())->whereIn('id', $this->getSelected())->update(['read_at' => null]);
         }
 

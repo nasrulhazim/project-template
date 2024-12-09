@@ -18,7 +18,7 @@ class UserController extends Controller
 
         $sub = 'Manage user in the application';
 
-        return view('security.users.index', compact('sub'));
+        return view('security.users.index', ['sub' => $sub]);
     }
 
     /**
@@ -33,6 +33,6 @@ class UserController extends Controller
         $roles = Role::whereNotIn('name', ['Superadmin', 'User'])->where('is_enabled', true)->get();
         $sub = 'Manage roles for user in the application';
 
-        return view('security.users.show', compact('user', 'roles', 'sub'));
+        return view('security.users.show', ['user' => $user, 'roles' => $roles, 'sub' => $sub]);
     }
 }

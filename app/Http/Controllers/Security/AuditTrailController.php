@@ -16,7 +16,7 @@ class AuditTrailController extends Controller
 
         $sub = 'Audit trail log';
 
-        return view('security.audit-trail.index', compact('sub'));
+        return view('security.audit-trail.index', ['sub' => $sub]);
     }
 
     /**
@@ -30,6 +30,6 @@ class AuditTrailController extends Controller
 
         $sub = 'Audit trail details';
 
-        return view('security.audit-trail.show', compact('audit', 'sub'));
+        return view('security.audit-trail.show', ['audit' => $audit, 'sub' => $sub]);
     }
 }

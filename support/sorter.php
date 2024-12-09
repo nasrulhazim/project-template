@@ -4,13 +4,7 @@ if (! function_exists('sort_json_by_key')) {
     function sort_json_by_key($input)
     {
         // Check if the input is a valid file path
-        if (file_exists($input)) {
-            // If it's a file, read the file contents
-            $jsonData = file_get_contents($input);
-        } else {
-            // Otherwise, treat the input as raw JSON content
-            $jsonData = $input;
-        }
+        $jsonData = file_exists($input) ? file_get_contents($input) : $input;
 
         // Decode the JSON data into an associative array
         $dataArray = json_decode($jsonData, true);

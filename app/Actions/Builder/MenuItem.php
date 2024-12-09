@@ -187,7 +187,7 @@ class MenuItem implements Builder
             'formAttributes' => $this->type === 'form' ? $this->formAttributes : [],
             'children' => array_filter(
                 array_map(fn (MenuItem $child) => $child->build()->toArray(), $this->children),
-                fn (array $child) => ! empty($child) // Exclude hidden children
+                fn (array $child) => $child !== [] // Exclude hidden children
             ),
         ];
 

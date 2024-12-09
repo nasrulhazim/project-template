@@ -47,11 +47,11 @@ class GenerateUnitTestCommand extends Command
 
         foreach ($routes as $route) {
             if (empty($route['name'])) {
-                $this->warn('Empty route name. Skip generate unit test for '.'('.$route['method'].') '.$route['uri']);
+                $this->warn('Empty route name. Skip generate unit test for ('.$route['method'].') '.$route['uri']);
 
                 continue;
             }
-            $this->line('Generating unit test for '.'('.$route['method'].') '.$route['uri']);
+            $this->line('Generating unit test for ('.$route['method'].') '.$route['uri']);
             $class = str($route['name'])->replace('.', ' ')->headline()->replace(' ', '').'Test';
 
             $this->call('pest:test', [
