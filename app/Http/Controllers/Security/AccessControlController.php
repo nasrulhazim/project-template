@@ -18,7 +18,7 @@ class AccessControlController extends Controller
 
         $sub = 'Manage access in the application';
 
-        return view('security.access-control.index', ['sub' => $sub]);
+        return view('security.access-control.index', compact('sub'));
     }
 
     public function show(Request $reqeust, string $uuid)
@@ -30,6 +30,6 @@ class AccessControlController extends Controller
 
         $permissions = Permission::where('is_enabled', true)->get()->groupBy('module');
 
-        return view('security.access-control.show', ['role' => $role, 'permissions' => $permissions, 'sub' => $sub]);
+        return view('security.access-control.show', compact('role', 'permissions'));
     }
 }
