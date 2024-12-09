@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Rector\Caching\ValueObject\Storage\FileCacheStorage;
-use Rector\CodeQuality\Rector\If_\SimplifyIfReturnBoolRector;
+use Rector\CodeQuality\Rector\FuncCall\CompactToVariablesRector;
 use Rector\Config\RectorConfig;
 use Rector\Set\ValueObject\SetList;
 use Rector\ValueObject\PhpVersion;
@@ -23,7 +23,7 @@ return static function (RectorConfig $rectorConfig): void {
 
     // Skip specific rules
     $rectorConfig->skip([
-        SimplifyIfReturnBoolRector::class,
+        CompactToVariablesRector::class,
     ]);
 
     // Enable caching for Rector
