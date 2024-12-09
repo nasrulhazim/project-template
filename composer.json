@@ -91,7 +91,7 @@
         "test-coverage": "vendor/bin/pest --coverage",
         "format": "@php vendor/bin/pint",
         "lint": "@php vendor/bin/phplint",
-        "rector": "vendor/bin/rector"
+        "rector": "vendor/bin/rector process"
     },
     "extra": {
         "laravel": {
