@@ -83,6 +83,7 @@ class User extends Authenticatable implements AuditableContract, HasMedia, MustV
     {
         return $this->notifications()->unread()->exists();
     }
+
     /**
      * The attributes that should be cast.
      *

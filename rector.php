@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-use Rector\Config\RectorConfig;
 use Rector\Caching\ValueObject\Storage\FileCacheStorage;
-use RectorLaravel\Set\LaravelLevelSetList;
-use Rector\Set\ValueObject\SetList;
 use Rector\CodeQuality\Rector\If_\SimplifyIfReturnBoolRector;
+use Rector\Config\RectorConfig;
+use Rector\Set\ValueObject\SetList;
 use Rector\ValueObject\PhpVersion;
+use RectorLaravel\Set\LaravelLevelSetList;
 
 return static function (RectorConfig $rectorConfig): void {
     // Paths to analyze
     $rectorConfig->paths([
-        __DIR__ . '/app',
-        __DIR__ . '/config',
-        __DIR__ . '/database',
-        __DIR__ . '/resources',
-        __DIR__ . '/routes',
-        __DIR__ . '/support',
-        __DIR__ . '/tests',
+        __DIR__.'/app',
+        __DIR__.'/config',
+        __DIR__.'/database',
+        __DIR__.'/resources',
+        __DIR__.'/routes',
+        __DIR__.'/support',
+        __DIR__.'/tests',
     ]);
 
     // Skip specific rules
@@ -27,7 +27,7 @@ return static function (RectorConfig $rectorConfig): void {
     ]);
 
     // Enable caching for Rector
-    $rectorConfig->cacheDirectory(__DIR__ . '/storage/rector');
+    $rectorConfig->cacheDirectory(__DIR__.'/storage/rector');
     $rectorConfig->cacheClass(FileCacheStorage::class);
 
     // Apply sets for Laravel and general code quality
