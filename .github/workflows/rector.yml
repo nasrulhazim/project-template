@@ -50,8 +50,7 @@ jobs:
     - name: Run Rector
       run: |
         vendor/bin/rector process \
-          --ansi \
-          --no-interaction
+          --ansi 
 
     # Optional: Fail if Rector suggests changes
     - name: Validate Rector changes
