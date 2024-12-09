@@ -40,6 +40,7 @@
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8",
         "cleaniquecoders/laravel-db-doc": "^1.1",
+        "driftingly/rector-laravel": "^1.2",
         "fakerphp/faker": "^1.9.1",
         "friendsofphp/php-cs-fixer": "^3.8",
         "jasonmccreary/laravel-test-assertions": "^2.4",
@@ -52,6 +53,7 @@
         "overtrue/phplint": "^9.4",
         "pestphp/pest": "^3.0",
         "pestphp/pest-plugin-laravel": "^3.0",
+        "rector/rector": "^1.2",
         "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
@@ -88,7 +90,8 @@
         "test-arch": "@php vendor/bin/pest tests/Feature/ArchitectureTest.php",
         "test-coverage": "vendor/bin/pest --coverage",
         "format": "@php vendor/bin/pint",
-        "lint": "@php vendor/bin/phplint"
+        "lint": "@php vendor/bin/phplint",
+        "rector": "vendor/bin/rector"
     },
     "extra": {
         "laravel": {
