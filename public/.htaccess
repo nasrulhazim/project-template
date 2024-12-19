@@ -9,7 +9,7 @@ Options -Indexes
 
 <IfModule mod_headers.c>
     # Content Security Policy (CSP)
-    Header set Content-Security-Policy "default-src 'self'; img-src 'self' data: https://ui-avatars.com; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; font-src 'self' https://fonts.bunny.net; script-src 'self' 'unsafe-eval'; object-src 'none';"
+    Header set Content-Security-Policy "default-src 'self'; img-src 'self' data: https://ui-avatars.com; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; font-src 'self' https://fonts.bunny.net; script-src 'self' 'unsafe-eval' 'unsafe-inline'; object-src 'none';"
 
     # X-Content-Type-Options
     Header set X-Content-Type-Options "nosniff"
