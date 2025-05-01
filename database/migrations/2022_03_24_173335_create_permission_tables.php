@@ -25,7 +25,7 @@ return new class extends Migration
         }
 
         Schema::create($tableNames['permissions'], function (Blueprint $table) {
-            //$table->engine('InnoDB');
+            // $table->engine('InnoDB');
             $table->bigIncrements('id'); // permission id
             $table->uuid();
             $table->string('name');       // For MyISAM use string('name', 225); // (or 166 for InnoDB with Redundant/Compact row format)
@@ -39,7 +39,7 @@ return new class extends Migration
         });
 
         Schema::create($tableNames['roles'], function (Blueprint $table) use ($teams, $columnNames) {
-            //$table->engine('InnoDB');
+            // $table->engine('InnoDB');
             $table->bigIncrements('id'); // role id
             $table->uuid();
             if ($teams || config('permission.testing')) { // permission.testing is a fix for sqlite testing

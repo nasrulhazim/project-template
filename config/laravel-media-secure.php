@@ -24,7 +24,7 @@ return [
      * Middleware want to apply to the media route.
      */
     'middleware' => [
-        'auth:sanctum', //'verified',
+        'auth:sanctum', // 'verified',
     ],
 
     /**
