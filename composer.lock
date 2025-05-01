@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bc77e794dbba52d0e9fc2c26f403c3e6",
+    "content-hash": "27a720f2ef3a0bd2070d8b20a2ad58ec",
     "packages": [
         {
             "name": "api-ecosystem-for-laravel/dingo-api",
@@ -14985,7 +14985,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.3"
+        "php": "^8.4"
     },
     "platform-dev": {},
     "plugin-api-version": "2.6.0"
