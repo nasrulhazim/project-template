@@ -6,18 +6,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Horizon Web Access
-    |--------------------------------------------------------------------------
-    |
-    | This option may be used to enable or disable horizon to be view from
-    | browser. Disabling this doesn't means Horizon didn't run.
-    |
-    */
-
-    'enabled' => env('HORIZON_ENABLED', true),
-
-    /*
-    |--------------------------------------------------------------------------
     | Horizon Domain
     |--------------------------------------------------------------------------
     |
@@ -27,7 +15,7 @@ return [
     |
     */
 
-    'domain' => env('HORIZON_DOMAIN', null),
+    'domain' => env('HORIZON_DOMAIN'),
 
     /*
     |--------------------------------------------------------------------------
@@ -121,6 +109,21 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Silenced Jobs
+    |--------------------------------------------------------------------------
+    |
+    | Silencing a job will instruct Horizon to not place the job in the list
+    | of completed jobs within the Horizon dashboard. This setting may be
+    | used to fully remove any noisy jobs from the completed jobs list.
+    |
+    */
+
+    'silenced' => [
+        // App\Jobs\ExampleJob::class,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Metrics
     |--------------------------------------------------------------------------
     |
@@ -163,7 +166,7 @@ return [
     |
     */
 
-    'memory_limit' => 512,
+    'memory_limit' => 64,
 
     /*
     |--------------------------------------------------------------------------
@@ -179,13 +182,14 @@ return [
     'defaults' => [
         'supervisor-1' => [
             'connection' => 'redis',
-            'queue' => ['default', 'notification'],
+            'queue' => ['default'],
             'balance' => 'auto',
-            'maxProcesses' => 10,
+            'autoScalingStrategy' => 'time',
+            'maxProcesses' => 1,
             'maxTime' => 0,
             'maxJobs' => 0,
-            'memory' => 1024,
-            'tries' => 3,
+            'memory' => 128,
+            'tries' => 1,
             'timeout' => 60,
             'nice' => 0,
         ],
@@ -194,7 +198,7 @@ return [
     'environments' => [
         'production' => [
             'supervisor-1' => [
-                'maxProcesses' => 250,
+                'maxProcesses' => 10,
                 'balanceMaxShift' => 1,
                 'balanceCooldown' => 3,
             ],
@@ -202,7 +206,7 @@ return [
 
         'local' => [
             'supervisor-1' => [
-                'maxProcesses' => 100,
+                'maxProcesses' => 3,
             ],
         ],
     ],
