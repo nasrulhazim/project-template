@@ -32,7 +32,7 @@ return [
     |
     */
 
-    'subtype' => env('API_SUBTYPE', str_replace(' ', '-', strtolower(env('APP_NAME')))),
+    'subtype' => env('API_SUBTYPE', str_replace(' ', '-', strtolower(env('APP_NAME', 'Laravel')))),
 
     /*
     |--------------------------------------------------------------------------
