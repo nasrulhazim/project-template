@@ -40,7 +40,9 @@ class GenerateUnitTestCommand extends Command
         $routes = json_decode($this->buffer->fetch(), JSON_OBJECT_AS_ARRAY);
 
         if (count($routes) == 0) {
-            return $this->components->error("Your application doesn't have any routes.");
+            $this->components->error("Your application doesn't have any routes.");
+
+            return self::FAILURE;
         }
 
         $this->info(count($routes).' routes found');
