@@ -178,6 +178,7 @@ class MenuItem implements Builder
         $this->output = [
             'label' => $this->label,
             'url' => $this->url,
+            'active' => $this->url == request()->url(),
             'target' => $this->target,
             'attributes' => $this->attributes,
             'icon' => $this->icon,
