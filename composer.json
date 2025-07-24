@@ -15,7 +15,7 @@
         "blade-ui-kit/blade-icons": "^1.5",
         "cleaniquecoders/laravel-action": "^2.0",
         "cleaniquecoders/laravel-blacklist": "^1.1",
-        "cleaniquecoders/laravel-media-secure": "^2.0",
+        "cleaniquecoders/laravel-media-secure": "^3.0",
         "cleaniquecoders/mailhistory": "^2.1",
         "cleaniquecoders/traitify": "^1.0",
         "diglactic/laravel-breadcrumbs": "^10.0",

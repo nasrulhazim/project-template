@@ -36,4 +36,14 @@ return [
      * Route name.
      */
     'route_name' => 'media',
+
+    /**
+     * By default, all media require to be login.
+     */
+    'require_auth' => env('LARAVEL_MEDIA_SECURE_REQUIRE_AUTH', true),
+
+    /**
+     * Strict mode - by default all media's model require policy.
+     */
+    'strict' => env('LARAVEL_MEDIA_SECURE_STRICT', true),
 ];
