@@ -17,12 +17,29 @@ trait InteractsWithLivewireForm
 
     protected $record;
 
+    public $can_create = false;
+
+    public $can_update = false;
+
     public function mount()
     {
         $this->setDefaultState();
 
+        $this->setAuthorization();
+
         if (method_exists($this, 'afterMount')) {
             $this->afterMount();
+        }
+    }
+
+    public function setAuthorization()
+    {
+        if ($this->uuid) {
+            $this->show($this->uuid, true);
+
+            $this->can_update = Gate::allows('update', $this->getRecord());
+        } else {
+            $this->can_create = Gate::allows('create', $this->getModel());
         }
     }
 
@@ -163,6 +180,16 @@ trait InteractsWithLivewireForm
 
         $this->state = $this->toArray($data);
         $this->displayingModal = true;
+    }
+
+    public function canCreate(): bool
+    {
+        return $this->can_create;
+    }
+
+    public function canUpdate(): bool
+    {
+        return $this->can_updated;
     }
 
     public function getRecord()
