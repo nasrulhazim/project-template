@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\NotificationController;
 use App\Providers\RouteServiceProvider;
-use CleaniqueCoders\LaravelMediaSecure\LaravelMediaSecure;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
