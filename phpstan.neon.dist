@@ -9,11 +9,12 @@ parameters:
         - database/
         - routes/
         - support/
-    level: 4
+    level: 6
     excludePaths:
         - .bin/
         - .config/
         - .github/
+        - .phpstan/
         - node_modules/
         - stubs/
         - vendor/
