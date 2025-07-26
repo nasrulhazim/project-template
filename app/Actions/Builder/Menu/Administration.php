@@ -28,7 +28,7 @@ class Administration implements Builder, Menu
         $this->menus = collect([
             (new MenuItem)
                 ->setLabel(__('Issues'))
-                ->setUrl(url(config('telescope.path')))
+                ->setUrl(route('telescope'))
                 ->setTarget('_blank')
                 ->setVisible(fn () => Gate::allows('viewTelescope'))
                 ->setTooltip(__('View Telescope issues'))
@@ -37,7 +37,7 @@ class Administration implements Builder, Menu
 
             (new MenuItem)
                 ->setLabel(__('Queues'))
-                ->setUrl(url(config('horizon.path')))
+                ->setUrl(route('horizon.index'))
                 ->setTarget('_blank')
                 ->setVisible(fn () => Gate::allows('viewHorizon'))
                 ->setTooltip(__('Manage queues'))
