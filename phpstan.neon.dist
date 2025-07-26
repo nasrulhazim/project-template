@@ -15,7 +15,6 @@ parameters:
         - .github/
         - .phpstan/
         - bin/
-        - node_modules/
         - stubs/
         - vendor/
         - tests/
