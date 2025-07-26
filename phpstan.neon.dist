@@ -11,10 +11,10 @@ parameters:
         - support/
     level: 6
     excludePaths:
-        - .bin/
         - .config/
         - .github/
         - .phpstan/
+        - bin/
         - node_modules/
         - stubs/
         - vendor/
