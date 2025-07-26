@@ -1,7 +1,7 @@
 <?php
 
 if (! function_exists('sort_json_by_key')) {
-    function sort_json_by_key($input)
+    function sort_json_by_key(string $input): string|bool
     {
         // Check if the input is a valid file path
         $jsonData = file_exists($input) ? file_get_contents($input) : $input;

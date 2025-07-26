@@ -1,10 +1,11 @@
 <?php
 
 use App\Exceptions\ThrowException;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 
 if (! function_exists('get_model_from_uuid')) {
-    function get_model_from_uuid(string $uuid, string $class)
+    function get_model_from_uuid(string $uuid, string $class): Model
     {
         ThrowException::unless(class_exists($class), null, "$class did not exists");
 

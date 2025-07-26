@@ -12,7 +12,7 @@ if (! function_exists('dumpSql')) {
 }
 
 if (! function_exists('logDumpSql')) {
-    function logDumpSql(Builder $query)
+    function logDumpSql(Builder $query): void
     {
         logger()->debug(dumpSql($query));
     }

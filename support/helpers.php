@@ -1,7 +1,13 @@
 <?php
 
 if (! function_exists('require_all_in')) {
-    function require_all_in(string $path)
+    /**
+     * Require all files in the given path.
+     *
+     * @param string $path File path pattern. eg. routes/web/*.php
+     * @return void
+     */
+    function require_all_in(string $path): void
     {
         collect(glob($path))
             ->each(function ($path) {

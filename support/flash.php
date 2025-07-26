@@ -1,14 +1,20 @@
 <?php
 
 if (! function_exists('flash')) {
-    function flash(string $variant, string $message)
+    function flash(string $variant, string $message): void
     {
         session()->flash('message', json_encode(flash_variant($variant)).'|'.$message);
     }
 }
 
 if (! function_exists('flash_variant')) {
-    function flash_variant($variant)
+    /**
+     * Get Flash classes on variant.
+     *
+     * @param string $variant
+     * @return array <string, string>
+     */
+    function flash_variant(string $variant): array
     {
         return match ($variant) {
             'success' => [
