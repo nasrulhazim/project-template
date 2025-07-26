@@ -14,20 +14,41 @@ Each output file is named after the **`identifier`** (e.g. `assign.propertyType.
 
 ## 📁 Output Example
 
-A file like `.phpstan/assign.propertyType.txt` will look like this:
+### 📄 Sample Summary Output
 
-```plaintext
------- ----------------------------------------------------------------------------------------------------------------------
- Line   /path/to/SelectionController.php
------- ----------------------------------------------------------------------------------------------------------------------
- 166     Property App\Models\Applicant::$is_generate (int) does not accept true.
------- ----------------------------------------------------------------------------------------------------------------------
+Here’s an example of what you’ll get in `.phpstan/summary.txt`:
 
------- ----------------------------------------------------------------------------------------------------------------------
- Line   /path/to/SelectionController.php
------- ----------------------------------------------------------------------------------------------------------------------
- 222     Property App\Models\Applicant::$is_generate (int) does not accept false.
------- ----------------------------------------------------------------------------------------------------------------------
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔎 PHPStan Scan Summary
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Unique Identifiers                          :    1
+- Issues Found                                :  468
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 Issues by Identifier:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- property.notFound                           :  468
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+### 🧩 Sample Issue Breakdown
+
+For every unique issue identifier (e.g., `property.notFound`), you get a dedicated `.txt` file like:
+
+`.phpstan/property.notFound.txt`
+
+With formatted entries:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 File       : /app/Http/Controllers/Admin/LetterTemplates/GeneratePdfController.php
+🔢 Line       : 90
+💬 Message    : Access to an undefined property App\Models\ApplicantProgramme::$name.
+💡 Tip        : Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property
+✅ Ignorable  : Yes
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
 ## 🚀 Usage
@@ -39,9 +60,7 @@ sudo apt install jq      # Debian/Ubuntu
 brew install jq          # macOS
 ```
 
-```bash
-chmod +x phpstan-scan.sh
-```
+For Windows, use [Chocolatey](https://chocolatey.org/) or download manually from [https://stedolan.github.io/jq/download/](https://stedolan.github.io/jq/download/).
 
 ### Run the script
 
@@ -62,8 +81,8 @@ Old `.txt` files are deleted on every run to avoid mixing results from different
 ```plaintext
 .project-root/
 ├── .phpstan/
-│   ├── assign.propertyType.txt
-│   ├── larastan.relationExistence.txt
+│   ├── property.notFound.txt
+│   ├── summary.txt
 │   └── scan-result.json
 ├── bin/
 │   └── phpstan
