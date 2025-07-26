@@ -23,8 +23,8 @@ If you discover a security vulnerability within AirBox, please send an e-mail to
 
 ## Contributors
 
-<a href="https://github.com/https://github.com/https://github.com/nasrulhazim/project-template/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=https://github.com/https://github.com/nasrulhazim/project-template"  alt="Project Template Contributors"/>
+<a href="https://github.com/nasrulhazim/project-template/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=nasrulhazim/project-template"  alt="Project Template Contributors"/>
 </a>
 
 ## License
