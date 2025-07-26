@@ -4,6 +4,9 @@
 
 - [Installation](docs/installation.md)
 - [Development](docs/development.md)
+  - [Code Quality](docs/code-quality.md)
+  - [Secure File Access](docs/secure-file-access.md)
+  - [Upload Helper](docs/upload-helper.md)
 - [Deployment](docs/deployment.md)
 
 ## Contributing
