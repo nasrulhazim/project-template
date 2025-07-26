@@ -1,0 +1,105 @@
+#!/usr/bin/env bash
+
+clear
+
+echo "Running PHPStan..."
+vendor/bin/phpstan --error-format=json > .phpstan/scan-result.json
+
+jq . .phpstan/scan-result.json > .phpstan/scan-result.pretty.json && mv .phpstan/scan-result.pretty.json .phpstan/scan-result.json
+
+input_file=".phpstan/scan-result.json"
+output_dir=".phpstan"
+
+if [[ ! -f "$input_file" ]]; then
+  echo "❌ File $input_file not found."
+  exit 1
+fi
+
+find "$output_dir" -type f -name '*.txt' -delete
+
+# Validate if the JSON has a "files" key and it's not null
+if ! jq -e '.files != null and (.files | length > 0)' "$input_file" >/dev/null; then
+  echo "ℹ️ No issues found or invalid PHPStan JSON output."
+  exit 0
+fi
+
+mkdir -p "$output_dir"
+
+echo "📂 Output directory ready: $output_dir"
+echo "📄 Reading from: $input_file"
+
+jq -r '
+  .files as $files |
+  $files | to_entries[] |
+  .key as $file |
+  .value.messages[] |
+  [
+    .identifier,
+    $file,
+    (.line | tostring),
+    .message,
+    (if (.tip != null and (.tip | type) == "string") then .tip else "" end),
+    (if (.ignorable == true) then "Yes" else "No" end)
+  ] | @tsv
+' "$input_file" |
+while IFS=$'\t' read -r identifier file line message tip ignorable; do
+  output_file="${output_dir}/${identifier}.txt"
+  {
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "📂 File       : $file"
+    echo "🔢 Line       : $line"
+    echo "💬 Message    : $message"
+    [[ -n "$tip" ]] && echo "💡 Tip        : $tip"
+    echo "✅ Ignorable  : $ignorable"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+  } >> "$output_file"
+done
+
+echo "✅ PHPStan scan identifiers outputted into individual files."
+
+# Generate summary
+summary_file="${output_dir}/summary.txt"
+
+# Define label width (adjust if needed)
+label_width=42
+
+total_issues=0
+total_identifiers=0
+
+# Temp file to collect identifier and count lines
+temp_summary_data=$(mktemp)
+
+# Loop through all identifier files
+for file in "$output_dir"/*.txt; do
+  [[ "$file" == "$summary_file" ]] && continue
+
+  identifier=$(basename "$file" .txt)
+  count=$(grep -c "📂 File" "$file")
+
+  printf -- "- %-${label_width}s : %4d\n" "$identifier" "$count" >> "$temp_summary_data"
+
+  total_issues=$((total_issues + count))
+  total_identifiers=$((total_identifiers + 1))
+done
+
+# Write summary file using grouped commands
+{
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  echo "🔎 PHPStan Scan Summary"
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  printf -- "- %-${label_width}s  : %4d\n" "Unique Identifiers" "$total_identifiers"
+  printf -- "- %-${label_width}s : %4d\n" "Issues Found" "$total_issues"
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  echo ""
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  echo "📋 Issues by Identifier:"
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  sort "$temp_summary_data"
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+} > "$summary_file"
+
+echo "📊 Summary written to $summary_file"
+
+# Clean up
+rm -f "$temp_summary_data"
