@@ -2,59 +2,77 @@
 
 namespace App\Livewire\Datatable;
 
+use App\Concerns\InteractsWithDatatable;
 use App\Models\Notification as Model;
-use App\View\ActionColumn;
 use Illuminate\Database\Eloquent\Builder;
-use Rappasoft\LaravelLivewireTables\DataTableComponent;
-use Rappasoft\LaravelLivewireTables\Views\Column;
+use Livewire\Component;
 
-class Notification extends DataTableComponent
+class Notification extends Component
 {
-    protected $model = Model::class;
+    use InteractsWithDatatable;
 
-    public array $bulkActions = [
-        'markAsRead' => 'Mark as Read',
-        'markAsUnread' => 'Mark as Unread',
-    ];
-
-    public function configure(): void
+    public function query(): Builder
     {
-        $this->setPrimaryKey('id');
+        return Model::forUser(auth()->user());
     }
 
     public function columns(): array
     {
         return [
-            Column::make(__('Subject'), 'data')
-                ->format(fn ($value) => data_get($value, 'subject'))
-                ->sortable(),
-            Column::make(__('Received at'), 'created_at')->sortable()->searchable(),
-            Column::make(__('Read at'), 'read_at')->sortable()->searchable(),
-            ActionColumn::make(__('Actions'), 'id')
-                ->setView('notifications.datatable-actions'),
+            [
+                'key' => 'data',
+                'label' => __('Subject'),
+                'sortable' => true,
+                'format' => fn ($value) => data_get($value, 'subject'),
+            ],
+            [
+                'key' => 'created_at',
+                'label' => __('Received at'),
+                'sortable' => true,
+                'searchable' => true,
+            ],
+            [
+                'key' => 'read_at',
+                'label' => __('Read at'),
+                'sortable' => true,
+                'searchable' => true,
+            ],
+            [
+                'key' => 'id',
+                'label' => __('Actions'),
+                'view' => 'notifications.datatable-actions',
+            ],
         ];
     }
 
-    public function builder(): Builder
+    public function bulkActions(): array
     {
-        return Model::forUser(auth()->user());
+        return [
+            'markAsRead' => 'Mark as Read',
+            'markAsUnread' => 'Mark as Unread',
+        ];
     }
 
-    public function markAsRead()
+    public function markAsRead(): void
     {
-        if ($this->getSelectedCount() !== 0) {
-            Model::forUser(auth()->user())->whereIn('id', $this->getSelected())->update(['read_at' => now()]);
+        if (count($this->selected) > 0) {
+            Model::forUser(auth()->user())
+                ->whereIn('id', $this->selected)
+                ->update(['read_at' => now()]);
         }
-
-        $this->clearSelected();
     }
 
-    public function markAsUnread()
+    public function markAsUnread(): void
     {
-        if ($this->getSelectedCount() !== 0) {
-            Model::forUser(auth()->user())->whereIn('id', $this->getSelected())->update(['read_at' => null]);
+        if (count($this->selected) > 0) {
+            Model::forUser(auth()->user())
+                ->whereIn('id', $this->selected)
+                ->update(['read_at' => null]);
         }
+    }
 
-        $this->clearSelected();
+    public function render()
+    {
+        return view('livewire.datatable.notification');
     }
 }

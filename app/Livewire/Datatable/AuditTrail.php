@@ -2,96 +2,115 @@
 
 namespace App\Livewire\Datatable;
 
+use App\Concerns\InteractsWithDatatable;
 use App\Models\Audit as Model;
-use App\View\ActionColumn;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
-use Rappasoft\LaravelLivewireTables\DataTableComponent;
-use Rappasoft\LaravelLivewireTables\Views\Column;
-use Rappasoft\LaravelLivewireTables\Views\Filters\DateFilter;
-use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
+use Livewire\Component;
 
-class AuditTrail extends DataTableComponent
+class AuditTrail extends Component
 {
-    public function configure(): void
+    use InteractsWithDatatable;
+
+    public function query(): Builder
     {
-        $this->setPrimaryKey('uuid')
-            ->setEagerLoadAllRelationsEnabled()
-            ->setAdditionalSelects([
-                'audits.user_id',
-                'audits.auditable_id',
-                'audits.old_values',
-                'audits.new_values',
-                'audits.created_at',
-            ])
-            ->setDefaultSort('created_at', 'desc')
-            ->setFilterLayoutSlideDown();
+        return Model::query()->with(['user']);
     }
 
     public function columns(): array
     {
         return [
-            Column::make(__('Event'), 'event')
-                ->view('components.badge')
-                ->searchable()
-                ->sortable(),
-            Column::make(__('User'), 'user.name')
-                ->searchable()
-                ->sortable(),
-            Column::make(__('IP Address'), 'ip_address')
-                ->searchable()
-                ->sortable(),
-            Column::make(__('Created At'), 'created_at')
-                ->format(fn ($value) => Carbon::parse($value)->format('d-m-Y H:i:s'))
-                ->searchable()
-                ->sortable(),
-            Column::make(__('URL'), 'url')
-                ->format(fn ($value) => str_replace(config('app.url'), '', $value))
-                ->searchable()
-                ->sortable(),
-            Column::make(__('Type'), 'auditable_type')
-                ->format(fn ($value) => class_basename($value))
-                ->searchable()
-                ->sortable(),
-            ActionColumn::make(__('Actions'), 'uuid')
-                ->form('')
-                ->setView('security.audit-trail.partials.datatable-actions'),
+            [
+                'key' => 'event',
+                'label' => __('Event'),
+                'sortable' => true,
+                'searchable' => true,
+                'view' => 'components.badge',
+            ],
+            [
+                'key' => 'user.name',
+                'label' => __('User'),
+                'sortable' => false,
+                'searchable' => true,
+            ],
+            [
+                'key' => 'ip_address',
+                'label' => __('IP Address'),
+                'sortable' => true,
+                'searchable' => true,
+            ],
+            [
+                'key' => 'created_at',
+                'label' => __('Created At'),
+                'sortable' => true,
+                'searchable' => true,
+                'format' => fn ($value) => Carbon::parse($value)->format('d-m-Y H:i:s'),
+            ],
+            [
+                'key' => 'url',
+                'label' => __('URL'),
+                'sortable' => true,
+                'searchable' => true,
+                'format' => fn ($value) => str_replace(config('app.url'), '', $value),
+            ],
+            [
+                'key' => 'auditable_type',
+                'label' => __('Type'),
+                'sortable' => true,
+                'searchable' => true,
+                'format' => fn ($value) => class_basename($value),
+            ],
+            [
+                'key' => 'uuid',
+                'label' => __('Actions'),
+                'view' => 'security.audit-trail.partials.datatable-actions',
+            ],
         ];
-    }
-
-    /**
-     * The base query.
-     */
-    public function builder(): Builder
-    {
-        return Model::query();
     }
 
     public function filters(): array
     {
         return [
-            SelectFilter::make('Event')
-                ->options([
+            [
+                'key' => 'event',
+                'label' => __('Event'),
+                'type' => 'select',
+                'options' => [
                     'created' => __('Created'),
                     'updated' => __('Updated'),
                     'deleted' => __('Deleted'),
-                ])
-                ->filter(function (Builder $builder, $value) {
-                    $builder->where('event', $value);
-                }),
-            SelectFilter::make(__('Type'), 'type')
-                ->options(audit_type_options())
-                ->filter(function (Builder $builder, $value) {
-                    $builder->where('auditable_type', $value);
-                }),
-            DateFilter::make(__('Date From'), 'from')
-                ->filter(function (Builder $builder, string $value) {
-                    $builder->whereDate('audits.created_at', '>=', $value);
-                })->setFilterSlidedownColspan('2'),
-            DateFilter::make(__('Date To'), 'to')
-                ->filter(function (Builder $builder, string $value) {
-                    $builder->whereDate('audits.created_at', '<=', $value);
-                })->setFilterSlidedownColspan('2'),
+                ],
+                'query' => fn (Builder $query, $value) => $query->where('event', $value),
+            ],
+            [
+                'key' => 'type',
+                'label' => __('Type'),
+                'type' => 'select',
+                'options' => audit_type_options(),
+                'query' => fn (Builder $query, $value) => $query->where('auditable_type', $value),
+            ],
+            [
+                'key' => 'from',
+                'label' => __('Date From'),
+                'type' => 'date',
+                'query' => fn (Builder $query, $value) => $query->whereDate('audits.created_at', '>=', $value),
+            ],
+            [
+                'key' => 'to',
+                'label' => __('Date To'),
+                'type' => 'date',
+                'query' => fn (Builder $query, $value) => $query->whereDate('audits.created_at', '<=', $value),
+            ],
         ];
+    }
+
+    public function defaultSort(): array
+    {
+        return ['created_at' => 'desc'];
+    }
+
+    public function render()
+    {
+        return view('livewire.datatable.audit-trail');
     }
 }

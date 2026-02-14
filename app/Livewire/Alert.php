@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Alert extends Component
@@ -13,10 +14,7 @@ class Alert extends Component
         'message' => '',
     ];
 
-    protected $listeners = [
-        'displayAlert' => 'display',
-    ];
-
+    #[On('displayAlert')]
     public function display($title, $message)
     {
         $this->state['title'] = $title;

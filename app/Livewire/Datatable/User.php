@@ -2,57 +2,54 @@
 
 namespace App\Livewire\Datatable;
 
+use App\Concerns\InteractsWithDatatable;
 use App\Models\User as Model;
 use Illuminate\Database\Eloquent\Builder;
-use Rappasoft\LaravelLivewireTables\DataTableComponent;
-use Rappasoft\LaravelLivewireTables\Views\Column;
-use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
+use Livewire\Component;
 
-class User extends DataTableComponent
+class User extends Component
 {
-    protected $model = Model::class;
+    use InteractsWithDatatable;
 
-    /**
-     * Set any configuration options
-     */
-    public function configure(): void
+    public function query(): Builder
     {
-        $this->setPrimaryKey('uuid')
-            ->setAdditionalSelects([
-                'users.id',
-                'users.uuid',
-            ])
-            ->setEagerLoadAllRelationsEnabled()
-            ->setConfigurableAreas([
-                'before-toolbar' => 'security.users.form',
-            ]);
+        return Model::query()->with(['roles']);
     }
 
-    /**
-     * The array defining the columns of the table.
-     */
     public function columns(): array
     {
         return [
-            Column::make(__('Name'), 'name')
-                ->searchable()
-                ->view('security.users.partials.info')
-                ->sortable(),
-            Column::make('Email', 'email')->hideIf(true)->searchable(),
+            [
+                'key' => 'name',
+                'label' => __('Name'),
+                'sortable' => true,
+                'searchable' => true,
+                'view' => 'security.users.partials.info',
+            ],
+            [
+                'key' => 'email',
+                'label' => 'Email',
+                'visible' => false,
+                'searchable' => true,
+            ],
         ];
     }
 
     public function filters(): array
     {
         return [
-            SelectFilter::make(__('Role'), 'role')
-                ->options(to_options(role_options()))
-                ->filter(fn ($query, $value) => $query->role($value)),
+            [
+                'key' => 'role',
+                'label' => __('Role'),
+                'type' => 'select',
+                'options' => to_options(role_options()),
+                'query' => fn (Builder $query, $value) => $query->role($value),
+            ],
         ];
     }
 
-    public function builder(): Builder
+    public function render()
     {
-        return Model::query();
+        return view('livewire.datatable.user');
     }
 }

@@ -2,15 +2,12 @@
 
 namespace App\Livewire;
 
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Confirm extends Component
 {
     public $displayingModal = false;
-
-    protected $listeners = [
-        'displayConfirmation' => 'display',
-    ];
 
     public $state = [
         'title' => '',
@@ -21,6 +18,7 @@ class Confirm extends Component
         ],
     ];
 
+    #[On('displayConfirmation')]
     public function display($title, $message, $component, $listener, ...$params)
     {
         $this->state['title'] = $title;

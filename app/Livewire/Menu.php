@@ -4,19 +4,11 @@ namespace App\Livewire;
 
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Menu extends Component
 {
-    /**
-     * The component's listeners.
-     *
-     * @var array
-     */
-    protected $listeners = [
-        'refresh-menu' => '$refresh',
-    ];
-
     public Collection $menus;
 
     public string $view;
@@ -27,9 +19,12 @@ class Menu extends Component
         $this->menus = menu($menu);
     }
 
-    /**
-     * Render the component.
-     */
+    #[On('refresh-menu')]
+    public function refreshMenu(): void
+    {
+        // No-op; triggers Livewire re-render
+    }
+
     public function render(): View
     {
         return view('layouts.menu');

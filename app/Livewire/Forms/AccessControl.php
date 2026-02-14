@@ -5,6 +5,7 @@ namespace App\Livewire\Forms;
 use App\Actions\Forms\CreateNewRole as Action;
 use App\Concerns\InteractsWithLivewireForm;
 use App\Models\Role as Model;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class AccessControl extends Component
@@ -18,11 +19,6 @@ class AccessControl extends Component
     public string $formTitle = 'Access Control';
 
     public string $view = 'livewire.forms.access-control';
-
-    protected $listeners = [
-        'showRecord' => 'show',
-        'destroyRecord' => 'destroy',
-    ];
 
     public $state = [
         'name' => '',
@@ -49,5 +45,17 @@ class AccessControl extends Component
     {
         $this->edit = $this->displayCreateRecord == false;
         $this->displayingModal = false;
+    }
+
+    #[On('showRecord')]
+    public function show(string $uuid, bool $edit = false): void
+    {
+        parent::show($uuid, $edit);
+    }
+
+    #[On('destroyRecord')]
+    public function destroy(string $uuid): void
+    {
+        parent::destroy($uuid);
     }
 }

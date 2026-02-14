@@ -6,6 +6,7 @@ use App\Actions\User\CreateNewUser;
 use App\Concerns\InteractsWithLivewireForm;
 use App\Models\Role;
 use App\Models\User as Model;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class User extends Component
@@ -19,11 +20,6 @@ class User extends Component
     public string $formTitle = 'User';
 
     public string $view = 'livewire.forms.user';
-
-    protected $listeners = [
-        'showRecord' => 'show',
-        'destroyRecord' => 'destroy',
-    ];
 
     protected array $uuid2id = [];
 
@@ -43,5 +39,17 @@ class User extends Component
     public function mount()
     {
         $this->roles = Role::all()->pluck('name', 'name')->map(fn ($value) => ucfirst($value))->toArray();
+    }
+
+    #[On('showRecord')]
+    public function show(string $uuid, bool $edit = false): void
+    {
+        parent::show($uuid, $edit);
+    }
+
+    #[On('destroyRecord')]
+    public function destroy(string $uuid): void
+    {
+        parent::destroy($uuid);
     }
 }
